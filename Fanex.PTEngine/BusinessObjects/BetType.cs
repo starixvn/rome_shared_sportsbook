@@ -122,8 +122,16 @@
                                 bool value = false;
                                 if (reader.HasColumn(formattedPattern))
                                 {
-                                    value = reader.ToInt(formattedPattern) > 0 ? true : false;
+                                    if (reader[formattedPattern].GetType().Name == "Boolean")
+                                    {
+                                        value = reader.ToBool(formattedPattern);
+                                    }
+                                    else
+                                    {
+                                        value = reader.ToInt(formattedPattern) > 0 ? true : false;
+                                    }
                                 }
+
 
                                 propertyInfo.SetValue(this.Pt, value, null);
                             }

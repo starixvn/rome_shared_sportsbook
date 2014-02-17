@@ -7,6 +7,7 @@
     using System.Web;
     using System.Xml.Linq;
     using Fanex.Logging;
+    using Fanex.Common;
     using Fanex.PTEngine.XmlMapping;
 
     public class PTGrid : IPTGrid<SportType>
@@ -111,10 +112,12 @@
         /// <param name="map"></param>
         public void MapToSpUpdateMultipleParameters(ref Hashtable parameters, Hashtable updateParameters, bool isUpdateBettingLimit)
         {
+            XDocument document = _Configuration.Document;
             int i = 1;
             if (isUpdateBettingLimit)
             {
-                i = Constant.SPORT_TYPE_INDEX_UPDATE_PARAMETER;
+                //i = Constant.SPORT_TYPE_INDEX_UPDATE_PARAMETER;
+                i = Converter.To<int>(document.Root.Element(Constant.NUMEROUS_SPORT_TYPE).Value);
             }
 
             this.Populate();

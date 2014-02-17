@@ -52,7 +52,9 @@
 
         public const string SPORT_TYPE_UPDATE = "updatepositiontaking";
 
-        public const int SPORT_TYPE_INDEX_UPDATE_PARAMETER = 12;
+        public const int SPORT_TYPE_INDEX_UPDATE_PARAMETER = 13;
+
+        public const string NUMEROUS_SPORT_TYPE = "NumerousSportType";
 
         // Bet type group set properties
         public const string BETTYPE_GROUPSET_IS_LIVE = "isLive";

@@ -20,6 +20,8 @@
 
         decimal DiscountNumber { get; set; }
 
+        decimal DiscountHRFixedOdds { get; set; }
+
         decimal GroupAMax { get; set; }
 
         decimal GroupBMax { get; set; }
@@ -34,6 +36,8 @@
 
         decimal DiscountNumberMax { get; set; }
 
+        decimal DiscountHRFixedOddsMax { get; set; }
+
         decimal Discount { get; set; }
 
         decimal PlayerDiscount { get; set; }
@@ -43,6 +47,8 @@
         decimal PlayerDiscountCs { get; set; }
 
         decimal PlayerDiscountNumber { get; set; }
+
+        decimal PlayerDiscountHRFixedOdds { get; set; }
 
         void ReadFromDataRecord(IRequestContext context, System.Data.IDataReader reader);
 

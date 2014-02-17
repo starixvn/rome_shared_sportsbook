@@ -21,6 +21,8 @@
 
         public decimal DiscountNumber { get; set; }
 
+        public decimal DiscountHRFixedOdds { get; set; }
+
         public decimal GroupAMax { get; set; }
 
         public decimal GroupBMax { get; set; }
@@ -35,6 +37,8 @@
 
         public decimal DiscountNumberMax { get; set; }
 
+        public decimal DiscountHRFixedOddsMax { get; set; }
+
         public decimal Discount { get; set; }
 
         public decimal PlayerDiscount { get; set; }
@@ -44,6 +48,8 @@
         public decimal PlayerDiscountCs { get; set; }
 
         public decimal PlayerDiscountNumber { get; set; }
+
+        public decimal PlayerDiscountHRFixedOdds { get; set; }
 
         public void ReadFromDataRecord(IRequestContext context, System.Data.IDataReader reader)
         {
@@ -72,12 +78,16 @@
             DiscountNumber = reader.HasColumn("discountnumber") ? Convert.ToDecimal(reader["discountnumber"]) : reader.ToDecimal("discount161");
             Discount = reader.HasColumn("discount") ? Convert.ToDecimal(reader["discount"]) : 0;
 
+            DiscountHRFixedOdds = reader.ToDecimal("discountHRFixedOdds");
+            DiscountHRFixedOddsMax = reader.HasColumn("discountHRFixedOdds_max") ? Convert.ToDecimal(reader["discountHRFixedOdds_max"]) : reader.ToDecimal("discountHRFixedOdds");
+
             PlayerDiscount = reader.ToDecimal("playerdiscount");
             PlayerDiscount1x2 = reader.ToDecimal("playerdiscount1x2");
             PlayerDiscountCs = reader.ToDecimal("playerdiscountcs");
             PlayerDiscountNumber = reader.HasColumn("playerdiscountnumber") ? Convert.ToDecimal(reader["playerdiscountnumber"]) : reader.ToDecimal("playerdiscount161");
+            PlayerDiscountHRFixedOdds = reader.ToDecimal("playerdiscountHRFixedOdds");
         }
-
+        
         /// <summary>
         /// Mapping to Sp Parameters
         /// </summary>
@@ -97,15 +107,18 @@
             parameters.Add("discount1x2", Discount1x2);
             parameters.Add("discountcs", DiscountCS);
             parameters.Add("discountnumber", DiscountNumber);
+            parameters.Add("discounthrfixedodds", DiscountHRFixedOdds);
             parameters.Add("discount1x2_max", Discount1x2Max);
             parameters.Add("discountcs_max", DiscountCSMax);
             parameters.Add("discountnumber_max", DiscountNumberMax);
+            parameters.Add("discounthrfixedodds_max", DiscountHRFixedOddsMax);
 
             // Add this for add new member
             parameters.Add("playerdiscount", PlayerDiscount);
             parameters.Add("playerdiscount1x2", PlayerDiscount1x2);
             parameters.Add("playerdiscountcs", PlayerDiscountCs);
             parameters.Add("playerdiscountnumber", PlayerDiscountNumber);
+            parameters.Add("playerdiscounthrfixedodds", PlayerDiscountHRFixedOdds);
         }
     }
 }

@@ -285,6 +285,7 @@
                 commissionMaster.PlayerDiscount1x2 = reader.ToDecimal("adiscount1x2");
                 commissionMaster.PlayerDiscountCs = reader.ToDecimal("adiscountcs");
                 commissionMaster.PlayerDiscountNumber = reader.ToDecimal("adiscount161");
+                commissionMaster.PlayerDiscountHRFixedOdds = reader.ToDecimal("adiscountHRFixedOdds");
                 commissionSettings.Add(commissionMaster);
             }
 
@@ -324,7 +325,8 @@
                 GroupD = (decimal)0.01,
                 Discount1x2 = (decimal)0.0025,
                 DiscountCS = (decimal)0.01,
-                DiscountNumber = (decimal)0.0025
+                DiscountNumber = (decimal)0.0025,
+                DiscountHRFixedOdds = (decimal)0.01
             };
         }
     }

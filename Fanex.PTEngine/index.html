@@ -42,7 +42,7 @@
         function notify(x, y) { // x - element, y - tag
             var roles = y.split(',');
             Fanex.PTEngine.CURRENT_CONTEXT = new Fanex.PTEngine.Context(roles[0], roles[1], roles[2]);
-            Fanex.PTEngine.CURRENT_CONTEXT.ia3 = false; // Allow auto PT master on member
+            Fanex.PTEngine.CURRENT_CONTEXT.ia3 = true; // Allow auto PT master on member
             Fanex.PTEngine.CURRENT_CONTEXT.language = 'th-TH'
             grid1 = new Fanex.PTEngine.PTGrid(grid);
             var ptContainer = document.getElementById('ptContainer');

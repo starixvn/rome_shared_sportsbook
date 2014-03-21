@@ -63,12 +63,16 @@ Fanex.PTEngine.BetType.prototype.Render_3_1_1 = function (owner) { // m1, um1, i
     a1Label.style.minWidth = this.minWidth + 'px';
     box.appendChild(a1Label);
 
+    var min = this.pt.n3;
+    var max = 0;
+    var selected = 0;
+
     // m1 selection
     if (Fanex.PTEngine.CURRENT_CONTEXT.ia3) {
         if (!this.pt.im2) {
-            var min = this.pt.n3;
-            var max = this.pt.m3;
-            var selected = this.pt.m1;
+            max = Math.max(this.pt.m3, min);
+            selected = this.pt.m1;
+
             var m1Select = Fanex.PTEngine.PT_RenderSelect(min, max, Fanex.PTEngine.PT_STEP, selected, this.showButtons);
             m1Select.select.id = m1Select.select.name = "m1$" + this.suffixId;
             m1Select.className = "BetTypeSelect";
@@ -96,9 +100,9 @@ Fanex.PTEngine.BetType.prototype.Render_3_1_1 = function (owner) { // m1, um1, i
         im1Div.appendChild(im1Check);
         box.appendChild(im1Div);
         // um1
-        min = 0;
-        max = this.pt.um2;
+        max = Math.max(this.pt.um2, min);
         selected = this.pt.um1;
+
         um1Select = Fanex.PTEngine.PT_RenderSelect(min, max, Fanex.PTEngine.PT_STEP, selected, this.showButtons);
         um1Select.select.id = um1Select.select.name = "um1$" + this.suffixId;
         um1Select.className = "BetTypeSelect";
@@ -119,9 +123,9 @@ Fanex.PTEngine.BetType.prototype.Render_3_1_1 = function (owner) { // m1, um1, i
         }
     }
     else {
-        var min = this.pt.n3;
-        var max = this.pt.m3;
-        var selected = this.pt.m1;
+        max = this.pt.m3;
+        selected = this.pt.m1;
+
         var m1Select = Fanex.PTEngine.PT_RenderSelect(min, max, Fanex.PTEngine.PT_STEP, selected, this.showButtons);
         m1Select.select.id = m1Select.select.name = "m1$" + this.suffixId;
         m1Select.className = "BetTypeSelect";
@@ -185,10 +189,14 @@ Fanex.PTEngine.BetType.prototype.Render_4_1_1 = function (owner) { // s1, us1, i
 
     // s1
     var s1Select = null;
+    var min = this.pt.n4;
+    var max = 0;
+    var selected = null;
+
     if (!this.pt.is3) {
-        var min = 0;
-        var max = this.pt.a2;
-        var selected = this.pt.s1;
+        max = Math.max(this.pt.a2, min);
+        selected = this.pt.s1;
+
         s1Select = Fanex.PTEngine.PT_RenderSelect(min, max, Fanex.PTEngine.PT_STEP, selected, this.showButtons);
         s1Select.select.id = s1Select.select.name = "s1$" + this.suffixId;
         s1Select.select.disabled = this.pt.is1;
@@ -217,9 +225,9 @@ Fanex.PTEngine.BetType.prototype.Render_4_1_1 = function (owner) { // s1, us1, i
     box.appendChild(is1Div);
 
     // us1
-    min = 0;
-    max = this.pt.s4;
+    max = Math.max(this.pt.s4, min);
     selected = this.pt.us1;
+
     var us1Select = Fanex.PTEngine.PT_RenderSelect(min, max, Fanex.PTEngine.PT_STEP, selected, this.showButtons);
     us1Select.select.id = us1Select.select.name = "us1$" + this.suffixId;
     us1Select.select.disabled = !this.pt.is1;
@@ -237,7 +245,7 @@ Fanex.PTEngine.BetType.prototype.Render_4_1_1 = function (owner) { // s1, us1, i
     box.id = "e$" + this.suffixId;
     box.className = "PTBox";
     // Get updated data
-    this.Save = function () {  
+    this.Save = function () {
         this.pt.is1 = is1Check.checked;
         if (!this.pt.is1) {
             if (!this.pt.is3) {

@@ -6,20 +6,20 @@ var pt = {
     m4: 0.8,
     m3: 0.8,
     m2: 0,
-    m1: 0,
+    m1: 0.5,
     a4: 0.8,
     a2: 0.6,
     a1: 0.03,
     us3: 0,
-    us1: 0,
+    us1: 0.3,
     is3: false,
-    is1: false,
-    um2: 0,
-    um1: 0,
+    is1: true,
+    um2: 0.2,
+    um1: 0.1,
     im2: false,
-    im1: false,
-    n4: 0,
-    n3: 0,
+    im1: true,
+    n4: 0.1,
+    n3: 0.2,
     n2: 0.03,
     l4: 0.85,
     l3: 0.8,
@@ -117,6 +117,16 @@ var bettingLimits2 = {
         "maxPerMatchMin": 0.0000,
         "maxPerMatchMax": 10000.0000
     }, {
+        "id": 154,
+        "name": "HR Fixed Odds",
+        "minBet": 11.0000,
+        "maxBet": 700.0000,
+        "maxPerMatch": 10000.0000,
+        "minBetMax": 11.0000,
+        "maxBetMin": 700.0000,
+        "maxPerMatchMin": 0.0000,
+        "maxPerMatchMax": 10000.0000
+    }, {
         "id": 161,
         "name": "Number Game",
         "minBet": 10.0000,
@@ -182,6 +192,12 @@ var bettingLimits = {
     }, {
         "id": 99,
         "name": "Mix Sports Parlay",
+        "minBet": 11.0000,
+        "maxBet": 700.0000,
+        "maxPerMatch": 10000.0000
+    }, {
+        "id": 154,
+        "name": "HR Fixed Odds",
         "minBet": 11.0000,
         "maxBet": 700.0000,
         "maxPerMatch": 10000.0000
@@ -457,6 +473,19 @@ var grid = {
                 betTypes: [{
                     id: 9,
                     name: 'Mix Parlay',
+                    pt: pt
+                }]
+            }]
+        }]
+    }, {
+        id: 154,
+        name: 'HR Fixed Odds',
+        betTypeGroupSets: [{
+            isLive: false,
+            betTypeGroups: [{
+                betTypes: [{
+                    id: 9,
+                    name: 'Money Line',
                     pt: pt
                 }]
             }]

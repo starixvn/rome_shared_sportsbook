@@ -258,6 +258,8 @@
 	clear: both;
 	margin: 0;
 	padding: 0;
+	overflow: auto;
+    background-color: #ECF3F7;
 }
 
 .PTGroup
@@ -756,7 +758,23 @@
     display: inline-block;
 	height: 16px;
 	width: 16px;
-	background: url('<% =WebResource("Fanex.PTEngine.UI.Images.moredetail.png") %>') left top no-repeat;
+	background: url('<% =WebResource("Fanex.PTEngine.UI.Images.moredetail.png") %>') 0px 0px no-repeat;
 	margin-bottom: -3px;
+}
+
+.bet-type-detail-icon:hover
+{
+    background-position: 0px -16px;
     cursor: pointer;
+}
+
+.PTBoxRightBorder  .BetTypeHeader, .PTBoxRightBorder  .BetTypeSelect, .PTBoxRightBorder .BetTypeLabel
+{
+	border-right: 1px solid #12A3EB;
+}
+
+.BetTypeBottomBorder
+{
+	border-bottom: 1px solid #12A3EB;
+	height: 21px;
 }

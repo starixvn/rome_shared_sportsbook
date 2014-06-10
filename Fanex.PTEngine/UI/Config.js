@@ -245,6 +245,18 @@ var grid = {
                     name: 'Odd/Even',
                     minWidth: 90,
                     pt: pt
+                }, {
+                    id: 99,
+                    name: 'Odd/Even',
+                    minWidth: 90,
+                    pt: pt,
+                    showDetailIcon: true,
+                    representForBettypes: [
+                        {
+                            id: 1,
+                            name: "New Bet Type"
+                        }
+                    ]
                 }]
             }, {
                 id: 2,

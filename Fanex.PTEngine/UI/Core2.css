@@ -258,6 +258,8 @@
 	clear: both;
 	margin: 0;
 	padding: 0;
+	overflow: auto;
+	background-color: #ECF3F7;
 }
 
 .PTGroup
@@ -691,6 +693,16 @@
 	background: url(Images/pointer.png) left top no-repeat;
 }
 
+.hint-pointerDown
+{
+	position: absolute;
+	left: 10px;
+	top: 38px;
+	width: 20px;
+	height: 19px;
+	background: url(Images/pointerDown.png) left top no-repeat;
+}
+
 .hint ul
 {
 	margin: 5px 0px 0px 0px;
@@ -709,4 +721,19 @@
 	top: 5px;
 	background: url('Images/close.jpg') left top no-repeat;
 	cursor: pointer;
+}
+
+.bet-type-detail-icon 
+{
+    display: inline-block;
+	height: 16px;
+	width: 16px;
+	background: url('Images/moredetail.png') 0px 0px no-repeat;
+	margin-bottom: -3px;
+}
+
+.bet-type-detail-icon:hover
+{
+    background-position: 0px -16px;
+    cursor: pointer;
 }

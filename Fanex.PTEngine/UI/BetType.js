@@ -34,11 +34,11 @@ Fanex.PTEngine.BetType.prototype.Render_2_1_1 = function (owner) { // a1
     var selected = this.pt.a1;
     var a1Select = Fanex.PTEngine.PT_RenderSelect(min, max, Fanex.PTEngine.PT_STEP, selected, this.showButtons);
     a1Select.select.id = a1Select.select.name = "a1$" + this.suffixId;
-    a1Select.className = "BetTypeSelect";
+    a1Select.className = "BetTypeSelect" + this.bottomBorderClass;
     a1Select.style.minWidth = this.minWidth + 'px';
     box.appendChild(a1Select);
     box.id = "e$" + this.suffixId;
-    box.className = "PTBox";
+    box.className = "PTBox" + this.rightBorderClass;
 
     // Get updated data
     this.Save = function () {
@@ -112,7 +112,7 @@ Fanex.PTEngine.BetType.prototype.Render_3_1_1 = function (owner) { // m1, um1, i
 
         um1Select = Fanex.PTEngine.PT_RenderSelect(min, max, Fanex.PTEngine.PT_STEP, selected, this.showButtons);
         um1Select.select.id = um1Select.select.name = "um1$" + this.suffixId;
-        um1Select.className = "BetTypeSelect";
+        um1Select.className = "BetTypeSelect" + this.bottomBorderClass; ;
         um1Select.style.minWidth = this.minWidth + 'px';
         box.appendChild(um1Select);
         // im1 handling
@@ -135,13 +135,13 @@ Fanex.PTEngine.BetType.prototype.Render_3_1_1 = function (owner) { // m1, um1, i
 
         var m1Select = Fanex.PTEngine.PT_RenderSelect(min, max, Fanex.PTEngine.PT_STEP, selected, this.showButtons);
         m1Select.select.id = m1Select.select.name = "m1$" + this.suffixId;
-        m1Select.className = "BetTypeSelect";
+        m1Select.className = "BetTypeSelect" + this.bottomBorderClass; ;
         m1Select.style.minWidth = this.minWidth + 'px';
         box.appendChild(m1Select);
     }
 
     box.id = "e$" + this.suffixId;
-    box.className = "PTBox";
+    box.className = "PTBox" + this.rightBorderClass;
     // Get updated data
     this.Save = function () {
         if (Fanex.PTEngine.CURRENT_CONTEXT.ia3) {
@@ -241,7 +241,7 @@ Fanex.PTEngine.BetType.prototype.Render_4_1_1 = function (owner) { // s1, us1, i
     var us1Select = Fanex.PTEngine.PT_RenderSelect(min, max, Fanex.PTEngine.PT_STEP, selected, this.showButtons);
     us1Select.select.id = us1Select.select.name = "us1$" + this.suffixId;
     us1Select.select.disabled = !this.pt.is1;
-    us1Select.className = "BetTypeSelect";
+    us1Select.className = "BetTypeSelect" + this.bottomBorderClass; ;
     us1Select.style.minWidth = this.minWidth + 'px';
     box.appendChild(us1Select);
     // is1 handling
@@ -253,7 +253,7 @@ Fanex.PTEngine.BetType.prototype.Render_4_1_1 = function (owner) { // s1, us1, i
         }
     }
     box.id = "e$" + this.suffixId;
-    box.className = "PTBox";
+    box.className = "PTBox" + this.rightBorderClass;
     // Get updated data
     this.Save = function () {
         this.pt.is1 = is1Check.checked;
@@ -348,7 +348,7 @@ Fanex.PTEngine.BetType.prototype.Render_0_2_1 = function (owner) { // m2, a2, im
         um2Select = Fanex.PTEngine.PT_RenderSelect(min, max, Fanex.PTEngine.PT_STEP, selected, this.showButtons);
         um2Select.select.id = um2Select.select.name = "um2$" + this.suffixId;
         um2Select.select.disabled = !this.pt.im2;
-        um2Select.className = "BetTypeSelect";
+        um2Select.className = "BetTypeSelect" + this.bottomBorderClass; ;
         um2Select.style.minWidth = this.minWidth + 'px';
         box.appendChild(um2Select);
 
@@ -383,10 +383,12 @@ Fanex.PTEngine.BetType.prototype.Render_0_2_1 = function (owner) { // m2, a2, im
             var selected = max;
             Fanex.PTEngine.PT_SetSelect(a2Select.select, min, max, Fanex.PTEngine.PT_STEP, selected);
         }
+
+        m2Select.className = m2Select.className + this.bottomBorderClass;
     }
 
     box.id = "e$" + this.suffixId;
-    box.className = "PTBox";
+    box.className = "PTBox" + this.rightBorderClass;
     // Get updated data
     this.Save = function () {
         if (Fanex.PTEngine.CURRENT_CONTEXT.ia3) {
@@ -432,11 +434,11 @@ Fanex.PTEngine.BetType.prototype.Render_3_2_2 = function (owner) { // n2
 	var selected = this.pt.n2;
 	var n2Select = Fanex.PTEngine.PT_RenderSelect(min, max, Fanex.PTEngine.PT_STEP, selected, this.showButtons);
 	n2Select.select.id = n2Select.select.name = "n2$" + this.suffixId;
-	n2Select.className = "BetTypeSelect";
+	n2Select.className = "BetTypeSelect" + this.bottomBorderClass;
 	n2Select.style.minWidth = this.minWidth + 'px';
 	box.appendChild(n2Select);
 	box.id = "e$" + this.suffixId;
-	box.className = "PTBox";
+	box.className = "PTBox" + this.rightBorderClass;
 	// Get updated data
 	this.Save = function () {
 	    this.pt.n2 = parseFloat(n2Select.select.value);
@@ -515,7 +517,7 @@ Fanex.PTEngine.BetType.prototype.Render_0_3_1 = function (owner) { // s3, m3, is
     var us3Select = Fanex.PTEngine.PT_RenderSelect(min, max, Fanex.PTEngine.PT_STEP, selected, this.showButtons);
     us3Select.select.id = us3Select.select.name = "us3$" + this.suffixId;
     us3Select.select.disabled = !this.pt.is3;
-    us3Select.className = "BetTypeSelect";
+    us3Select.className = "BetTypeSelect" + this.bottomBorderClass;
     us3Select.style.minWidth = this.minWidth + 'px';
     box.appendChild(us3Select);
 
@@ -547,7 +549,7 @@ Fanex.PTEngine.BetType.prototype.Render_0_3_1 = function (owner) { // s3, m3, is
         Fanex.PTEngine.PT_SetSelect(m3Select.select, min, max, Fanex.PTEngine.PT_STEP, selected);
     }
     box.id = "e$" + this.suffixId;
-    box.className = "PTBox";
+    box.className = "PTBox" + this.rightBorderClass;
 
     // Get updated data
     this.Save = function () {
@@ -589,11 +591,11 @@ Fanex.PTEngine.BetType.prototype.Render_4_3_2 = function (owner) { // n3
     var selected = this.pt.n3;
     var n3Select = Fanex.PTEngine.PT_RenderSelect(min, max, Fanex.PTEngine.PT_STEP, selected, this.showButtons);
     n3Select.select.id = n3Select.select.name = "n3$" + this.suffixId;
-    n3Select.className = "BetTypeSelect";
+    n3Select.className = "BetTypeSelect" + this.bottomBorderClass;
     n3Select.style.minWidth = this.minWidth + 'px';
     box.appendChild(n3Select);
     box.id = "e$" + this.suffixId;
-    box.className = "PTBox";
+    box.className = "PTBox" + this.rightBorderClass;
     // Get updated data
     this.Save = function () {
         this.pt.n3 = parseFloat(n3Select.select.value);
@@ -635,11 +637,11 @@ Fanex.PTEngine.BetType.prototype.Render_0_2_3 = function (owner) { // n2, l2
 	var selected = this.pt.n2;
 	var n2Select = Fanex.PTEngine.PT_RenderSelect(min, max, Fanex.PTEngine.PT_STEP, selected, this.showButtons);
 	n2Select.select.id = n2Select.select.name = "n2$" + this.suffixId;
-	n2Select.className = "BetTypeSelect";
+	n2Select.className = "BetTypeSelect" + this.bottomBorderClass;
 	n2Select.style.minWidth = this.minWidth + 'px';
 	box.appendChild(n2Select);
 	box.id = "e$" + this.suffixId;
-	box.className = "PTBox";
+	box.className = "PTBox" + this.rightBorderClass;
 	// Get updated data
 	this.Save = function () {
 		this.pt.n2 = parseFloat(n2Select.select.value);
@@ -679,11 +681,11 @@ Fanex.PTEngine.BetType.prototype.Render_0_3_3 = function (owner) { // n3, l3
 	var selected = this.pt.n3;
 	var n3Select = Fanex.PTEngine.PT_RenderSelect(min, max, Fanex.PTEngine.PT_STEP, selected, this.showButtons);
 	n3Select.select.id = n3Select.select.name = "n3$" + this.suffixId;
-	n3Select.className = "BetTypeSelect";
+	n3Select.className = "BetTypeSelect" + this.bottomBorderClass;
 	n3Select.style.minWidth = this.minWidth + 'px';
 	box.appendChild(n3Select);
 	box.id = "e$" + this.suffixId;
-	box.className = "PTBox";
+	box.className = "PTBox" + this.rightBorderClass;
 	// Get updated data
 	this.Save = function () {
 		this.pt.n3 = parseFloat(n3Select.select.value);
@@ -742,11 +744,11 @@ Fanex.PTEngine.BetType.prototype.Render_0_4_1 = function (owner) { // s4
 	var selected = this.pt.a4;
 	var a4Select = Fanex.PTEngine.PT_RenderSelect(min, max, Fanex.PTEngine.PT_STEP, selected, this.showButtons);
 	a4Select.select.id = a4Select.select.name = "a4$" + this.suffixId;
-	a4Select.className = "BetTypeSelect";
+	a4Select.className = "BetTypeSelect" + this.bottomBorderClass;
 	a4Select.style.minWidth = this.minWidth + 'px';
 	box.appendChild(a4Select);
 	box.id = "e$" + this.suffixId;
-	box.className = "PTBox";
+	box.className = "PTBox" + this.rightBorderClass;
 	// Get updated data
 	this.Save = function () {
 		this.pt.s4 = parseFloat(s4Select.select.value);
@@ -778,11 +780,11 @@ Fanex.PTEngine.BetType.prototype.Render_0_4_2 = function (owner) { // n4, l4
 	var selected = this.pt.n4;
 	var n4Select = Fanex.PTEngine.PT_RenderSelect(min, max, Fanex.PTEngine.PT_STEP, selected, this.showButtons);
 	n4Select.select.id = n4Select.select.name = "n4$" + this.suffixId;
-	n4Select.className = "BetTypeSelect";
+	n4Select.className = "BetTypeSelect" + this.bottomBorderClass;
 	n4Select.style.minWidth = this.minWidth + 'px';
 	box.appendChild(n4Select);
 	box.id = "e$" + this.suffixId;
-	box.className = "PTBox";
+	box.className = "PTBox" + this.rightBorderClass;
 	// Get updated data
 	this.Save = function () {
 	    this.pt.n4 = parseFloat(n4Select.select.value);

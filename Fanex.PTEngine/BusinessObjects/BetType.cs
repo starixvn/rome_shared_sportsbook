@@ -50,6 +50,10 @@ namespace Fanex.PTEngine.BusinessObjects
 
         public bool? ShowDetailIcon { get; set; }
 
+        public bool? ShowRightBorder { get; set; }
+
+        public bool? ShowBottomBorder { get; set; }
+
         public IList<BetType> RepresentForBettypes { get; set; }
 
         public void Map(XElement element)
@@ -93,6 +97,14 @@ namespace Fanex.PTEngine.BusinessObjects
                     case Constant.BET_TYPE_SHOW_DETAIL_ICON:
                         ShowDetailIcon = bool.Parse(attribute.Value);
                         MapBettypesBeRepresentative(element);
+                        break;
+
+                    case Constant.BET_TYPE_SHOW_RIGHT_BORDER:
+                        ShowRightBorder = bool.Parse(attribute.Value);
+                        break;
+
+                    case Constant.BET_TYPE_SHOW_BOTTOM_BORDER:
+                        ShowBottomBorder = bool.Parse(attribute.Value);
                         break;
                 }
 

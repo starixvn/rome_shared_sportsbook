@@ -422,6 +422,8 @@ if (typeof (Fanex.PTEngine) == 'undefined') { // Define Fanex.PTEngine namespace
             this.showButtons = false; // Show 4 buttons (increase, decrease) after selection
             this.minWidth = Fanex.PTEngine.calculateMinWidth(this.name);
             // Layout Config
+            this.rightBorderClass = item.showRightBorder ? " PTBoxRightBorder" : "";
+            this.bottomBorderClass = item.showBottomBorder ? " BetTypeBottomBorder" : "";
             this.minWidth = Math.max(this.minWidth, 60);
             if (typeof (item.minWidth) == 'number') {
                 this.minWidth = Math.max(item.minWidth, this.minWidth);

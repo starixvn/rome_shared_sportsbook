@@ -417,8 +417,11 @@ if (typeof (Fanex.PTEngine) == 'undefined') { // Define Fanex.PTEngine namespace
             this.title = item.title; // Title  Handicap, Over / Under
             this.id = item.id; // Bet type id
             this.sportId = item.sportId;
+            this.showDetailIcon = item.showDetailIcon || false;
+            this.representForBettypes = item.representForBettypes || [];
             this.showButtons = false; // Show 4 buttons (increase, decrease) after selection
             this.minWidth = Fanex.PTEngine.calculateMinWidth(this.name);
+            // Layout Config
             this.minWidth = Math.max(this.minWidth, 60);
             if (typeof (item.minWidth) == 'number') {
                 this.minWidth = Math.max(item.minWidth, this.minWidth);
@@ -469,6 +472,48 @@ if (typeof (Fanex.PTEngine) == 'undefined') { // Define Fanex.PTEngine namespace
                 if (!this.actived) return;
                 Fanex.PTEngine.DisableChildren(this.element, "BetTypeInactive");
                 this.actived = false;
+            };
+            this.BuildRepresentativeBettypeDetailsHint = function () {
+                var detailsHint = '<b>' + Language.OTHERS_INCLUDE_THESE_BETTYPES + '</b>';
+                detailsHint = detailsHint + '<div class="ul-position"><ul>';
+
+                var bettypeLength = this.representForBettypes.length,
+                    top = 20;
+                for (var i = 0; i < bettypeLength; i++) {
+                    var currentBetType = this.representForBettypes[i];
+                    detailsHint += '<li>' + currentBetType.name + '</li>';
+                    top += 18
+                }
+
+                detailsHint += '</ul></div>';
+
+                this.bettypeIconDetail =
+                    {
+                        content: detailsHint,
+                        top: top
+                    };
+            },
+            this.AddDetailIcon = function (headerElement) {
+                var me = this;
+                if (me.showDetailIcon) {
+                    me.BuildRepresentativeBettypeDetailsHint();
+                    var detailIcon = document.createElement("SPAN");
+                    detailIcon.className = "bet-type-detail-icon";
+                    headerElement.appendChild(detailIcon);
+                    detailIcon.onmouseover = function () {
+                        Validators.show(
+                            detailIcon,
+                            me.bettypeIconDetail.content,
+                            -185,
+                            160,
+                            -me.bettypeIconDetail.top - 25,
+                            me.bettypeIconDetail.top + 20,
+                            me.bettypeIconDetail.top,
+                            30000);
+                    };
+                    detailIcon.onmouseout = function () { Validators.hide(); };
+
+                }
             };
             this.Render = function (owner) { // Render each bet type section
                 // Just edit member form require roldId in implementation
@@ -1024,7 +1069,7 @@ if (typeof (Fanex.PTEngine) == 'undefined') { // Define Fanex.PTEngine namespace
                 hint = hint + '</ul></div>';
                 top = top + 40;
                 // Show tooltip
-                Validators.show(copiedElements[this.copiedItem.sportId], hint, 0, 10, -top - 45, top + 20, top, 30000);
+                Validators.show(copiedElements[this.copiedItem.sportId], hint, 0, 10, -top - 20, top + 20, top, 30000);
             },
             this.Render = function (owner) {
                 var box = null;
@@ -1394,8 +1439,8 @@ var Validators = {
         // Finds the position of an element relative to the viewport.
         findPosRelativeToViewport: function (obj) {
             var objPos = this.findPos(obj)
-            var scroll = this.getPageScroll()
-            return [objPos[0] - scroll[0], objPos[1] - scroll[1]]
+            //var scroll = this.getPageScroll()
+            return [objPos[0], objPos[1]]
         }
     },
     validateNumber: function (value) {

@@ -1,7 +1,17 @@
-﻿namespace Fanex.PTEngine.BusinessObjects
+﻿// --------------------------------------------------------------------------
+// <copyright file="BetType.cs" company="Nexcel Solutions Vietnam">
+// Copyright (c) Nexcel Solutions Vietnam. All rights reserved.
+// </copyright>
+// --------------------------------------------------------------------------
+// <history>
+//   <change who="Ricky.Nguyen" date="2014.6.10">Created</change>
+// </history>
+
+namespace Fanex.PTEngine.BusinessObjects
 {
     using System;
     using System.Collections;
+    using System.Collections.Generic;
     using System.Reflection;
     using System.Xml.Linq;
     using Fanex.Common.Extensions;
@@ -38,6 +48,10 @@
 
         public int? MinWidth { get; set; }
 
+        public bool? ShowDetailIcon { get; set; }
+
+        public IList<BetType> RepresentForBettypes { get; set; }
+
         public void Map(XElement element)
         {
             foreach (XAttribute attribute in element.Attributes())
@@ -47,28 +61,38 @@
                     case Constant.BET_TYPE_ID:
                         Id = int.Parse(attribute.Value);
                         break;
+
                     case Constant.BET_TYPE_NAME:
                         Name = attribute.Value;
                         break;
+
                     case Constant.BET_TYPE_TITLE:
                         Title = attribute.Value;
                         break;
+
                     case Constant.BET_TYPE_RESOURCE_KEY:
                         ResourceKey = attribute.Value;
                         break;
+
                     case Constant.BET_TYPE_COPY_FROM_BET_TYPE:
                         CopyFromBetType = int.Parse(attribute.Value);
                         break;
+
                     case Constant.BET_TYPE_COPY_FROM_SPORT_TYPE:
                         CopyFromSportType = int.Parse(attribute.Value);
                         break;
+
                     case Constant.BET_TYPE_VISIBLE:
                         Visible = bool.Parse(attribute.Value);
                         break;
+
                     case Constant.BET_TYPE_MIN_WIDTH:
                         MinWidth = int.Parse(attribute.Value);
                         break;
-                    default:
+
+                    case Constant.BET_TYPE_SHOW_DETAIL_ICON:
+                        ShowDetailIcon = bool.Parse(attribute.Value);
+                        MapBettypesBeRepresentative(element);
                         break;
                 }
 
@@ -131,7 +155,6 @@
                                         value = reader.ToInt(formattedPattern) > 0 ? true : false;
                                     }
                                 }
-
 
                                 propertyInfo.SetValue(this.Pt, value, null);
                             }
@@ -236,6 +259,26 @@
             }
 
             return formattedPattern;
+        }
+
+        /// <summary>
+        /// Map all bet types be representative.
+        /// </summary>
+        /// <param name="xmlElement">Current XML element for get bet type information.</param>
+        public void MapBettypesBeRepresentative(XElement xmlElement)
+        {
+            if (!(bool)ShowDetailIcon)
+            {
+                return;
+            }
+
+            RepresentForBettypes = new List<BetType>();
+
+            foreach (var subElement in xmlElement.Elements())
+            {
+                BetType bettype = new BetType(subElement);
+                RepresentForBettypes.Add(bettype);
+            }
         }
     }
 }

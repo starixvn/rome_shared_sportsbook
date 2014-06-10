@@ -8,44 +8,47 @@ if (typeof (Fanex.PTEngine) == 'undefined') { // Require Fanex.PTEngine namespac
 // [RoleId_] is optional
 // Call method by Method.call(this, arg1, arg2...)
 Fanex.PTEngine.BetType.prototype.Render_2_1_1 = function (owner) { // a1
-	if (typeof (this.pt.a1) == 'undefined') {
-		this.pt.l2 = this.pt.a2;
-		this.pt.a1 = this.pt.a2;
-	}
-	else {
-		this.pt.l2 = this.pt.a2;
-	}
-	box = document.createElement("DIV");
+    if (typeof (this.pt.a1) == 'undefined') {
+        this.pt.l2 = this.pt.a2;
+        this.pt.a1 = this.pt.a2;
+    }
+    else {
+        this.pt.l2 = this.pt.a2;
+    }
+    box = document.createElement("DIV");
 
-	// Bet type header
-	var header = document.createElement("DIV");
-	header.innerHTML = this.name;
-	header.title = this.title;
-	header.className = "BetTypeHeader";
-	box.appendChild(header); // Header bet type name
-	header.style.minWidth = this.minWidth + 'px';
+    // Bet type header
+    var header = document.createElement("DIV");
+    header.innerHTML = this.name;
+    header.title = this.title;
+    header.className = "BetTypeHeader";
+    box.appendChild(header); // Header bet type name
+    header.style.minWidth = this.minWidth + 'px';
 
-	// a1 selection
-	var min = this.pt.n2;
-	var max = Math.min(this.pt.l2, this.pt.a2);
-	var selected = this.pt.a1;
-	var a1Select = Fanex.PTEngine.PT_RenderSelect(min, max, Fanex.PTEngine.PT_STEP, selected, this.showButtons);
-	a1Select.select.id = a1Select.select.name = "a1$" + this.suffixId;
-	a1Select.className = "BetTypeSelect";
-	a1Select.style.minWidth = this.minWidth + 'px';
-	box.appendChild(a1Select);
-	box.id = "e$" + this.suffixId;
-	box.className = "PTBox";
+    // Show detail icon
+    this.AddDetailIcon(header);
 
-	// Get updated data
-	this.Save = function () {
-		this.pt.a1 = parseFloat(a1Select.select.value);
-		return {
-			id: this.id,
-			pt: this.pt
-		}
-	}
-	return box;
+    // a1 selection
+    var min = this.pt.n2;
+    var max = Math.min(this.pt.l2, this.pt.a2);
+    var selected = this.pt.a1;
+    var a1Select = Fanex.PTEngine.PT_RenderSelect(min, max, Fanex.PTEngine.PT_STEP, selected, this.showButtons);
+    a1Select.select.id = a1Select.select.name = "a1$" + this.suffixId;
+    a1Select.className = "BetTypeSelect";
+    a1Select.style.minWidth = this.minWidth + 'px';
+    box.appendChild(a1Select);
+    box.id = "e$" + this.suffixId;
+    box.className = "PTBox";
+
+    // Get updated data
+    this.Save = function () {
+        this.pt.a1 = parseFloat(a1Select.select.value);
+        return {
+            id: this.id,
+            pt: this.pt
+        }
+    }
+    return box;
 };
 Fanex.PTEngine.BetType.prototype.Render_3_1_1 = function (owner) { // m1, um1, im1
     box = document.createElement("DIV");
@@ -56,6 +59,10 @@ Fanex.PTEngine.BetType.prototype.Render_3_1_1 = function (owner) { // m1, um1, i
     header.className = "BetTypeHeader";
     box.appendChild(header); // Header bet type name
     header.style.minWidth = this.minWidth + 'px';
+
+    // Show detail icon
+    this.AddDetailIcon(header);
+
     // a1 label
     var a1Label = document.createElement("DIV");
     a1Label.innerHTML = this.pt.a1;
@@ -172,6 +179,9 @@ Fanex.PTEngine.BetType.prototype.Render_4_1_1 = function (owner) { // s1, us1, i
     header.className = "BetTypeHeader";
     box.appendChild(header); // Header bet type name
     header.style.minWidth = this.minWidth + 'px';
+
+    // Show detail icon
+    this.AddDetailIcon(header);
 
     // a1 label
     var a1Label = document.createElement("DIV");
@@ -292,6 +302,9 @@ Fanex.PTEngine.BetType.prototype.Render_0_2_1 = function (owner) { // m2, a2, im
     box.appendChild(header); // Header bet type name
     header.style.minWidth = this.minWidth + 'px';
 
+    // Show detail icon
+    this.AddDetailIcon(header);
+
     // a2
     var min = Math.max(n2, im2 ? 0 : Fanex.Round(n3 - m3));
     var max = im2 ? Math.min(l3, a4) : Math.min(Fanex.Round(l3 - m3), a4);
@@ -409,6 +422,10 @@ Fanex.PTEngine.BetType.prototype.Render_3_2_2 = function (owner) { // n2
 	header.className = "BetTypeHeader";
 	box.appendChild(header); // Header bet type name
 	header.style.minWidth = this.minWidth + 'px';
+
+	// Show detail icon
+	this.AddDetailIcon(header);
+
 	// n2
 	var min = 0;
 	var max = Math.min(this.pt.l2, this.pt.a2);
@@ -453,6 +470,9 @@ Fanex.PTEngine.BetType.prototype.Render_0_3_1 = function (owner) { // s3, m3, is
     header.className = "BetTypeHeader";
     box.appendChild(header); // Header bet type name
     header.style.minWidth = this.minWidth + 'px';
+
+    // Show detail icon
+    this.AddDetailIcon(header);
 
     // m3
     var min = this.pt.n3;
@@ -559,6 +579,10 @@ Fanex.PTEngine.BetType.prototype.Render_4_3_2 = function (owner) { // n3
     header.className = "BetTypeHeader";
     box.appendChild(header); // Header bet type name
     header.style.minWidth = this.minWidth + 'px';
+
+    // Show detail icon
+    this.AddDetailIcon(header);
+
     // n3
     var min = 0;
     var max = Math.min(this.pt.l3, this.pt.m3);
@@ -592,6 +616,10 @@ Fanex.PTEngine.BetType.prototype.Render_0_2_3 = function (owner) { // n2, l2
 	header.className = "BetTypeHeader";
 	box.appendChild(header); // Header bet type name
 	header.style.minWidth = this.minWidth + 'px';
+
+	// Show detail icon
+	this.AddDetailIcon(header);
+
 	//l2
 	var min = 0;
 	var max = 0.9;
@@ -632,6 +660,10 @@ Fanex.PTEngine.BetType.prototype.Render_0_3_3 = function (owner) { // n3, l3
 	header.className = "BetTypeHeader";
 	box.appendChild(header); // Header bet type name
 	header.style.minWidth = this.minWidth + 'px';
+
+	// Show detail icon
+	this.AddDetailIcon(header);
+
 	//l3
 	var min = 0;
 	var max = 0.9;
@@ -672,6 +704,10 @@ Fanex.PTEngine.BetType.prototype.Render_0_4_1 = function (owner) { // s4
 	header.className = "BetTypeHeader";
 	box.appendChild(header); // Header bet type name
 	header.style.minWidth = this.minWidth + 'px';
+
+	// Show detail icon
+	this.AddDetailIcon(header);
+
 	// s4
 	var min = this.pt.n4;
 	var max = this.pt.l4;
@@ -732,6 +768,10 @@ Fanex.PTEngine.BetType.prototype.Render_0_4_2 = function (owner) { // n4, l4
 	header.className = "BetTypeHeader";
 	box.appendChild(header); // Header bet type name
 	header.style.minWidth = this.minWidth + 'px';
+
+	// Show detail icon
+	this.AddDetailIcon(header);
+
 	// n4
 	var min = 0;
 	var max = this.pt.s4;

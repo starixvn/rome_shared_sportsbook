@@ -73,5 +73,7 @@
 	YES: "Yes",
 	NO: "No",
 	BASKETBALL: "Basketball",
-	SOCCER: "Soccer"
+	SOCCER: "Soccer",
+
+    OTHERS_INCLUDE_THESE_BETTYPES: '"Others" include these bettypes:'
 }

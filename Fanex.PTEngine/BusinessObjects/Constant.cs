@@ -33,6 +33,8 @@
 
         public const string BET_TYPE_MIN_WIDTH = "minWidth";
 
+        public const string BET_TYPE_SHOW_DETAIL_ICON = "showDetailIcon";
+
         public const string BET_TYPE_UPDATE = "updateminmaxbet";
 
         public const int BET_TYPE_INDEX_UPDATE_PARAMETER = 2;

@@ -315,6 +315,7 @@
 	padding: 2px;
 	vertical-align: middle;
 	white-space: nowrap;
+	position: relative;
 }
 
 .BetTypeHeader2
@@ -747,4 +748,15 @@
 	top: 5px;
 	background: url('<% =WebResource("Fanex.PTEngine.UI.Images.close.jpg") %>') left top no-repeat;
 	cursor: pointer;
+}
+
+
+.bet-type-detail-icon 
+{
+    display: inline-block;
+	height: 16px;
+	width: 16px;
+	background: url('<% =WebResource("Fanex.PTEngine.UI.Images.moredetail.png") %>') left top no-repeat;
+	margin-bottom: -3px;
+    cursor: pointer;
 }

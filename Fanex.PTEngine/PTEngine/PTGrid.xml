@@ -3,7 +3,6 @@
 <PTGrid name="ptGrid1">
   <NumerousSportType>13</NumerousSportType>
   <SportTypes>
-
     <SportType id="1" name="Soccer" collapsed="false">
       <BetTypeGroupSets>
         <BetTypeGroupSet isLive="false" showGroupSetLabel="true">
@@ -16,9 +15,25 @@
                 </BetType>
                 <BetType id="7" name="1st Hdp" minWidth="90">
                 </BetType>
-                <BetType id="8" name="1st OU" minWidth="90">
+                <BetType id="8" name="1st O/U" minWidth="90">
                 </BetType>
                 <BetType id="2" name="Odd/Even" minWidth="90">
+                </BetType>
+                <BetType id="99" name="Others" minWidth="90" showDetailIcon="true">
+                  <RepresentativeForBetType id="133" name="Home To Win Both Halves" />
+                  <RepresentativeForBetType id="134" name="Away to Win both Halves" />
+                  <RepresentativeForBetType id="135" name="Penalty Shootout Yes/No" />
+                  <RepresentativeForBetType id="145" name="Both Teams To Score" />
+                  <RepresentativeForBetType id="146" name="2nd Half Both Teams To Score" />
+                  <RepresentativeForBetType id="147" name="Home To Score In Both Halves" />
+                  <RepresentativeForBetType id="148" name="Away To Score In Both Halves" />
+                  <RepresentativeForBetType id="149" name="Home To Win Either Half" />
+                  <RepresentativeForBetType id="150" name="Away To Win Either Half" />
+                  <RepresentativeForBetType id="151" name="1st Half Double Chance" />
+                  <RepresentativeForBetType id="152" name="Half time/Fulltime Correct Score" />
+                  <RepresentativeForBetType id="140" name="Highest Scoring Half" />
+                  <RepresentativeForBetType id="141" name="Highest Scoring Half Home Team" />
+                  <RepresentativeForBetType id="142" name="Highest Scoring Half Away Team" />
                 </BetType>
               </BetTypes>
             </BetTypeGroup>
@@ -26,13 +41,13 @@
               <BetTypes>
                 <BetType id="5" name="1X2">
                 </BetType>
-                <BetType id="4" name="Correct Score" minWidth="90">
+                <BetType id="4" name="Correct Score" minWidth="114">
                 </BetType>
-                <BetType id="6" name="Total Goal" minWidth="90">
+                <BetType id="6" name="Total Goal" minWidth="113">
                 </BetType>
-                <BetType id="9" name="Mix Parlay" minWidth="90">
+                <BetType id="9" name="Mix Parlay" minWidth="113">
                 </BetType>
-                <BetType id="10" name="Outright" minWidth="90">
+                <BetType id="10" name="Outright" minWidth="115">
                 </BetType>
               </BetTypes>
             </BetTypeGroup>
@@ -45,11 +60,11 @@
               <BetTypes>
                 <BetType id="1" name="Handicap">
                 </BetType>
-                <BetType id="3" name="Over/Under" minWidth="122">
+                <BetType id="3" name="Over/Under" minWidth="154">
                 </BetType>
-                <BetType id="7" name="1st Hdp" minWidth="122">
+                <BetType id="7" name="1st Hdp" minWidth="153">
                 </BetType>
-                <BetType id="8" name="1st OU" minWidth="121">
+                <BetType id="8" name="1st O/U" minWidth="153">
                 </BetType>
               </BetTypes>
             </BetTypeGroup>
@@ -58,7 +73,7 @@
       </BetTypeGroupSets>
     </SportType>
 
-    <SportType id="2" name="Basketball" collapsed="false">
+    <SportType id="2" name="Basketball">
       <BetTypeGroupSets>
         <BetTypeGroupSet isLive="false">
           <BetTypeGroups>
@@ -117,6 +132,22 @@
                 <BetType id="2" name="Odd/Even">
                 </BetType>
                 <BetType id="20" name="Money Line">
+                </BetType>
+                <BetType id="99" name="Others" minWidth="90" showDetailIcon="true" visible="true">
+                  <RepresentativeForBetType id="133" name="Home To Win Both Halves" />
+                  <RepresentativeForBetType id="134" name="Away to Win both Halves" />
+                  <RepresentativeForBetType id="135" name="Penalty Shootout Yes/No" />
+                  <RepresentativeForBetType id="145" name="Both Teams To Score" />
+                  <RepresentativeForBetType id="146" name="2nd Half Both Teams To Score" />
+                  <RepresentativeForBetType id="147" name="Home To Score In Both Halves" />
+                  <RepresentativeForBetType id="148" name="Away To Score In Both Halves" />
+                  <RepresentativeForBetType id="149" name="Home To Win Either Half" />
+                  <RepresentativeForBetType id="150" name="Away To Win Either Half" />
+                  <RepresentativeForBetType id="151" name="1st Half Double Chance" />
+                  <RepresentativeForBetType id="152" name="Half time/Fulltime Correct Score" />
+                  <RepresentativeForBetType id="140" name="Highest Scoring Half" />
+                  <RepresentativeForBetType id="141" name="Highest Scoring Half Home Team" />
+                  <RepresentativeForBetType id="142" name="Highest Scoring Half Away Team" />
                 </BetType>
               </BetTypes>
             </BetTypeGroup>
@@ -182,7 +213,7 @@
       </BetTypeGroupSets>
     </SportType>
 
-    <SportType id="99" name="Other Sports" key ="Other Sports">
+    <SportType id="99" name="Other Sports">
       <BetTypeGroupSets>
         <BetTypeGroupSet isLive="false">
           <BetTypeGroups>
@@ -203,13 +234,28 @@
       </BetTypeGroupSets>
     </SportType>
 
-    <SportType id="99" name="Mix Sports Parlay" key ="Mix Sports Parlay">
+    <SportType id="99" name="Mix Sports Parlay">
       <BetTypeGroupSets>
         <BetTypeGroupSet isLive="false">
           <BetTypeGroups>
             <BetTypeGroup>
               <BetTypes>
                 <BetType id="9" name="Mix Parlay">
+                </BetType>
+              </BetTypes>
+            </BetTypeGroup>
+          </BetTypeGroups>
+        </BetTypeGroupSet>
+      </BetTypeGroupSets>
+    </SportType>
+
+    <SportType id="154" name="HR Fixed Odds">
+      <BetTypeGroupSets>
+        <BetTypeGroupSet isLive="false">
+          <BetTypeGroups>
+            <BetTypeGroup>
+              <BetTypes>
+                <BetType id="20" name="Money Line">
                 </BetType>
               </BetTypes>
             </BetTypeGroup>
@@ -239,13 +285,13 @@
           <BetTypeGroups>
             <BetTypeGroup>
               <BetTypes>
-                <BetType id="81" name="1st/Last O/U">
+                <BetType id="81" name="1st Last O/U">
                 </BetType>
-                <BetType id="83" name="1st/Last O/E" minWidth="90">
+                <BetType id="83" name="1st Last O/E" minWidth="160">
                 </BetType>
-                <BetType id="88" name="Warrior" minWidth="90">
+                <BetType id="88" name="Warrior" minWidth="149">
                 </BetType>
-                <BetType id="86" name="Odd/Even" minWidth="90">
+                <BetType id="86" name="Odd/Even" minWidth="140">
                 </BetType>
               </BetTypes>
             </BetTypeGroup>
@@ -258,13 +304,13 @@
               <BetTypes>
                 <BetType id="85" name="Over/Under">
                 </BetType>
-                <BetType id="86" name="Odd/Even" minWidth="90">
+                <BetType id="86" name="Odd/Even" minWidth="149">
                 </BetType>
-                <BetType id="87" name="High/Low" minWidth="90">
+                <BetType id="87" name="High/Low" minWidth="80">
                 </BetType>
-                <BetType id="89" name="Next Combo" minWidth="90">
+                <BetType id="89" name="Next Combo" minWidth="125">
                 </BetType>
-                <BetType id="90" name="Number Group" copyFromBetType="85" copyFromSportType="161" visible="false">
+                <BetType id="90" name="Number Wheel" minWidth="90">
                 </BetType>
               </BetTypes>
             </BetTypeGroup>

@@ -43,6 +43,7 @@ using System.Web.UI;
 [assembly: WebResource("Fanex.PTEngine.UI.Images.pointer.png", "image/png")]
 [assembly: WebResource("Fanex.PTEngine.UI.Images.pointerDown.png", "image/png")]
 [assembly: WebResource("Fanex.PTEngine.UI.Images.close.jpg", "image/jpg")]
+[assembly: WebResource("Fanex.PTEngine.UI.Images.moredetail.png", "image/png")]
 
 // Version information for an assembly consists of the following four values:
 //

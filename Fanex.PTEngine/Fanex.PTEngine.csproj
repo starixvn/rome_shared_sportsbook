@@ -88,10 +88,14 @@
     <Content Include="PTEngine\BettingLimit.xml">
       <SubType>Designer</SubType>
     </Content>
-    <Content Include="PTEngine\PTGrid.xml" />
+    <Content Include="PTEngine\PTGrid.xml">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="PTEngine\PTGrid.xslt" />
     <EmbeddedResource Include="UI\knockout-2.0.0.js" />
-    <Content Include="PTEngine\StoreProcedureName.xml" />
+    <Content Include="PTEngine\StoreProcedureName.xml">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Dependencies\Fanex.Caching.dll" />
     <Content Include="Dependencies\Fanex.Common.dll" />
     <Content Include="Dependencies\Fanex.Data.dll" />
@@ -118,6 +122,7 @@
     <EmbeddedResource Include="UI\Images\pointer.png" />
     <EmbeddedResource Include="UI\Images\close.jpg" />
     <EmbeddedResource Include="UI\Images\pointerDown.png" />
+    <EmbeddedResource Include="UI\Images\moredetail.png" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>

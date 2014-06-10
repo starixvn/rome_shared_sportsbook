@@ -19,7 +19,7 @@
                 </BetType>
                 <BetType id="2" name="Odd/Even" minWidth="90">
                 </BetType>
-                <BetType id="99" name="Others" minWidth="90" showDetailIcon="true">
+                <BetType id="99" name="Others" minWidth="90" showDetailIcon="true" showBottomBorder="true">
                   <RepresentativeForBetType id="133" name="Home To Win Both Halves" />
                   <RepresentativeForBetType id="134" name="Away to Win both Halves" />
                   <RepresentativeForBetType id="135" name="Penalty Shootout Yes/No" />
@@ -41,13 +41,13 @@
               <BetTypes>
                 <BetType id="5" name="1X2">
                 </BetType>
-                <BetType id="4" name="Correct Score" minWidth="114">
+                <BetType id="4" name="Correct Score" minWidth="90">
                 </BetType>
-                <BetType id="6" name="Total Goal" minWidth="113">
+                <BetType id="6" name="Total Goal" minWidth="90">
                 </BetType>
-                <BetType id="9" name="Mix Parlay" minWidth="113">
+                <BetType id="9" name="Mix Parlay" minWidth="90">
                 </BetType>
-                <BetType id="10" name="Outright" minWidth="115">
+                <BetType id="10" name="Outright" minWidth="90" showRightBorder="true">
                 </BetType>
               </BetTypes>
             </BetTypeGroup>
@@ -60,11 +60,11 @@
               <BetTypes>
                 <BetType id="1" name="Handicap">
                 </BetType>
-                <BetType id="3" name="Over/Under" minWidth="154">
+                <BetType id="3" name="Over/Under" minWidth="122">
                 </BetType>
-                <BetType id="7" name="1st Hdp" minWidth="153">
+                <BetType id="7" name="1st Hdp" minWidth="122">
                 </BetType>
-                <BetType id="8" name="1st O/U" minWidth="153">
+                <BetType id="8" name="1st O/U" minWidth="121" showRightBorder="true">
                 </BetType>
               </BetTypes>
             </BetTypeGroup>

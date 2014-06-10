@@ -501,17 +501,17 @@ if (typeof (Fanex.PTEngine) == 'undefined') { // Define Fanex.PTEngine namespace
                     detailIcon.className = "bet-type-detail-icon";
                     headerElement.appendChild(detailIcon);
                     detailIcon.onmouseover = function () {
-                        Validators.show(
+                        Validators.showDown(
                             detailIcon,
                             me.bettypeIconDetail.content,
                             -185,
                             160,
-                            -me.bettypeIconDetail.top - 25,
-                            me.bettypeIconDetail.top + 20,
+                            30,
+                            -10,
                             me.bettypeIconDetail.top,
                             30000);
                     };
-                    detailIcon.onmouseout = function () { Validators.hide(); };
+                    detailIcon.onmouseout = function () { Validators.hide(true); };
 
                 }
             };
@@ -1322,7 +1322,7 @@ var Validators = {
             var hintMsg = document.createElement("SPAN");
             hint.appendChild(hintMsg);
             hintPointer = document.createElement("SPAN");
-            hintPointer.className = 'hint-pointer-down';
+            hintPointer.className = 'hint-pointerDown';
             hint.appendChild(hintPointer);
             hint.id = 'fHintDown';
             hint.style.top = '10px';
@@ -1377,8 +1377,9 @@ var Validators = {
         };
         hint.style.display = 'block';
     },
-    hide: function () {
-        var hint = document.getElementById('fHint');
+    hide: function (isDown) {
+        var hintId = isDown ? 'fHintDown' : 'fHint',
+            hint = document.getElementById(hintId);
         if (hint == null) {
             return;
         }

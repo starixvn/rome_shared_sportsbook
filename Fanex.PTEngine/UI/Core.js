@@ -499,11 +499,16 @@ if (typeof (Fanex.PTEngine) == 'undefined') { // Define Fanex.PTEngine namespace
                 var me = this;
                 if (me.showDetailIcon) {
                     me.BuildRepresentativeBettypeDetailsHint();
+                    me.isShowTooltip = false;
                     var detailIcon = document.createElement("SPAN");
                     detailIcon.className = "bet-type-detail-icon";
                     headerElement.appendChild(detailIcon);
-                    detailIcon.onmouseover = function () {
-                        Validators.showDown(
+                    detailIcon.onclick = function () {
+                        if (me.isShowTooltip) {
+                            Validators.hide(true);
+                        }
+                        else {
+                            Validators.showDown(
                             detailIcon,
                             me.bettypeIconDetail.content,
                             -185,
@@ -511,9 +516,13 @@ if (typeof (Fanex.PTEngine) == 'undefined') { // Define Fanex.PTEngine namespace
                             30,
                             -10,
                             me.bettypeIconDetail.top,
-                            30000);
+                            60000, function () {
+                                me.isShowTooltip = false;
+                            });
+                        }
+
+                        me.isShowTooltip = !me.isShowTooltip;
                     };
-                    detailIcon.onmouseout = function () { Validators.hide(true); };
 
                 }
             };
@@ -1314,7 +1323,7 @@ var Validators = {
         };
         hint.style.display = 'block';
     },
-    showDown: function (elementInput, message, xPos, pointerXPos, yPos, pointerYPos, height, timeout) {
+    showDown: function (elementInput, message, xPos, pointerXPos, yPos, pointerYPos, height, timeout, hideAction) {
         // <span class="fHintDown"><span>This is the message.<span><span class="hint-pointer">&nbsp;</span></span>
         var hint = document.getElementById('fHintDown');
         var hintPointer = null;
@@ -1332,6 +1341,9 @@ var Validators = {
             hint.style.zIndex = 999999;
             hint.onclick = function () { // Hide onclick
                 hint.style.display = 'none';
+                if (hideAction) {
+                    hideAction();
+                }
             };
             document.body.appendChild(hint);
         };

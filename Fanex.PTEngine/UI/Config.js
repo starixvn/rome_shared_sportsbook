@@ -255,6 +255,62 @@ var grid = {
                         {
                             id: 1,
                             name: "New Bet Type"
+                        },
+                        {
+                            id: 1,
+                            name: "New Bet Type"
+                        },
+                        {
+                            id: 1,
+                            name: "New Bet Type"
+                        },
+                        {
+                            id: 1,
+                            name: "New Bet Type"
+                        },
+                        {
+                            id: 1,
+                            name: "New Bet Type"
+                        },
+                        {
+                            id: 1,
+                            name: "New Bet Type"
+                        },
+                        {
+                            id: 1,
+                            name: "New Bet Type"
+                        },
+                        {
+                            id: 1,
+                            name: "New Bet Type"
+                        },
+                        {
+                            id: 1,
+                            name: "New Bet Type"
+                        },
+                        {
+                            id: 1,
+                            name: "New Bet Type"
+                        },
+                        {
+                            id: 1,
+                            name: "New Bet Type"
+                        },
+                        {
+                            id: 1,
+                            name: "New Bet Type"
+                        },
+                        {
+                            id: 1,
+                            name: "New Bet Type"
+                        },
+                        {
+                            id: 1,
+                            name: "New Bet Type"
+                        },
+                        {
+                            id: 1,
+                            name: "New Bet Type"
                         }
                     ]
                 }]
@@ -283,7 +339,70 @@ var grid = {
                     id: 10,
                     name: 'Outright',
                     minWidth: 90,
-                    pt: pt
+                    pt: pt,
+                    showDetailIcon: true,
+                    representForBettypes: [
+                        {
+                            id: 1,
+                            name: "New Bet Type"
+                        },
+                        {
+                            id: 1,
+                            name: "New Bet Type"
+                        },
+                        {
+                            id: 1,
+                            name: "New Bet Type"
+                        },
+                        {
+                            id: 1,
+                            name: "New Bet Type"
+                        },
+                        {
+                            id: 1,
+                            name: "New Bet Type"
+                        },
+                        {
+                            id: 1,
+                            name: "New Bet Type"
+                        },
+                        {
+                            id: 1,
+                            name: "New Bet Type"
+                        },
+                        {
+                            id: 1,
+                            name: "New Bet Type"
+                        },
+                        {
+                            id: 1,
+                            name: "New Bet Type"
+                        },
+                        {
+                            id: 1,
+                            name: "New Bet Type"
+                        },
+                        {
+                            id: 1,
+                            name: "New Bet Type"
+                        },
+                        {
+                            id: 1,
+                            name: "New Bet Type"
+                        },
+                        {
+                            id: 1,
+                            name: "New Bet Type"
+                        },
+                        {
+                            id: 1,
+                            name: "New Bet Type"
+                        },
+                        {
+                            id: 1,
+                            name: "New Bet Type"
+                        }
+                    ]
                 }]
             }]
         }, {
@@ -308,7 +427,70 @@ var grid = {
                     id: 8,
                     name: '1st OU',
                     minWidth: 121,
-                    pt: pt
+                    pt: pt,
+                    showDetailIcon: true,
+                    representForBettypes: [
+                        {
+                            id: 1,
+                            name: "New Bet Type"
+                        },
+                        {
+                            id: 1,
+                            name: "New Bet Type"
+                        },
+                        {
+                            id: 1,
+                            name: "New Bet Type"
+                        },
+                        {
+                            id: 1,
+                            name: "New Bet Type"
+                        },
+                        {
+                            id: 1,
+                            name: "New Bet Type"
+                        },
+                        {
+                            id: 1,
+                            name: "New Bet Type"
+                        },
+                        {
+                            id: 1,
+                            name: "New Bet Type"
+                        },
+                        {
+                            id: 1,
+                            name: "New Bet Type"
+                        },
+                        {
+                            id: 1,
+                            name: "New Bet Type"
+                        },
+                        {
+                            id: 1,
+                            name: "New Bet Type"
+                        },
+                        {
+                            id: 1,
+                            name: "New Bet Type"
+                        },
+                        {
+                            id: 1,
+                            name: "New Bet Type"
+                        },
+                        {
+                            id: 1,
+                            name: "New Bet Type"
+                        },
+                        {
+                            id: 1,
+                            name: "New Bet Type"
+                        },
+                        {
+                            id: 1,
+                            name: "New Bet Type"
+                        }
+                    ]
                 }]
             }]
         }]
@@ -334,7 +516,70 @@ var grid = {
                 }, {
                     id: 20,
                     name: 'Money Line',
-                    pt: pt
+                    pt: pt,
+                    showDetailIcon: true,
+                    representForBettypes: [
+                        {
+                            id: 1,
+                            name: "New Bet Type"
+                        },
+                        {
+                            id: 1,
+                            name: "New Bet Type"
+                        },
+                        {
+                            id: 1,
+                            name: "New Bet Type"
+                        },
+                        {
+                            id: 1,
+                            name: "New Bet Type"
+                        },
+                        {
+                            id: 1,
+                            name: "New Bet Type"
+                        },
+                        {
+                            id: 1,
+                            name: "New Bet Type"
+                        },
+                        {
+                            id: 1,
+                            name: "New Bet Type"
+                        },
+                        {
+                            id: 1,
+                            name: "New Bet Type"
+                        },
+                        {
+                            id: 1,
+                            name: "New Bet Type"
+                        },
+                        {
+                            id: 1,
+                            name: "New Bet Type"
+                        },
+                        {
+                            id: 1,
+                            name: "New Bet Type"
+                        },
+                        {
+                            id: 1,
+                            name: "New Bet Type"
+                        },
+                        {
+                            id: 1,
+                            name: "New Bet Type"
+                        },
+                        {
+                            id: 1,
+                            name: "New Bet Type"
+                        },
+                        {
+                            id: 1,
+                            name: "New Bet Type"
+                        }
+                    ]
                 }]
             }]
         }]
@@ -359,7 +604,70 @@ var grid = {
                 }, {
                     id: 20,
                     name: 'Money Line',
-                    pt: pt
+                    pt: pt,
+                    showDetailIcon: true,
+                    representForBettypes: [
+                        {
+                            id: 1,
+                            name: "New Bet Type"
+                        },
+                        {
+                            id: 1,
+                            name: "New Bet Type"
+                        },
+                        {
+                            id: 1,
+                            name: "New Bet Type"
+                        },
+                        {
+                            id: 1,
+                            name: "New Bet Type"
+                        },
+                        {
+                            id: 1,
+                            name: "New Bet Type"
+                        },
+                        {
+                            id: 1,
+                            name: "New Bet Type"
+                        },
+                        {
+                            id: 1,
+                            name: "New Bet Type"
+                        },
+                        {
+                            id: 1,
+                            name: "New Bet Type"
+                        },
+                        {
+                            id: 1,
+                            name: "New Bet Type"
+                        },
+                        {
+                            id: 1,
+                            name: "New Bet Type"
+                        },
+                        {
+                            id: 1,
+                            name: "New Bet Type"
+                        },
+                        {
+                            id: 1,
+                            name: "New Bet Type"
+                        },
+                        {
+                            id: 1,
+                            name: "New Bet Type"
+                        },
+                        {
+                            id: 1,
+                            name: "New Bet Type"
+                        },
+                        {
+                            id: 1,
+                            name: "New Bet Type"
+                        }
+                    ]
                 }]
             }]
         }]
@@ -384,7 +692,70 @@ var grid = {
                 }, {
                     id: 20,
                     name: 'Money Line',
-                    pt: pt
+                    pt: pt,
+                    showDetailIcon: true,
+                    representForBettypes: [
+                        {
+                            id: 1,
+                            name: "New Bet Type"
+                        },
+                        {
+                            id: 1,
+                            name: "New Bet Type"
+                        },
+                        {
+                            id: 1,
+                            name: "New Bet Type"
+                        },
+                        {
+                            id: 1,
+                            name: "New Bet Type"
+                        },
+                        {
+                            id: 1,
+                            name: "New Bet Type"
+                        },
+                        {
+                            id: 1,
+                            name: "New Bet Type"
+                        },
+                        {
+                            id: 1,
+                            name: "New Bet Type"
+                        },
+                        {
+                            id: 1,
+                            name: "New Bet Type"
+                        },
+                        {
+                            id: 1,
+                            name: "New Bet Type"
+                        },
+                        {
+                            id: 1,
+                            name: "New Bet Type"
+                        },
+                        {
+                            id: 1,
+                            name: "New Bet Type"
+                        },
+                        {
+                            id: 1,
+                            name: "New Bet Type"
+                        },
+                        {
+                            id: 1,
+                            name: "New Bet Type"
+                        },
+                        {
+                            id: 1,
+                            name: "New Bet Type"
+                        },
+                        {
+                            id: 1,
+                            name: "New Bet Type"
+                        }
+                    ]
                 }]
             }]
         }]
@@ -405,7 +776,70 @@ var grid = {
                 }, {
                     id: 20,
                     name: 'Money Line',
-                    pt: pt
+                    pt: pt,
+                    showDetailIcon: true,
+                    representForBettypes: [
+                        {
+                            id: 1,
+                            name: "New Bet Type"
+                        },
+                        {
+                            id: 1,
+                            name: "New Bet Type"
+                        },
+                        {
+                            id: 1,
+                            name: "New Bet Type"
+                        },
+                        {
+                            id: 1,
+                            name: "New Bet Type"
+                        },
+                        {
+                            id: 1,
+                            name: "New Bet Type"
+                        },
+                        {
+                            id: 1,
+                            name: "New Bet Type"
+                        },
+                        {
+                            id: 1,
+                            name: "New Bet Type"
+                        },
+                        {
+                            id: 1,
+                            name: "New Bet Type"
+                        },
+                        {
+                            id: 1,
+                            name: "New Bet Type"
+                        },
+                        {
+                            id: 1,
+                            name: "New Bet Type"
+                        },
+                        {
+                            id: 1,
+                            name: "New Bet Type"
+                        },
+                        {
+                            id: 1,
+                            name: "New Bet Type"
+                        },
+                        {
+                            id: 1,
+                            name: "New Bet Type"
+                        },
+                        {
+                            id: 1,
+                            name: "New Bet Type"
+                        },
+                        {
+                            id: 1,
+                            name: "New Bet Type"
+                        }
+                    ]
                 }]
             }]
         }]
@@ -430,7 +864,70 @@ var grid = {
                 }, {
                     id: 20,
                     name: 'Money Line',
-                    pt: pt
+                    pt: pt,
+                    showDetailIcon: true,
+                    representForBettypes: [
+                        {
+                            id: 1,
+                            name: "New Bet Type"
+                        },
+                        {
+                            id: 1,
+                            name: "New Bet Type"
+                        },
+                        {
+                            id: 1,
+                            name: "New Bet Type"
+                        },
+                        {
+                            id: 1,
+                            name: "New Bet Type"
+                        },
+                        {
+                            id: 1,
+                            name: "New Bet Type"
+                        },
+                        {
+                            id: 1,
+                            name: "New Bet Type"
+                        },
+                        {
+                            id: 1,
+                            name: "New Bet Type"
+                        },
+                        {
+                            id: 1,
+                            name: "New Bet Type"
+                        },
+                        {
+                            id: 1,
+                            name: "New Bet Type"
+                        },
+                        {
+                            id: 1,
+                            name: "New Bet Type"
+                        },
+                        {
+                            id: 1,
+                            name: "New Bet Type"
+                        },
+                        {
+                            id: 1,
+                            name: "New Bet Type"
+                        },
+                        {
+                            id: 1,
+                            name: "New Bet Type"
+                        },
+                        {
+                            id: 1,
+                            name: "New Bet Type"
+                        },
+                        {
+                            id: 1,
+                            name: "New Bet Type"
+                        }
+                    ]
                 }]
             }]
         }]
@@ -447,7 +944,70 @@ var grid = {
                 }, {
                     id: 20,
                     name: 'Money Line',
-                    pt: pt
+                    pt: pt,
+                    showDetailIcon: true,
+                    representForBettypes: [
+                        {
+                            id: 1,
+                            name: "New Bet Type"
+                        },
+                        {
+                            id: 1,
+                            name: "New Bet Type"
+                        },
+                        {
+                            id: 1,
+                            name: "New Bet Type"
+                        },
+                        {
+                            id: 1,
+                            name: "New Bet Type"
+                        },
+                        {
+                            id: 1,
+                            name: "New Bet Type"
+                        },
+                        {
+                            id: 1,
+                            name: "New Bet Type"
+                        },
+                        {
+                            id: 1,
+                            name: "New Bet Type"
+                        },
+                        {
+                            id: 1,
+                            name: "New Bet Type"
+                        },
+                        {
+                            id: 1,
+                            name: "New Bet Type"
+                        },
+                        {
+                            id: 1,
+                            name: "New Bet Type"
+                        },
+                        {
+                            id: 1,
+                            name: "New Bet Type"
+                        },
+                        {
+                            id: 1,
+                            name: "New Bet Type"
+                        },
+                        {
+                            id: 1,
+                            name: "New Bet Type"
+                        },
+                        {
+                            id: 1,
+                            name: "New Bet Type"
+                        },
+                        {
+                            id: 1,
+                            name: "New Bet Type"
+                        }
+                    ]
                 }]
             }]
         }]
@@ -472,7 +1032,70 @@ var grid = {
                 }, {
                     id: 20,
                     name: 'Money Line',
-                    pt: pt
+                    pt: pt,
+                    showDetailIcon: true,
+                    representForBettypes: [
+                        {
+                            id: 1,
+                            name: "New Bet Type"
+                        },
+                        {
+                            id: 1,
+                            name: "New Bet Type"
+                        },
+                        {
+                            id: 1,
+                            name: "New Bet Type"
+                        },
+                        {
+                            id: 1,
+                            name: "New Bet Type"
+                        },
+                        {
+                            id: 1,
+                            name: "New Bet Type"
+                        },
+                        {
+                            id: 1,
+                            name: "New Bet Type"
+                        },
+                        {
+                            id: 1,
+                            name: "New Bet Type"
+                        },
+                        {
+                            id: 1,
+                            name: "New Bet Type"
+                        },
+                        {
+                            id: 1,
+                            name: "New Bet Type"
+                        },
+                        {
+                            id: 1,
+                            name: "New Bet Type"
+                        },
+                        {
+                            id: 1,
+                            name: "New Bet Type"
+                        },
+                        {
+                            id: 1,
+                            name: "New Bet Type"
+                        },
+                        {
+                            id: 1,
+                            name: "New Bet Type"
+                        },
+                        {
+                            id: 1,
+                            name: "New Bet Type"
+                        },
+                        {
+                            id: 1,
+                            name: "New Bet Type"
+                        }
+                    ]
                 }]
             }]
         }]
@@ -485,7 +1108,70 @@ var grid = {
                 betTypes: [{
                     id: 9,
                     name: 'Mix Parlay',
-                    pt: pt
+                    pt: pt,
+                    showDetailIcon: true,
+                    representForBettypes: [
+                        {
+                            id: 1,
+                            name: "New Bet Type"
+                        },
+                        {
+                            id: 1,
+                            name: "New Bet Type"
+                        },
+                        {
+                            id: 1,
+                            name: "New Bet Type"
+                        },
+                        {
+                            id: 1,
+                            name: "New Bet Type"
+                        },
+                        {
+                            id: 1,
+                            name: "New Bet Type"
+                        },
+                        {
+                            id: 1,
+                            name: "New Bet Type"
+                        },
+                        {
+                            id: 1,
+                            name: "New Bet Type"
+                        },
+                        {
+                            id: 1,
+                            name: "New Bet Type"
+                        },
+                        {
+                            id: 1,
+                            name: "New Bet Type"
+                        },
+                        {
+                            id: 1,
+                            name: "New Bet Type"
+                        },
+                        {
+                            id: 1,
+                            name: "New Bet Type"
+                        },
+                        {
+                            id: 1,
+                            name: "New Bet Type"
+                        },
+                        {
+                            id: 1,
+                            name: "New Bet Type"
+                        },
+                        {
+                            id: 1,
+                            name: "New Bet Type"
+                        },
+                        {
+                            id: 1,
+                            name: "New Bet Type"
+                        }
+                    ]
                 }]
             }]
         }]
@@ -498,7 +1184,70 @@ var grid = {
                 betTypes: [{
                     id: 9,
                     name: 'Money Line',
-                    pt: pt
+                    pt: pt,
+                    showDetailIcon: true,
+                    representForBettypes: [
+                        {
+                            id: 1,
+                            name: "New Bet Type"
+                        },
+                        {
+                            id: 1,
+                            name: "New Bet Type"
+                        },
+                        {
+                            id: 1,
+                            name: "New Bet Type"
+                        },
+                        {
+                            id: 1,
+                            name: "New Bet Type"
+                        },
+                        {
+                            id: 1,
+                            name: "New Bet Type"
+                        },
+                        {
+                            id: 1,
+                            name: "New Bet Type"
+                        },
+                        {
+                            id: 1,
+                            name: "New Bet Type"
+                        },
+                        {
+                            id: 1,
+                            name: "New Bet Type"
+                        },
+                        {
+                            id: 1,
+                            name: "New Bet Type"
+                        },
+                        {
+                            id: 1,
+                            name: "New Bet Type"
+                        },
+                        {
+                            id: 1,
+                            name: "New Bet Type"
+                        },
+                        {
+                            id: 1,
+                            name: "New Bet Type"
+                        },
+                        {
+                            id: 1,
+                            name: "New Bet Type"
+                        },
+                        {
+                            id: 1,
+                            name: "New Bet Type"
+                        },
+                        {
+                            id: 1,
+                            name: "New Bet Type"
+                        }
+                    ]
                 }]
             }]
         }]
@@ -527,7 +1276,70 @@ var grid = {
                     id: 86,
                     name: 'Odd/Even',
                     minWidth: 122,
-                    pt: pt
+                    pt: pt,
+                    showDetailIcon: true,
+                    representForBettypes: [
+                        {
+                            id: 1,
+                            name: "New Bet Type"
+                        },
+                        {
+                            id: 1,
+                            name: "New Bet Type"
+                        },
+                        {
+                            id: 1,
+                            name: "New Bet Type"
+                        },
+                        {
+                            id: 1,
+                            name: "New Bet Type"
+                        },
+                        {
+                            id: 1,
+                            name: "New Bet Type"
+                        },
+                        {
+                            id: 1,
+                            name: "New Bet Type"
+                        },
+                        {
+                            id: 1,
+                            name: "New Bet Type"
+                        },
+                        {
+                            id: 1,
+                            name: "New Bet Type"
+                        },
+                        {
+                            id: 1,
+                            name: "New Bet Type"
+                        },
+                        {
+                            id: 1,
+                            name: "New Bet Type"
+                        },
+                        {
+                            id: 1,
+                            name: "New Bet Type"
+                        },
+                        {
+                            id: 1,
+                            name: "New Bet Type"
+                        },
+                        {
+                            id: 1,
+                            name: "New Bet Type"
+                        },
+                        {
+                            id: 1,
+                            name: "New Bet Type"
+                        },
+                        {
+                            id: 1,
+                            name: "New Bet Type"
+                        }
+                    ]
                 }]
             }]
         }, {
@@ -557,7 +1369,70 @@ var grid = {
                     id: 90,
                     name: 'Number Group',
                     minWidth: 90,
-                    pt: pt
+                    pt: pt,
+                    showDetailIcon: true,
+                    representForBettypes: [
+                        {
+                            id: 1,
+                            name: "New Bet Type"
+                        },
+                        {
+                            id: 1,
+                            name: "New Bet Type"
+                        },
+                        {
+                            id: 1,
+                            name: "New Bet Type"
+                        },
+                        {
+                            id: 1,
+                            name: "New Bet Type"
+                        },
+                        {
+                            id: 1,
+                            name: "New Bet Type"
+                        },
+                        {
+                            id: 1,
+                            name: "New Bet Type"
+                        },
+                        {
+                            id: 1,
+                            name: "New Bet Type"
+                        },
+                        {
+                            id: 1,
+                            name: "New Bet Type"
+                        },
+                        {
+                            id: 1,
+                            name: "New Bet Type"
+                        },
+                        {
+                            id: 1,
+                            name: "New Bet Type"
+                        },
+                        {
+                            id: 1,
+                            name: "New Bet Type"
+                        },
+                        {
+                            id: 1,
+                            name: "New Bet Type"
+                        },
+                        {
+                            id: 1,
+                            name: "New Bet Type"
+                        },
+                        {
+                            id: 1,
+                            name: "New Bet Type"
+                        },
+                        {
+                            id: 1,
+                            name: "New Bet Type"
+                        }
+                    ]
                 }]
             }]
         }]

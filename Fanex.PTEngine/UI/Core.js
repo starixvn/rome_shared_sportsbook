@@ -494,12 +494,12 @@ if (typeof (Fanex.PTEngine) == 'undefined') { // Define Fanex.PTEngine namespace
                         content: detailsHint,
                         top: top
                     };
-            },
+            };
+
             this.AddDetailIcon = function (headerElement) {
                 var me = this;
                 if (me.showDetailIcon) {
                     me.BuildRepresentativeBettypeDetailsHint();
-                    me.isShowTooltip = false;
                     var detailIcon = document.createElement("SPAN");
                     detailIcon.className = "bet-type-detail-icon";
                     headerElement.appendChild(detailIcon);
@@ -507,13 +507,27 @@ if (typeof (Fanex.PTEngine) == 'undefined') { // Define Fanex.PTEngine namespace
                     detailIcon.onclick = function () {
                         var currentIconPos = Validators.utils.findPos(detailIcon),
                             currentBoxHeight = me.bettypeIconDetail.top;
-                        me.showOnTop = currentIconPos[1] > me.bettypeIconDetail.top;
-                        if (me.isShowTooltip) {
-                            Validators.hide(!me.showOnTop);
+                        me.showOnTop = currentIconPos[1] > me.bettypeIconDetail.top + 30;
+                        if (me.showOnTop && Validators.isTooltipShow) {
+                            Validators.hide(false);
+                            Validators.isTooltipShow = false;
+                        }
+                        else if (!me.showOnTop && Validators.isTooltipDownShow) {
+                            Validators.hide(true);
+                            Validators.isTooltipDownShow = false;
                         }
                         else {
                             if (me.showOnTop) {
-                                Validators.show(detailIcon, me.bettypeIconDetail.content, 0, 10, -me.bettypeIconDetail.top - 20, me.bettypeIconDetail.top + 20, me.bettypeIconDetail.top, 30000);
+                                Validators.show(
+                                    detailIcon,
+                                    me.bettypeIconDetail.content,
+                                    -190,
+                                    160,
+                                    -me.bettypeIconDetail.top - 25,
+                                    me.bettypeIconDetail.top + 20,
+                                    me.bettypeIconDetail.top,
+                                    60000);
+                                Validators.isTooltipShow = true;
                             }
                             else {
                                 Validators.showDown(
@@ -524,13 +538,10 @@ if (typeof (Fanex.PTEngine) == 'undefined') { // Define Fanex.PTEngine namespace
                                     30,
                                     -10,
                                     me.bettypeIconDetail.top,
-                                    60000, function () {
-                                        me.isShowTooltip = false;
-                                    });
+                                    60000);
+                                Validators.isTooltipDownShow = true;
                             }
                         }
-
-                        me.isShowTooltip = !me.isShowTooltip;
                     };
 
                 }
@@ -1267,7 +1278,9 @@ var Validators = {
         // Validate with expr
         // Show message and animate background color
     },
-    show: function (elementInput, message, xPos, pointerXPos, yPos, pointerYPos, height, timeout, hideAction) {
+    isTooltipShow: false,
+    isTooltipDownShow: false,
+    show: function (elementInput, message, xPos, pointerXPos, yPos, pointerYPos, height, timeout) {
         // <span class="hint"><span>This is the message.<span><span class="hint-pointer">&nbsp;</span></span>
         var hint = document.getElementById('fHint');
         var hintPointer = null;
@@ -1285,9 +1298,7 @@ var Validators = {
             hint.style.zIndex = 999999;
             hint.onclick = function () { // Hide onclick
                 hint.style.display = 'none';
-                if (hideAction) {
-                    hideAction();
-                }
+                Validators.isTooltipShow = false;
             };
             document.body.appendChild(hint);
         };
@@ -1305,9 +1316,7 @@ var Validators = {
                 return;
             }
             hint.style.display = 'none';
-            if (hideAction) {
-                hideAction();
-            }
+            Validators.isTooltipShow = false;
         }, timeout); // Auto hide in 10s
         if (elementInput != null) {
             if (typeof xPos == 'undefined') {
@@ -1356,9 +1365,7 @@ var Validators = {
             hint.style.zIndex = 999999;
             hint.onclick = function () { // Hide onclick
                 hint.style.display = 'none';
-                if (hideAction) {
-                    hideAction();
-                }
+                Validators.isTooltipDownShow = false;
             };
             document.body.appendChild(hint);
         };
@@ -1376,9 +1383,7 @@ var Validators = {
                 return;
             }
             hint.style.display = 'none';
-            if (hideAction) {
-                hideAction();
-            }
+            Validators.isTooltipDownShow = false;
         }, timeout); // Auto hide in 1s
         if (elementInput != null) {
             if (typeof xPos == 'undefined') {

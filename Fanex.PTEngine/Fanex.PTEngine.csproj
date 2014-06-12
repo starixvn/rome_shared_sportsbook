@@ -81,7 +81,6 @@
     <Reference Include="System.Configuration" />
     <Reference Include="System.Web.Services" />
     <Reference Include="System.EnterpriseServices" />
-    <Reference Include="TplCore, Version=1.0.4694.29951, Culture=neutral, processorArchitecture=MSIL" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Dependencies\Microsoft.Practices.EnterpriseLibrary.Data.dll" />
@@ -100,8 +99,6 @@
     <Content Include="Dependencies\Fanex.Common.dll" />
     <Content Include="Dependencies\Fanex.Data.dll" />
     <Content Include="Dependencies\Fanex.Logging.dll" />
-    <Content Include="Dependencies\Newtonsoft.Json.dll" />
-    <Content Include="Dependencies\TplCore.dll" />
     <Content Include="index.html" />
     <EmbeddedResource Include="UI\BetTypeGroup.js" />
     <EmbeddedResource Include="UI\BettingLimit.js" />

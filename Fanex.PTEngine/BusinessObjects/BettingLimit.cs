@@ -118,8 +118,7 @@
                     string formattedPattern = string.Empty;
                     if (int.Parse(bettingLimitMapping.BetSettingCollection[0].SportId.OmitWhenDefault) != bettingLimitItem.Id)
                     {
-                        formattedPattern = string.Format(bettingLimitMapping.BetSettingCollection[0].SportId.Format, bettingLimitItem.Id);
-                        
+                        formattedPattern = string.Format(bettingLimitMapping.BetSettingCollection[0].SportId.Format, bettingLimitItem.Id);                        
                     }
 
                     if (bettingLimitItem.Key == Constant.SPECIAL_SPORT_TYPE_NAME)

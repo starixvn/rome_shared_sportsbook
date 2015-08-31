@@ -67,11 +67,12 @@
 
         public bool DisableUplineVirtualSports { get; set; }
 
+        public bool IsMyanmarOdds { get; set; }
+
         /// <summary>
-        /// Set data reader to object StatusSetting
+        /// Set data reader to object StatusSetting.
         /// </summary>
-        /// <param name="reader"></param>
-        /// <returns></returns>
+        /// <param name="reader">IDataReader object.</param>
         public void ReadFromDataRecord(System.Data.IDataReader reader)
         {
             SyncCasino = reader.ToBoolean("synccasino");
@@ -82,7 +83,8 @@
             UplineClosed = reader.ToBoolean("uplineclosed");
             UplineSuspended = reader.HasColumn("uplinesuspended") ? reader.ToBoolean("uplinesuspended") :
                                 reader.HasColumn("msuspended") ? reader.ToBoolean("msuspended") :
-                                reader.HasColumn("asuspended") ? reader.ToBoolean("asuspended") :  reader.ToBoolean("suspended");
+                                reader.HasColumn("asuspended") ? reader.ToBoolean("asuspended") : reader.ToBoolean("suspended");
+            IsMyanmarOdds = reader.HasColumn("ismyanmarodds") ? reader.ToBoolean("ismyanmarodds") : false;
         }
 
         /// <summary>

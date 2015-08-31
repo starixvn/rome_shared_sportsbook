@@ -138,8 +138,8 @@
                 LogService.Error(ex.Message);
                 throw new System.ArgumentException("Mapping configuration format is invalid.", ex);
             }
-
         }
+
         private void MapToSpParametersCustomerInfo(Hashtable parameters, IRequestContext context)
         {
             parameters.Add("userid", context.CustId);
@@ -159,6 +159,7 @@
             parameters.Add("fax", Fax == null ? string.Empty : HttpUtility.HtmlDecode(Fax));
             parameters.Add("credit", Credit);
             parameters.Add("subaccid", context.SubAccId);
+
             // We must check this condition. Because in 2 SPs Update and AddNew use similar maxcredit field for set value.
             // I think, we need to use different name for 2 this SPs.
             // In Form Add New: Member Max Credit = MaxCredit

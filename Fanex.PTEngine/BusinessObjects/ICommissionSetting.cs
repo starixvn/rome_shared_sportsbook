@@ -4,6 +4,8 @@
 
     public interface ICommissionSetting
     {
+        bool IsMyanmarOdds { get; set; }
+
         int RoleId { get; set; }
 
         decimal GroupA { get; set; }

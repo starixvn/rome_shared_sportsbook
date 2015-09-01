@@ -5,6 +5,8 @@
 
     public class CommissionSetting : ICommissionSetting
     {
+        public bool IsMyanmarOdds { get; set; }
+
         public int RoleId { get; set; }
 
         public decimal GroupA { get; set; }
@@ -96,6 +98,8 @@
             PlayerDiscountNumber = reader.HasColumn("playerdiscountnumber") ? Convert.ToDecimal(reader["playerdiscountnumber"]) : reader.ToDecimal("playerdiscount161");
             PlayerDiscountHRFixedOdds = reader.ToDecimal("playerdiscountHRFixedOdds");
             PlayerDiscountMyanmarOdds = reader.HasColumn("playerdiscountmo") ? Convert.ToDecimal(reader["playerdiscountmo"]) : 0;
+
+            IsMyanmarOdds = reader.HasColumn("ismyanmarodds") ? Convert.ToBoolean(reader["ismyanmarodds"]) : true;
         }
         
         /// <summary>
@@ -131,6 +135,8 @@
             parameters.Add("playerdiscountnumber", PlayerDiscountNumber);
             parameters.Add("playerdiscounthrfixedodds", PlayerDiscountHRFixedOdds);
             parameters.Add("playerdiscountmyanmarodds", PlayerDiscountMyanmarOdds);
+
+            parameters.Add("ismyanmarodds", IsMyanmarOdds);
         }
     }
 }

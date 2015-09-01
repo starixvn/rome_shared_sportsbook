@@ -70,8 +70,6 @@
         /// </summary>
         bool DisableUplineVirtualSports { get; set; }
 
-        bool IsMyanmarOdds { get; set; }
-
         void ReadFromDataRecord(System.Data.IDataReader reader);
 
         void MapToSpParameters(Hashtable parameters);

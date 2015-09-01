@@ -67,8 +67,6 @@
 
         public bool DisableUplineVirtualSports { get; set; }
 
-        public bool IsMyanmarOdds { get; set; }
-
         /// <summary>
         /// Set data reader to object StatusSetting.
         /// </summary>
@@ -84,7 +82,6 @@
             UplineSuspended = reader.HasColumn("uplinesuspended") ? reader.ToBoolean("uplinesuspended") :
                                 reader.HasColumn("msuspended") ? reader.ToBoolean("msuspended") :
                                 reader.HasColumn("asuspended") ? reader.ToBoolean("asuspended") : reader.ToBoolean("suspended");
-            IsMyanmarOdds = reader.HasColumn("ismyanmarodds") ? reader.ToBoolean("ismyanmarodds") : true;
         }
 
         /// <summary>

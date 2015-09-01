@@ -84,7 +84,7 @@
             UplineSuspended = reader.HasColumn("uplinesuspended") ? reader.ToBoolean("uplinesuspended") :
                                 reader.HasColumn("msuspended") ? reader.ToBoolean("msuspended") :
                                 reader.HasColumn("asuspended") ? reader.ToBoolean("asuspended") : reader.ToBoolean("suspended");
-            IsMyanmarOdds = reader.HasColumn("ismyanmarodds") ? reader.ToBoolean("ismyanmarodds") : false;
+            IsMyanmarOdds = reader.HasColumn("ismyanmarodds") ? reader.ToBoolean("ismyanmarodds") : true;
         }
 
         /// <summary>

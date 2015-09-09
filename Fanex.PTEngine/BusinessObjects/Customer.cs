@@ -287,6 +287,7 @@
                 commissionMaster.PlayerDiscountCs = reader.ToDecimal("adiscountcs");
                 commissionMaster.PlayerDiscountNumber = reader.ToDecimal("adiscount161");
                 commissionMaster.PlayerDiscountHRFixedOdds = reader.ToDecimal("adiscountHRFixedOdds");
+                commissionMaster.PlayerDiscountMyanmarOdds = reader.ToDecimal("adiscountmyanmarodds");
                 commissionSettings.Add(commissionMaster);
             }
 

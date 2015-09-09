@@ -79,8 +79,8 @@
             Discount1x2Max = reader.HasColumn("discount1x2_max") ? Convert.ToDecimal(reader["discount1x2_max"]) : reader.ToDecimal("discount1x2");
             DiscountCSMax = reader.HasColumn("discountcs_max") ? Convert.ToDecimal(reader["discountcs_max"]) : reader.ToDecimal("discountcs");
 
-            DiscountMyanmarOdds = reader.HasColumn("discountmo") ? Convert.ToDecimal(reader["discountmo"]) : 0;
-            DiscountMyanmarOddsMax = reader.HasColumn("discountmo_max") ? Convert.ToDecimal(reader["discountmo_max"]) : reader.ToDecimal("discountmo");
+            DiscountMyanmarOdds = reader.HasColumn("discountmyanmarodds") ? Convert.ToDecimal(reader["discountmyanmarodds"]) : 0;
+            DiscountMyanmarOddsMax = reader.HasColumn("discountmyanmarodds_max") ? Convert.ToDecimal(reader["discountmyanmarodds_max"]) : reader.ToDecimal("discountmyanmarodds");
 
             Discount1x2 = reader.ToDecimal("discount1x2");
             DiscountCS = reader.ToDecimal("discountcs");
@@ -97,7 +97,7 @@
             PlayerDiscountCs = reader.ToDecimal("playerdiscountcs");
             PlayerDiscountNumber = reader.HasColumn("playerdiscountnumber") ? Convert.ToDecimal(reader["playerdiscountnumber"]) : reader.ToDecimal("playerdiscount161");
             PlayerDiscountHRFixedOdds = reader.ToDecimal("playerdiscountHRFixedOdds");
-            PlayerDiscountMyanmarOdds = reader.HasColumn("playerdiscountmo") ? Convert.ToDecimal(reader["playerdiscountmo"]) : 0;
+            PlayerDiscountMyanmarOdds = reader.HasColumn("playerdiscountmyanmarodds") ? Convert.ToDecimal(reader["playerdiscountmyanmarodds"]) : 0;
 
             IsMyanmarOdds = reader.HasColumn("ismyanmarodds") ? Convert.ToBoolean(reader["ismyanmarodds"]) : true;
         }

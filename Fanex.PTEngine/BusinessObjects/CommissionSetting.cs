@@ -122,6 +122,8 @@
             parameters.Add("discountcs", DiscountCS);
             parameters.Add("discountnumber", DiscountNumber);
             parameters.Add("discounthrfixedodds", DiscountHRFixedOdds);
+            parameters.Add("discountmyanmarodds", DiscountMyanmarOdds);
+
             parameters.Add("discount1x2_max", Discount1x2Max);
             parameters.Add("discountcs_max", DiscountCSMax);
             parameters.Add("discountnumber_max", DiscountNumberMax);

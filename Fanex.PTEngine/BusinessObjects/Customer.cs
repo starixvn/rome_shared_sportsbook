@@ -138,8 +138,8 @@
                 LogService.Error(ex.Message);
                 throw new System.ArgumentException("Mapping configuration format is invalid.", ex);
             }
-
         }
+
         private void MapToSpParametersCustomerInfo(Hashtable parameters, IRequestContext context)
         {
             parameters.Add("userid", context.CustId);
@@ -159,6 +159,7 @@
             parameters.Add("fax", Fax == null ? string.Empty : HttpUtility.HtmlDecode(Fax));
             parameters.Add("credit", Credit);
             parameters.Add("subaccid", context.SubAccId);
+
             // We must check this condition. Because in 2 SPs Update and AddNew use similar maxcredit field for set value.
             // I think, we need to use different name for 2 this SPs.
             // In Form Add New: Member Max Credit = MaxCredit
@@ -286,6 +287,7 @@
                 commissionMaster.PlayerDiscountCs = reader.ToDecimal("adiscountcs");
                 commissionMaster.PlayerDiscountNumber = reader.ToDecimal("adiscount161");
                 commissionMaster.PlayerDiscountHRFixedOdds = reader.ToDecimal("adiscountHRFixedOdds");
+                commissionMaster.PlayerDiscountMyanmarOdds = reader.ToDecimal("adiscountmyanmarodds");
                 commissionSettings.Add(commissionMaster);
             }
 
@@ -326,7 +328,8 @@
                 Discount1x2 = (decimal)0.0025,
                 DiscountCS = (decimal)0.01,
                 DiscountNumber = (decimal)0.0025,
-                DiscountHRFixedOdds = (decimal)0.01
+                DiscountHRFixedOdds = (decimal)0.01,
+                DiscountMyanmarOdds = (decimal)0.01
             };
         }
     }

@@ -26,6 +26,7 @@
             using (ObjectDb db = new ObjectDb("Acc_CustomerSelSAgentInfo", 120))
             {
                 db.AddInParameter("custid", DbType.Int32, requestContext.CustId);
+                db.AddInParameter("site", DbType.String, requestContext.SiteName);
                 reader = db.ExecuteReader();
                 reader.Read();
                 customer.ReadFromDataRecord(requestContext, reader);

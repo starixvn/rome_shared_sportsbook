@@ -771,7 +771,6 @@ namespace Fanex.PTEngine.Services
             return customerDataAccess.Acc_CustomerSelTransferOption(context);
         }
 
-
         /// <summary>
         /// Company Update Min/Max Position Taking for Master
         /// </summary>

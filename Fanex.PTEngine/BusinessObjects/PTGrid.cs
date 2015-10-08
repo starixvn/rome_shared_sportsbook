@@ -116,7 +116,7 @@
             int i = 1;
             if (isUpdateBettingLimit)
             {
-                //i = Constant.SPORT_TYPE_INDEX_UPDATE_PARAMETER;
+                // i = Constant.SPORT_TYPE_INDEX_UPDATE_PARAMETER;
                 i = Converter.To<int>(document.Root.Element(Constant.NUMEROUS_SPORT_TYPE).Value);
             }
 

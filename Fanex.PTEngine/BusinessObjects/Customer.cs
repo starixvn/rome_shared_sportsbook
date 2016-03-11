@@ -146,14 +146,8 @@
             parameters.Add("custid", CustId);
             parameters.Add("username", UserName == null ? string.Empty : UserName);
             parameters.Add("userpwd", Password);
-            parameters.Add("address", Address == null ? string.Empty : HttpUtility.HtmlDecode(Address));
-            parameters.Add("postal", Postal == null ? string.Empty : HttpUtility.HtmlDecode(Postal));
-            parameters.Add("city", City == null ? string.Empty : HttpUtility.HtmlDecode(City));
-            parameters.Add("state", State == null ? string.Empty : HttpUtility.HtmlDecode(State));
-            parameters.Add("country", Country == null ? string.Empty : HttpUtility.HtmlDecode(Country));
             parameters.Add("lastname", LastName == null ? string.Empty : HttpUtility.HtmlDecode(LastName));
             parameters.Add("firstname", FirstName == null ? string.Empty : HttpUtility.HtmlDecode(FirstName));
-            parameters.Add("email", Email == null ? string.Empty : HttpUtility.HtmlDecode(Email));
             parameters.Add("phone", Phone == null ? string.Empty : HttpUtility.HtmlDecode(Phone));
             parameters.Add("mobilephone", MobilePhone == null ? string.Empty : HttpUtility.HtmlDecode(MobilePhone));
             parameters.Add("fax", Fax == null ? string.Empty : HttpUtility.HtmlDecode(Fax));

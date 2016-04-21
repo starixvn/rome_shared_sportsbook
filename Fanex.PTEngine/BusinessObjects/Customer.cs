@@ -144,13 +144,13 @@
         {
             parameters.Add("userid", context.CustId);
             parameters.Add("custid", CustId);
-            parameters.Add("username", UserName == null ? string.Empty : UserName);
+            parameters.Add("username", UserName ?? string.Empty);
             parameters.Add("userpwd", Password);
-            parameters.Add("lastname", LastName == null ? string.Empty : HttpUtility.HtmlDecode(LastName));
-            parameters.Add("firstname", FirstName == null ? string.Empty : HttpUtility.HtmlDecode(FirstName));
-            parameters.Add("phone", Phone == null ? string.Empty : HttpUtility.HtmlDecode(Phone));
-            parameters.Add("mobilephone", MobilePhone == null ? string.Empty : HttpUtility.HtmlDecode(MobilePhone));
-            parameters.Add("fax", Fax == null ? string.Empty : HttpUtility.HtmlDecode(Fax));
+            parameters.Add("lastname", LastName ?? string.Empty);
+            parameters.Add("firstname", FirstName ?? string.Empty);
+            parameters.Add("phone", Phone ?? string.Empty);
+            parameters.Add("mobilephone", MobilePhone ?? string.Empty);
+            parameters.Add("fax", Fax ?? string.Empty);
             parameters.Add("credit", Credit);
             parameters.Add("subaccid", context.SubAccId);
 
@@ -170,10 +170,10 @@
             parameters.Add("srecommend", SRecommend);
             parameters.Add("mrecommend", context.CustId);
             parameters.Add("recommend", context.CustId);
-            parameters.Add("language", Language == null ? string.Empty : Language);
+            parameters.Add("language", Language ?? string.Empty);
             parameters.Add("ip", context.IP);
-            parameters.Add("site", SiteName == null ? string.Empty : SiteName);
-            parameters.Add("sitename", SiteName == null ? string.Empty : SiteName); // For parameter of Add New Agent
+            parameters.Add("site", SiteName ?? string.Empty);
+            parameters.Add("sitename", SiteName ?? string.Empty); // For parameter of Add New Agent
             parameters.Add("currency", this.CurrencyId > 0 ? this.CurrencyId.ToString() : string.Empty);
             parameters.Add("isinternal", IsInternal);
             parameters.Add("transferoption", TransferOption);

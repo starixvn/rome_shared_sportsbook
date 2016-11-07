@@ -65,6 +65,16 @@
                 if (currentItem == null)
                 {
                     currentItem = item;
+                    if(item.Id.Equals(111))
+                    {
+                        item.MinBet = 1000000;
+                        item.MaxBet = 5000000;
+                        item.MaxPerMatch = 500000000;
+                        item.MinBetMax = 100000;
+                        item.MaxBetMin = 50000000;
+                        item.MaxPerMatchMin = 0;
+                        item.MaxPerMatchMax = 500000000;
+                    }
                     this.BettingLimitItems.Add(item);
                 }
             }

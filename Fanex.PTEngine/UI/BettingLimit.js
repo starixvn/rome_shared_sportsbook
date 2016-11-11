@@ -347,7 +347,7 @@ Fanex.PTEngine.BettingLimit = function (source) {
 				headerSoccer.title = Language.COPY_ALL_BETTING_LIMIT_FROM.Format(Language.SOCCER);
 				headerBasketBall.title = Language.COPY_ALL_BETTING_LIMIT_FROM.Format(Language.BASKETBALL);
 				var items = this.items;
-				items[0].active = items[2].active = false;
+				items[0].active = items[1].active = items[2].active = false;
 				// Handle event copy from soccer
 				headerSoccer.onclick = function () {
 					var c = items.length - 1;
@@ -381,6 +381,10 @@ Fanex.PTEngine.BettingLimit = function (source) {
 				}
 				// Handle event copy from basket ball
 				headerBasketBall.onclick = function () {
+                    // Enable Soccer-Parlay for edit
+				    items[1].active = false;
+				    Fanex.PTEngine.RemoveDisableChildren(items[1].element);
+
 					if (items[2].inactive == true) { // Re-enable current
 						items[2].inactive = false;
 						items[2].copiedItem = null; // Remove copiedItem
@@ -391,7 +395,7 @@ Fanex.PTEngine.BettingLimit = function (source) {
 						items[2].active = true;
 						headerBasketBall.className = "BettingLimitHeaderCopiedActive";
 						if (items[0].active === true) { // Untick soccer
-							items[0].active = false;
+						    items[0].active = false;
 							headerSoccer.className = "BettingLimitHeaderCopied";
 						}
 						for (var i = 3; i < c; i++) {

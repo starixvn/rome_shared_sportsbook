@@ -126,6 +126,58 @@ Fanex.PTEngine.BettingLimit = function (source) {
 		};
 	}
 
+	this.AddDetailIcon = function (headerElement) {
+	    var me = this;
+
+	    var content = '<div><b>Mix Sports Parlay:</b> The parlay whose tickets are not pure soccer.</div>';
+	    content = content + '<div >Example: Soccer - Basketball, Tennis - Tennis, Baseball - Golf - Football</div>';
+
+	    var detailIcon = document.createElement("SPAN");
+	    detailIcon.className = "bet-type-detail-icon sport-type-detail-icon";
+	    headerElement.appendChild(detailIcon);
+
+	    var topPosition = 38
+	    detailIcon.onclick = function () {
+	        var currentIconPos = Validators.utils.findPos(detailIcon),
+                currentBoxHeight = topPosition;
+	        me.showOnTop = currentIconPos[1] > topPosition + 30;
+	        if (me.showOnTop && Validators.isTooltipShow) {
+	            Validators.hide(false);
+	            Validators.isTooltipShow = false;
+	        }
+	        else if (!me.showOnTop && Validators.isTooltipDownShow) {
+	            Validators.hide(true);
+	            Validators.isTooltipDownShow = false;
+	        }
+	        else {
+	            if (me.showOnTop) {
+	                Validators.show(
+                        detailIcon,
+                        content,
+                         0,
+                        10,
+                        -topPosition - 25,
+                        topPosition + 20,
+                        topPosition,
+                        60000);
+	                Validators.isTooltipShow = true;
+	            }
+	            else {
+	                Validators.showDown(
+                        detailIcon,
+                        content,
+                        -185,
+                        160,
+                        30,
+                        -10,
+                        topPosition,
+                        60000);
+	                Validators.isTooltipDownShow = true;
+	            }
+	        }
+	    };
+	};
+
 	this.Render = function (owner, hideTextBox) {
 		var box = document.createElement("DIV");
 		// Create MinBet, MaxBet, MaxPerMatch header
@@ -170,7 +222,16 @@ Fanex.PTEngine.BettingLimit = function (source) {
 			header.innerHTML = item.name;
 			header.className = "BettingLimitHeader";
 			item.header = header;
+			if (item.key == "Mix Sports Parlay") {
+			    //var mixSportParlayHintIcon = document.createElement("a");
+			    //mixSportParlayHintIcon.className = "infoIco floatRight";
+			    //header.appendChild(mixSportParlayHintIcon);
+			    this.AddDetailIcon(header);
+			}
+			//this.AddDetailIcon(header);
 			box2.appendChild(header);
+		
+			
 			// Hard-code for max per ball of number game
 			if (item.id == 161) {
 				// Create MinBet, MaxBet, MaxPerMatch header

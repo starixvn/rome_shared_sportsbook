@@ -130,7 +130,7 @@
                     if (int.Parse(this.MappingSection.Mapping[0].SportTypeId.OmitWhenDefault) != sportType.Id)
                     {
                         formattedPattern = string.Format(this.MappingSection.Mapping[0].SportTypeId.Format, sportType.Id);
-                        if (sportType.Key == Constant.SPECIAL_SPORT_TYPE_NAME)
+                        if (sportType.Key == Constant.SPECIAL_SPORT_TYPE_NAME_IS_MIX_SPROTS_PARLAY)
                         {
                             formattedPattern += Constant.SPECIAL_SPORT_TYPE_STRING;
                         }

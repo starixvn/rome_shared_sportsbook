@@ -166,7 +166,8 @@
         private string FormatPattern(BettingLimitElement mappingElement, int sportTypeId, MappingType type)
         {
             string formattedPattern = mappingElement.Pattern;
-            if (this.Id == Constant.SPECIAL_SPORT_TYPE_ID && this.Key == Constant.SPECIAL_SPORT_TYPE_NAME)
+            if ((this.Id == Constant.SPECIAL_SPORT_TYPE_ID_IS_99 && this.Key == Constant.SPECIAL_SPORT_TYPE_NAME_IS_MIX_SPROTS_PARLAY)
+                || (this.Id == Constant.SPECIAL_SPORT_TYPE_ID_IS_1 && this.Key == Constant.SPECIAL_SPORT_TYPE_NAME_IS_SOCCER_PARLAY))
             {
                 formattedPattern = formattedPattern.Replace(Constant.SPORT_ID_MAP, string.Format(mappingElement.SportId.Format, sportTypeId.ToString() + Constant.SPECIAL_SPORT_TYPE_STRING));
             }

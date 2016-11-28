@@ -74,6 +74,9 @@
 	NO: "No",
 	BASKETBALL: "Basketball",
 	SOCCER: "Soccer",
+	MIXSPORTPARLAY: "Mix Sports Parlay",
+	MIXSPROTPARLAYHINT1: "The parlay whose tickets are not pure soccer.",
+	MIXSPROTPARLAYHINT2: "Example: Soccer - Soccer - Basketball, Tennis - Tennis - Tennis, Baseball - Golf - Football",
 
     OTHERS_INCLUDE_THESE_BETTYPES: '"Others" include these bettypes:'
 }

@@ -129,8 +129,8 @@ Fanex.PTEngine.BettingLimit = function (source) {
 	this.AddDetailIcon = function (headerElement) {
 	    var me = this;
 
-	    var content = '<div><b>Mix Sports Parlay:</b> The parlay whose tickets are not pure soccer.</div>';
-	    content = content + '<div >Example: Soccer - Basketball, Tennis - Tennis, Baseball - Golf - Football</div>';
+	    var content = '<div><b>' + Language.MIXSPORTPARLAY +':</b>' + Language.MIXSPROTPARLAYHINT1 + '</div>';
+	    content = content + '<div >' + Language.MIXSPROTPARLAYHINT1 + '</div>';
 
 	    var detailIcon = document.createElement("SPAN");
 	    detailIcon.className = "bet-type-detail-icon sport-type-detail-icon";
@@ -150,8 +150,7 @@ Fanex.PTEngine.BettingLimit = function (source) {
 	            Validators.isTooltipDownShow = false;
 	        }
 	        else {
-	            if (me.showOnTop) {
-	                Validators.show(
+	            Validators.show(
                         detailIcon,
                         content,
                          0,
@@ -160,20 +159,7 @@ Fanex.PTEngine.BettingLimit = function (source) {
                         topPosition + 20,
                         topPosition,
                         60000);
-	                Validators.isTooltipShow = true;
-	            }
-	            else {
-	                Validators.showDown(
-                        detailIcon,
-                        content,
-                        -185,
-                        160,
-                        30,
-                        -10,
-                        topPosition,
-                        60000);
-	                Validators.isTooltipDownShow = true;
-	            }
+	            Validators.isTooltipShow = true;
 	        }
 	    };
 	};
@@ -223,12 +209,9 @@ Fanex.PTEngine.BettingLimit = function (source) {
 			header.className = "BettingLimitHeader";
 			item.header = header;
 			if (item.key == "Mix Sports Parlay") {
-			    //var mixSportParlayHintIcon = document.createElement("a");
-			    //mixSportParlayHintIcon.className = "infoIco floatRight";
-			    //header.appendChild(mixSportParlayHintIcon);
 			    this.AddDetailIcon(header);
 			}
-			//this.AddDetailIcon(header);
+
 			box2.appendChild(header);
 		
 			
@@ -459,10 +442,14 @@ Fanex.PTEngine.BettingLimit = function (source) {
 						    items[0].active = false;
 							headerSoccer.className = "BettingLimitHeaderCopied";
 						}
+
+						items[1].active = false;
+						items[1].copiedItem = null;
+
 						for (var i = 3; i < c; i++) {
 							var item = items[i];
 							item.copiedItem = {
-								id: 1
+								id: 2
 							}; // Copied from Basketball, using index
 
 							item.inactive = true;

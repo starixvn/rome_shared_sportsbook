@@ -129,8 +129,8 @@ Fanex.PTEngine.BettingLimit = function (source) {
 	this.AddDetailIcon = function (headerElement) {
 	    var me = this;
 
-	    var content = '<div><b>' + Language.MIXSPORTPARLAY +':</b>' + Language.MIXSPROTPARLAYHINT1 + '</div>';
-	    content = content + '<div >' + Language.MIXSPROTPARLAYHINT1 + '</div>';
+	    var content = '<div><b>' + Language.MIXSPORTPARLAY + ': &nbsp;</b>' + Language.MIXSPROTPARLAYHINT1 + '</div>';
+	    content = content + '<div >' + Language.MIXSPROTPARLAYHINT2 + '</div>';
 
 	    var detailIcon = document.createElement("SPAN");
 	    detailIcon.className = "bet-type-detail-icon sport-type-detail-icon";

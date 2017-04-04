@@ -266,7 +266,7 @@ Fanex.PTEngine.BetType.prototype.Render_4_1_1 = function (owner) { // s1, us1, i
         }
         else {
             this.pt.us1 = parseFloat(us1Select.select.value);
-            this.pt.s1 = 0;
+            // this.pt.s1 = 0; Comment this line due to Hotfix #60734 Alpha - Log: "Update Super's Sportsbook Position Taking at member" log always record Outright bettype S1 = 0 when updating Super PT on member
         }
 
         return {

@@ -67,11 +67,15 @@
 
         public const string BETTYPE_GROUPSET_SHOW_LABLE = "showGroupSetLabel";
 
-        public const int SPECIAL_SPORT_TYPE_ID = 99;
+        public const int SPECIAL_SPORT_TYPE_ID_IS_99 = 99;
+
+        public const int SPECIAL_SPORT_TYPE_ID_IS_1 = 1;
 
         public const string SPECIAL_SPORT_TYPE_STRING = "mp";
 
-        public const string SPECIAL_SPORT_TYPE_NAME = "Mix Sports Parlay";
+        public const string SPECIAL_SPORT_TYPE_NAME_IS_MIX_SPROTS_PARLAY = "Mix Sports Parlay";
+
+        public const string SPECIAL_SPORT_TYPE_NAME_IS_SOCCER_PARLAY = "Soccer Parlay";
 
         public const int SPECIAL_TARGET_ROLE_ID = 4;
 

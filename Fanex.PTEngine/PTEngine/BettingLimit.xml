@@ -11,6 +11,16 @@
       <MaxPerMatchMin></MaxPerMatchMin>
       <MaxPerMatchMax></MaxPerMatchMax>
     </BettingLimitItem>
+
+    <BettingLimitItem id="1" name="Mix Sports Parlay" key="Soccer Parlay" resourcekey="soccerParlay">
+      <MinBet></MinBet>
+      <MaxBet></MaxBet>
+      <MaxPerMatch></MaxPerMatch>
+      <MinBetMax></MinBetMax>
+      <MaxBetMin></MaxBetMin>
+      <MaxPerMatchMin></MaxPerMatchMin>
+      <MaxPerMatchMax></MaxPerMatchMax>
+    </BettingLimitItem>
     
     <BettingLimitItem id="2" name="Basketball">
       <MinBet></MinBet>

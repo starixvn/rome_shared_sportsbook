@@ -126,6 +126,44 @@ Fanex.PTEngine.BettingLimit = function (source) {
 		};
 	}
 
+	this.AddDetailIcon = function (headerElement) {
+	    var me = this;
+
+	    var content = '<div><b>' + Language.MIXSPORTPARLAY + ': &nbsp;</b>' + Language.MIXSPROTPARLAYHINT1 + '</div>';
+	    content = content + '<div >' + Language.MIXSPROTPARLAYHINT2 + '</div>';
+
+	    var detailIcon = document.createElement("SPAN");
+	    detailIcon.className = "bet-type-detail-icon sport-type-detail-icon";
+	    headerElement.appendChild(detailIcon);
+
+	    var topPosition = 38
+	    detailIcon.onclick = function () {
+	        var currentIconPos = Validators.utils.findPos(detailIcon),
+                currentBoxHeight = topPosition;
+	        me.showOnTop = currentIconPos[1] > topPosition + 30;
+	        if (me.showOnTop && Validators.isTooltipShow) {
+	            Validators.hide(false);
+	            Validators.isTooltipShow = false;
+	        }
+	        else if (!me.showOnTop && Validators.isTooltipDownShow) {
+	            Validators.hide(true);
+	            Validators.isTooltipDownShow = false;
+	        }
+	        else {
+	            Validators.show(
+                        detailIcon,
+                        content,
+                         0,
+                        10,
+                        -topPosition - 25,
+                        topPosition + 20,
+                        topPosition,
+                        60000);
+	            Validators.isTooltipShow = true;
+	        }
+	    };
+	};
+
 	this.Render = function (owner, hideTextBox) {
 		var box = document.createElement("DIV");
 		// Create MinBet, MaxBet, MaxPerMatch header
@@ -170,7 +208,13 @@ Fanex.PTEngine.BettingLimit = function (source) {
 			header.innerHTML = item.name;
 			header.className = "BettingLimitHeader";
 			item.header = header;
+			if (item.key == "Mix Sports Parlay") {
+			    this.AddDetailIcon(header);
+			}
+
 			box2.appendChild(header);
+		
+			
 			// Hard-code for max per ball of number game
 			if (item.id == 161) {
 				// Create MinBet, MaxBet, MaxPerMatch header
@@ -342,20 +386,20 @@ Fanex.PTEngine.BettingLimit = function (source) {
 		if (typeof (owner) == 'object') {
 			if (!hideTextBox) {
 				var headerSoccer = this.items[0].header;
-				var headerBasketBall = this.items[1].header;
+				var headerBasketBall = this.items[2].header;
 				headerSoccer.className = headerBasketBall.className = "BettingLimitHeaderCopied";
 				headerSoccer.title = Language.COPY_ALL_BETTING_LIMIT_FROM.Format(Language.SOCCER);
 				headerBasketBall.title = Language.COPY_ALL_BETTING_LIMIT_FROM.Format(Language.BASKETBALL);
 				var items = this.items;
-				items[0].active = items[1].active = false;
+				items[0].active = items[1].active = items[2].active = false;
 				// Handle event copy from soccer
 				headerSoccer.onclick = function () {
 					var c = items.length - 1;
 					if (items[0].active === false) { // Uncheck --> Checked
 						items[0].active = true;
 						headerSoccer.className = "BettingLimitHeaderCopiedActive";
-						if (items[1].active === true) { // Untick basket ball
-							items[1].active = false;
+						if (items[2].active === true) { // Untick basket ball
+							items[2].active = false;
 							headerBasketBall.className = "BettingLimitHeaderCopied";
 						}
 						for (var i = 1; i < c; i++) {
@@ -381,32 +425,40 @@ Fanex.PTEngine.BettingLimit = function (source) {
 				}
 				// Handle event copy from basket ball
 				headerBasketBall.onclick = function () {
-					if (items[1].inactive == true) { // Re-enable current
-						items[1].inactive = false;
-						items[1].copiedItem = null; // Remove copiedItem
-						Fanex.PTEngine.ReEnableChildren(items[1].element);
+                    // Enable Soccer-Parlay for edit
+				    items[1].active = false;
+				    Fanex.PTEngine.RemoveDisableChildren(items[1].element);
+
+					if (items[2].inactive == true) { // Re-enable current
+						items[2].inactive = false;
+						items[2].copiedItem = null; // Remove copiedItem
+						Fanex.PTEngine.ReEnableChildren(items[2].element);
 					}
 					var c = items.length - 1;
-					if (items[1].active === false) { // Uncheck --> Checked
-						items[1].active = true;
+					if (items[2].active === false) { // Uncheck --> Checked
+						items[2].active = true;
 						headerBasketBall.className = "BettingLimitHeaderCopiedActive";
 						if (items[0].active === true) { // Untick soccer
-							items[0].active = false;
+						    items[0].active = false;
 							headerSoccer.className = "BettingLimitHeaderCopied";
 						}
-						for (var i = 2; i < c; i++) {
+
+						items[1].active = false;
+						items[1].copiedItem = null;
+
+						for (var i = 3; i < c; i++) {
 							var item = items[i];
 							item.copiedItem = {
-								id: 1
+								id: 2
 							}; // Copied from Basketball, using index
 
 							item.inactive = true;
 							Fanex.PTEngine.DisableChildren(item.element, "BetTypeInactive");
 						}
 					} else {
-						items[1].active = false;
+						items[2].active = false;
 						headerBasketBall.className = "BettingLimitHeaderCopied";
-						for (var i = 2; i < c; i++) {
+						for (var i = 3; i < c; i++) {
 							var item = items[i];
 							item.copiedItem = null; // Remove copiedItem
 							if (item.inactive === false) break;

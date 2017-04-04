@@ -121,7 +121,8 @@
                         formattedPattern = string.Format(bettingLimitMapping.BetSettingCollection[0].SportId.Format, bettingLimitItem.Id);                        
                     }
 
-                    if (bettingLimitItem.Key == Constant.SPECIAL_SPORT_TYPE_NAME)
+                    if ((bettingLimitItem.Key == Constant.SPECIAL_SPORT_TYPE_NAME_IS_MIX_SPROTS_PARLAY) ||
+                        (bettingLimitItem.Key == Constant.SPECIAL_SPORT_TYPE_NAME_IS_SOCCER_PARLAY))
                     {
                         formattedPattern += Constant.SPECIAL_SPORT_TYPE_STRING;
                     }

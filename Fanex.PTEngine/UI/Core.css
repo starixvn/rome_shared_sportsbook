@@ -778,3 +778,9 @@
 	border-bottom: 1px solid #12A3EB;
 	height: 21px;
 }
+
+.sport-type-detail-icon
+{
+    float: right;
+    margin: 3px;
+}

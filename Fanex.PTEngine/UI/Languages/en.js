@@ -33,6 +33,7 @@
 	COPY_ALL_OTHER_POSITION_TAKING_FROM: "Copy all below position taking settings from {0} {1}",
 	COPY_ALL_POSITION_TAKING_FROM: "Copy {0} position taking settings from {1}",
 	COPY_ALL_BETTING_LIMIT_FROM: "Copy all below bet settings from {0} (excluding Number Game)",
+	COPY_ALL_BETTING_LIMIT_OF_NUMBERGAME: "Copy all below bet settings from Number Game",
 	COPY_ALL_HINT: "{0} position taking setting is being applied to: ",
 	OTHER_BET_TYPE_OF: "Other bet types of {0}",
 	INCORRECT_MIN_BET: "Incorrect Min Bet",

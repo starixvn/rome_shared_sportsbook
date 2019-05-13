@@ -93,7 +93,6 @@
             parameters.Add("synccasino", SyncCasino);
             parameters.Add("syncbingo", SyncBingo);
             parameters.Add("closed", Closed);
-            parameters.Add("suspended", Suspended);
             parameters.Add("disableautompt", !DisableAutoMPT);
         }
     }

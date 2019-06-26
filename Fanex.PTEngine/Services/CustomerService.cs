@@ -268,7 +268,6 @@ namespace Fanex.PTEngine.Services
                 parameters.Add("newspositiontaking", newPositionTakingValue);
 
                 parameters.Add("updatemultiple", 1);
-                parameters.Add("updatesuspended", 0);
                 parameters.Add("updateclosed", Convert.ToInt16(updateParameters[0]));
                 parameters.Add("updatecommission", Convert.ToInt16(updateParameters[1]));
 
@@ -303,7 +302,6 @@ namespace Fanex.PTEngine.Services
             {
                 Hashtable parameters = member.MapToSpParameters(context);
                 parameters.Add("updateclosed", 1);
-                parameters.Add("updatesuspended", 1);
                 ICustomerDataAccess customerDataAccess = new CustomerDataAccess();
                 result = customerDataAccess.Acc_CustomerUpdMember_Super(parameters);
             }
@@ -336,7 +334,6 @@ namespace Fanex.PTEngine.Services
                 Hashtable parameters = member.MapToSpParameters(context);
                 member.MapToSpUpdateMultipleParameters(ref parameters, updateParameters, false);
                 parameters.Add("updatemultiple", 1);
-                parameters.Add("updatesuspended", 0);
                 parameters.Add("updateclosed", Convert.ToInt16(updateParameters[0]));
 
                 ICustomerDataAccess customerDataAccess = new CustomerDataAccess();
@@ -403,7 +400,6 @@ namespace Fanex.PTEngine.Services
             {
                 Hashtable parameters = member.MapToSpParameters(context);
                 parameters.Add("updateclosed", 1);
-                parameters.Add("updatesuspended", 1);
 
                 ICustomerDataAccess customerDataAccess = new CustomerDataAccess();
                 result = customerDataAccess.Acc_CustomerUpdMember_Master(parameters);
@@ -437,7 +433,6 @@ namespace Fanex.PTEngine.Services
                 Hashtable parameters = member.MapToSpParameters(context);
                 member.MapToSpUpdateMultipleParameters(ref parameters, updateParameters, false);
                 parameters.Add("updatemultiple", 1);
-                parameters.Add("updatesuspended", 0);
                 parameters.Add("updateclosed", Convert.ToInt16(updateParameters[0]));
 
                 ICustomerDataAccess customerDataAccess = new CustomerDataAccess();
@@ -585,7 +580,6 @@ namespace Fanex.PTEngine.Services
                 parameters.Add("newmpositiontaking", newPositionTakingValue);
 
                 parameters.Add("updatemultiple", 1);
-                parameters.Add("updatesuspended", 0);
                 parameters.Add("updateclosed", Convert.ToInt16(updateParameters[0]));
                 parameters.Add("updatecommission", Convert.ToInt16(updateParameters[1]));
 
@@ -738,7 +732,6 @@ namespace Fanex.PTEngine.Services
                 Hashtable parameters = member.MapToSpParameters(context);
                 member.MapToSpUpdateMultipleParameters(ref parameters, updateParameters, true);
                 parameters.Add("updatemultiple", 1);
-                parameters.Add("updatesuspended", 0);
                 parameters.Add("updateclosed", Convert.ToInt16(updateParameters[0]));
                 parameters.Add("updatecommission", Convert.ToInt16(updateParameters[1]));
 

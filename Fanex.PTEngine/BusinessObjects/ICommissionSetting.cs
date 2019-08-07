@@ -18,9 +18,7 @@
 
         decimal DiscountCS { get; set; }
 
-        decimal Discount1x2 { get; set; }
-
-        decimal DiscountNumber { get; set; }
+        decimal Discount1x2 { get; set; }      
 
         decimal DiscountHRFixedOdds { get; set; }
 
@@ -36,9 +34,7 @@
 
         decimal DiscountCSMax { get; set; }
 
-        decimal Discount1x2Max { get; set; }
-
-        decimal DiscountNumberMax { get; set; }
+        decimal Discount1x2Max { get; set; }      
 
         decimal DiscountHRFixedOddsMax { get; set; }
 
@@ -50,9 +46,7 @@
 
         decimal PlayerDiscount1x2 { get; set; }
 
-        decimal PlayerDiscountCs { get; set; }
-
-        decimal PlayerDiscountNumber { get; set; }
+        decimal PlayerDiscountCs { get; set; }       
 
         decimal PlayerDiscountHRFixedOdds { get; set; }
 

@@ -21,8 +21,6 @@
 
         public decimal Discount1x2 { get; set; }
 
-        public decimal DiscountNumber { get; set; }
-
         public decimal DiscountHRFixedOdds { get; set; }
 
         public decimal DiscountMyanmarOdds { get; set; }
@@ -37,9 +35,7 @@
 
         public decimal DiscountCSMax { get; set; }
 
-        public decimal Discount1x2Max { get; set; }
-
-        public decimal DiscountNumberMax { get; set; }
+        public decimal Discount1x2Max { get; set; }        
 
         public decimal DiscountHRFixedOddsMax { get; set; }
 
@@ -52,8 +48,6 @@
         public decimal PlayerDiscount1x2 { get; set; }
 
         public decimal PlayerDiscountCs { get; set; }
-
-        public decimal PlayerDiscountNumber { get; set; }
 
         public decimal PlayerDiscountHRFixedOdds { get; set; }
 
@@ -72,10 +66,7 @@
             GroupBMax = reader.HasColumn("groupb_max") ? Convert.ToDecimal(reader["groupb_max"]) : reader.ToDecimal("groupb");
             GroupCMax = reader.HasColumn("groupc_max") ? Convert.ToDecimal(reader["groupc_max"]) : reader.ToDecimal("groupc");
             GroupDMax = reader.HasColumn("groupd_max") ? Convert.ToDecimal(reader["groupd_max"]) : reader.ToDecimal("groupd");
-
-            // Field name discount161 for super edit member
-            DiscountNumberMax = reader.HasColumn("discountnumber_max") ? Convert.ToDecimal(reader["discountnumber_max"]) :
-                reader.HasColumn("discountnumber") ? Convert.ToDecimal(reader["discountnumber"]) : reader.ToDecimal("discount161");
+           
             Discount1x2Max = reader.HasColumn("discount1x2_max") ? Convert.ToDecimal(reader["discount1x2_max"]) : reader.ToDecimal("discount1x2");
             DiscountCSMax = reader.HasColumn("discountcs_max") ? Convert.ToDecimal(reader["discountcs_max"]) : reader.ToDecimal("discountcs");
 
@@ -83,10 +74,7 @@
             DiscountMyanmarOddsMax = reader.HasColumn("discountmyanmarodds_max") ? Convert.ToDecimal(reader["discountmyanmarodds_max"]) : reader.ToDecimal("discountmyanmarodds");
 
             Discount1x2 = reader.ToDecimal("discount1x2");
-            DiscountCS = reader.ToDecimal("discountcs");
-
-            // Field name discount161 for super edit member
-            DiscountNumber = reader.HasColumn("discountnumber") ? Convert.ToDecimal(reader["discountnumber"]) : reader.ToDecimal("discount161");
+            DiscountCS = reader.ToDecimal("discountcs");           
             Discount = reader.HasColumn("discount") ? Convert.ToDecimal(reader["discount"]) : 0;
 
             DiscountHRFixedOdds = reader.ToDecimal("discountHRFixedOdds");
@@ -94,11 +82,9 @@
 
             PlayerDiscount = reader.ToDecimal("playerdiscount");
             PlayerDiscount1x2 = reader.ToDecimal("playerdiscount1x2");
-            PlayerDiscountCs = reader.ToDecimal("playerdiscountcs");
-            PlayerDiscountNumber = reader.HasColumn("playerdiscountnumber") ? Convert.ToDecimal(reader["playerdiscountnumber"]) : reader.ToDecimal("playerdiscount161");
+            PlayerDiscountCs = reader.ToDecimal("playerdiscountcs");           
             PlayerDiscountHRFixedOdds = reader.ToDecimal("playerdiscountHRFixedOdds");
             PlayerDiscountMyanmarOdds = reader.HasColumn("playerdiscountmyanmarodds") ? Convert.ToDecimal(reader["playerdiscountmyanmarodds"]) : 0;
-
             IsMyanmarOdds = reader.HasColumn("ismyanmarodds") ? Convert.ToBoolean(reader["ismyanmarodds"]) : true;
         }
         
@@ -120,13 +106,13 @@
 
             parameters.Add("discount1x2", Discount1x2);
             parameters.Add("discountcs", DiscountCS);
-            parameters.Add("discountnumber", DiscountNumber);
+          
             parameters.Add("discounthrfixedodds", DiscountHRFixedOdds);
             parameters.Add("discountmyanmarodds", DiscountMyanmarOdds);
 
             parameters.Add("discount1x2_max", Discount1x2Max);
             parameters.Add("discountcs_max", DiscountCSMax);
-            parameters.Add("discountnumber_max", DiscountNumberMax);
+           
             parameters.Add("discounthrfixedodds_max", DiscountHRFixedOddsMax);
             parameters.Add("discountmyanmarodds_max", DiscountMyanmarOddsMax);
 
@@ -134,7 +120,7 @@
             parameters.Add("playerdiscount", PlayerDiscount);
             parameters.Add("playerdiscount1x2", PlayerDiscount1x2);
             parameters.Add("playerdiscountcs", PlayerDiscountCs);
-            parameters.Add("playerdiscountnumber", PlayerDiscountNumber);
+           
             parameters.Add("playerdiscounthrfixedodds", PlayerDiscountHRFixedOdds);
             parameters.Add("playerdiscountmyanmarodds", PlayerDiscountMyanmarOdds);
 

@@ -117,16 +117,6 @@ var bettingLimits2 = {
         "maxPerMatchMin": 0.0000,
         "maxPerMatchMax": 10000.0000
     }, {
-        "id": 154,
-        "name": "HR Fixed Odds",
-        "minBet": 11.0000,
-        "maxBet": 700.0000,
-        "maxPerMatch": 10000.0000,
-        "minBetMax": 11.0000,
-        "maxBetMin": 700.0000,
-        "maxPerMatchMin": 0.0000,
-        "maxPerMatchMax": 10000.0000
-    }, {
         "id": 161,
         "name": "Number Game",
         "minBet": 10.0000,
@@ -192,12 +182,6 @@ var bettingLimits = {
     }, {
         "id": 99,
         "name": "Mix Sports Parlay",
-        "minBet": 11.0000,
-        "maxBet": 700.0000,
-        "maxPerMatch": 10000.0000
-    }, {
-        "id": 154,
-        "name": "HR Fixed Odds",
         "minBet": 11.0000,
         "maxBet": 700.0000,
         "maxPerMatch": 10000.0000
@@ -1108,82 +1092,6 @@ var grid = {
                 betTypes: [{
                     id: 9,
                     name: 'Mix Parlay',
-                    pt: pt,
-                    showDetailIcon: true,
-                    representForBettypes: [
-                        {
-                            id: 1,
-                            name: "New Bet Type"
-                        },
-                        {
-                            id: 1,
-                            name: "New Bet Type"
-                        },
-                        {
-                            id: 1,
-                            name: "New Bet Type"
-                        },
-                        {
-                            id: 1,
-                            name: "New Bet Type"
-                        },
-                        {
-                            id: 1,
-                            name: "New Bet Type"
-                        },
-                        {
-                            id: 1,
-                            name: "New Bet Type"
-                        },
-                        {
-                            id: 1,
-                            name: "New Bet Type"
-                        },
-                        {
-                            id: 1,
-                            name: "New Bet Type"
-                        },
-                        {
-                            id: 1,
-                            name: "New Bet Type"
-                        },
-                        {
-                            id: 1,
-                            name: "New Bet Type"
-                        },
-                        {
-                            id: 1,
-                            name: "New Bet Type"
-                        },
-                        {
-                            id: 1,
-                            name: "New Bet Type"
-                        },
-                        {
-                            id: 1,
-                            name: "New Bet Type"
-                        },
-                        {
-                            id: 1,
-                            name: "New Bet Type"
-                        },
-                        {
-                            id: 1,
-                            name: "New Bet Type"
-                        }
-                    ]
-                }]
-            }]
-        }]
-    }, {
-        id: 154,
-        name: 'HR Fixed Odds',
-        betTypeGroupSets: [{
-            isLive: false,
-            betTypeGroups: [{
-                betTypes: [{
-                    id: 9,
-                    name: 'Money Line',
                     pt: pt,
                     showDetailIcon: true,
                     representForBettypes: [

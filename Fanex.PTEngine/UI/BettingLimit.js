@@ -25,7 +25,7 @@ Fanex.PTEngine.BettingLimit = function (source) {
         }
         Validators.animate(elementInput);
     };
-    this.Validate = function () {
+    this.Validate = function (defaultMinBetValue) {
         var c = this.items.length;
         for (var i = 0; i < c; i++) {
             var item = this.items[i];
@@ -74,6 +74,11 @@ Fanex.PTEngine.BettingLimit = function (source) {
                 // Check maxpermatch_min < maxpermatch < maxpermatch_max
                 if (typeof (item.maxPerMatchMax) != 'undefined' && item.maxPerMatchMax > 0 && maxPerMatch > item.maxPerMatchMax && maxPerMatch != 0) {
                     this.ValidateMessage(item.maxPerMatchElement, Language.MAX_PER_MATCH_LOWER_THAN_MAX_PER_MATCH_MAX_BET.Format(''.FormatNumber(item.maxPerMatchMax)), -130, 160);
+                    return false;
+                }
+                // Check defaultMinBetValue
+                if (defaultMinBetValue && (item.id === 161 || item.id === 164) && minBet < defaultMinBetValue) {
+                    this.ValidateMessage(item.minBetElement, Language.MIN_BET_LOWER_THAN_DEFAULT_MIN_BET_VALUE.Format(item.name, defaultMinBetValue));
                     return false;
                 }
             }

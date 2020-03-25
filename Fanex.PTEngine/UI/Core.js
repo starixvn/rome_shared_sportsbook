@@ -1132,6 +1132,7 @@ if (typeof (Fanex.PTEngine) == 'undefined') { // Define Fanex.PTEngine namespace
             this.Render = function (owner) {
                 var box = null;
                 var elements = []; // Child sport type elements
+                var ignoreCopySports = [161];
                 if (typeof (this.sportTypes) != 'object' || typeof (this.sportTypes.length) == 'undefined') {
                     console.log("Input data source sportTypes is empty.");
                 } else {
@@ -1228,18 +1229,21 @@ if (typeof (Fanex.PTEngine) == 'undefined') { // Define Fanex.PTEngine namespace
                             cloneFromSoccer.title = Language.COPY_ALL_OTHER_POSITION_TAKING_FROM.Format(items[0].name, items[0].betTypeGroupSets[0].betTypeGroups[0].betTypes[0].name);
                         }
                         for (var i = 0; i < count; i++) {
-                            if (cloneFromSoccer.firstChild.checked) {
-                                items[i].Inactive(Fanex.copy(copiedItemSoccer));
-                            } else {
-                                items[i].Active();
-                                cloneFromSoccer.parent.copiedItem = null;
-                            }
-                            if (i > 1) {
-                                items[i].cloneButton.className = cloneFromSoccer.firstChild.checked ? "PTSportEdit" : "PTSportCopiedInactive";
-                                items[i].cloneButton.title = cloneFromSoccer.firstChild.checked ? Language.EDIT : String.Empty;
+                            if (!ignoreCopySports.includes(items[i].id))
+                            {
                                 if (cloneFromSoccer.firstChild.checked) {
-                                    //items[i].Toggle(false);
-                                };
+                                    items[i].Inactive(Fanex.copy(copiedItemSoccer));
+                                } else {
+                                    items[i].Active();
+                                    cloneFromSoccer.parent.copiedItem = null;
+                                }
+                                if (i > 1) {
+                                    items[i].cloneButton.className = cloneFromSoccer.firstChild.checked ? "PTSportEdit" : "PTSportCopiedInactive";
+                                    items[i].cloneButton.title = cloneFromSoccer.firstChild.checked ? Language.EDIT : String.Empty;
+                                    if (cloneFromSoccer.firstChild.checked) {
+                                        //items[i].Toggle(false);
+                                    };
+                                }
                             }
                         };
                         cloneFromSoccer.parent.ShowCloneHint();
@@ -1268,21 +1272,23 @@ if (typeof (Fanex.PTEngine) == 'undefined') { // Define Fanex.PTEngine namespace
                             cloneFromBasketball.title = Language.COPY_ALL_OTHER_POSITION_TAKING_FROM.Format(items[1].name, items[0].betTypeGroupSets[0].betTypeGroups[0].betTypes[0].name);
                         }
                         for (var i = 1; i < count; i++) {
-                            if (cloneFromBasketball.firstChild.checked) {
-                                items[i].Inactive(Fanex.copy(copiedItemBasketball));
-                                if (i > 1) {
-                                    items[i].cloneButton.className = "PTSportEdit";
-                                }
-                            } else {
-                                items[i].Active();
-                                cloneFromBasketball.parent.copiedItem = null;
-                            }
-                            if (i > 1) {
-                                items[i].cloneButton.className = cloneFromBasketball.firstChild.checked ? "PTSportEdit" : "PTSportCopiedInactive";
-                                items[i].cloneButton.title = cloneFromBasketball.firstChild.checked ? Language.EDIT : String.Empty;
+                            if (!ignoreCopySports.includes(items[i].id)) {
                                 if (cloneFromBasketball.firstChild.checked) {
-                                    //items[i].Toggle(false);
-                                };
+                                    items[i].Inactive(Fanex.copy(copiedItemBasketball));
+                                    if (i > 1) {
+                                        items[i].cloneButton.className = "PTSportEdit";
+                                    }
+                                } else {
+                                    items[i].Active();
+                                    cloneFromBasketball.parent.copiedItem = null;
+                                }
+                                if (i > 1) {
+                                    items[i].cloneButton.className = cloneFromBasketball.firstChild.checked ? "PTSportEdit" : "PTSportCopiedInactive";
+                                    items[i].cloneButton.title = cloneFromBasketball.firstChild.checked ? Language.EDIT : String.Empty;
+                                    if (cloneFromBasketball.firstChild.checked) {
+                                        //items[i].Toggle(false);
+                                    };
+                                }
                             }
                         };
                         cloneFromBasketball.parent.ShowCloneHint();

@@ -1125,7 +1125,7 @@ if (typeof (Fanex.PTEngine) == 'undefined') { // Define Fanex.PTEngine namespace
                     }
                 }
                 hint = hint + '</ul></div>';
-                top = top + 40;
+                top = top + 60;
                 // Show tooltip
                 Validators.show(copiedElements[this.copiedItem.sportId], hint, 0, 10, -top - 20, top + 20, top, 30000);
             },

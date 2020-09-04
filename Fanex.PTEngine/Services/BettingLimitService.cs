@@ -1,16 +1,27 @@
 ﻿namespace Fanex.PTEngine.Services
 {
-    using System;
-    using System.Collections;
-    using System.Collections.Generic;
-    using System.Linq;
-    using System.Web;
+    using Fanex.CustomerSetting.Module.Core.Constants;
+    using Fanex.CustomerSetting.Module.Core.Services.Impl;
+    using Fanex.CustomerSetting.Module.Core.Services.Interface;
     using Fanex.Logging;
     using Fanex.PTEngine.BusinessObjects;
     using Fanex.PTEngine.DataAccess;
+    using System;
+    using System.Collections;
 
     public class BettingLimitService : IBettingLimitService
     {
+        private readonly IServiceBase serviceBase;
+
+        public BettingLimitService() : this(null)
+        {
+        }
+
+        public BettingLimitService(IServiceBase serviceBase)
+        {
+            this.serviceBase = serviceBase ?? new ServiceBase();
+        }
+
         /// <summary>
         /// Get BetSetting For Edit
         /// </summary>
@@ -31,6 +42,13 @@
         public Result UpdateBetting(IBettingLimit<BettingLimitItem> bettingLimit, IRequestContext context)
         {
             Result result = new Result();
+            var checkUmResult = serviceBase.CheckUM(context.CustId, NonDcsProduct.Sportsbook, context.LangKey);
+            if (!checkUmResult.IsSuccess)
+            {
+                result = new Result(checkUmResult.ErrorCode.ToString(), checkUmResult.ErrorMessage);
+                return result;
+            }
+
             try
             {
                 var parameters = new Hashtable();

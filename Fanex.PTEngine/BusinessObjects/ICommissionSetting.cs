@@ -6,6 +6,8 @@
     {
         int RoleId { get; set; }
 
+        bool IsMyanmarOdds { get; set; }
+
         decimal GroupA { get; set; }
 
         decimal GroupB { get; set; }
@@ -16,7 +18,9 @@
 
         decimal DiscountCS { get; set; }
 
-        decimal Discount1x2 { get; set; }         
+        decimal Discount1x2 { get; set; }
+
+        decimal DiscountMyanmarOdds { get; set; }       
 
         decimal GroupAMax { get; set; }
 
@@ -36,7 +40,11 @@
 
         decimal PlayerDiscount1x2 { get; set; }
 
-        decimal PlayerDiscountCs { get; set; }   
+        decimal DiscountMyanmarOddsMax { get; set; }
+
+        decimal PlayerDiscountCs { get; set; }
+
+        decimal PlayerDiscountMyanmarOdds { get; set; }
 
         void ReadFromDataRecord(IRequestContext context, System.Data.IDataReader reader);
 

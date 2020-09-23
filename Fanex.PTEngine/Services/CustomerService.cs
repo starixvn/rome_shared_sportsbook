@@ -7,6 +7,9 @@ namespace Fanex.PTEngine.Services
 {
     using System;
     using System.Collections;
+    using Fanex.CustomerSetting.Module.Core.Constants;
+    using Fanex.CustomerSetting.Module.Core.Services.Impl;
+    using Fanex.CustomerSetting.Module.Core.Services.Interface;
     using Fanex.Logging;
     using Fanex.PTEngine.BusinessObjects;
     using Fanex.PTEngine.DataAccess;
@@ -16,6 +19,17 @@ namespace Fanex.PTEngine.Services
     /// </summary>
     public class CustomerService : ICustomerService
     {
+        private readonly IServiceBase serviceBase;
+
+        public CustomerService() : this(null)
+        {
+        }
+
+        public CustomerService(IServiceBase serviceBase)
+        {
+            this.serviceBase = serviceBase ?? new ServiceBase();
+        }
+
         #region ICustomerService Members
 
         /// <summary>
@@ -111,6 +125,13 @@ namespace Fanex.PTEngine.Services
         public Result CompanyUpdateSuper(ICustomer super, IRequestContext context)
         {
             Result result = new Result();
+            var checkUmResult = serviceBase.CheckUM(super.CustId, NonDcsProduct.Sportsbook, context.LangKey);
+            if (!checkUmResult.IsSuccess)
+            {
+                result = new Result(checkUmResult.ErrorCode.ToString(), checkUmResult.ErrorMessage);
+                return result;
+            }
+
             try
             {
                 Hashtable parameters = super.MapToSpParameters(context);
@@ -228,6 +249,13 @@ namespace Fanex.PTEngine.Services
         public Result SuperUpdateMaster(ICustomer master, IRequestContext context, bool isUpdateAllMembers, decimal newPositionTakingValue)
         {
             Result result = new Result();
+            var checkUmResult = serviceBase.CheckUM(master.CustId, NonDcsProduct.Sportsbook, context.LangKey);
+            if (!checkUmResult.IsSuccess)
+            {
+                result = new Result(checkUmResult.ErrorCode.ToString(), checkUmResult.ErrorMessage);
+                return result;
+            }
+
             try
             {
                 Hashtable parameters = master.MapToSpParameters(context);
@@ -260,6 +288,13 @@ namespace Fanex.PTEngine.Services
         public Result SuperUpdateMultipleMasters(ICustomer master, IRequestContext context, bool isUpdateAllMembers, decimal newPositionTakingValue, Hashtable updateParameters)
         {
             Result result = new Result();
+            var checkUmResult = serviceBase.CheckUM(master.CustId, NonDcsProduct.Sportsbook, context.LangKey);
+            if (!checkUmResult.IsSuccess)
+            {
+                result = new Result(checkUmResult.ErrorCode.ToString(), checkUmResult.ErrorMessage);
+                return result;
+            }
+
             try
             {
                 Hashtable parameters = master.MapToSpParameters(context);
@@ -298,6 +333,13 @@ namespace Fanex.PTEngine.Services
         public Result SuperUpdateMember(ICustomer member, IRequestContext context)
         {
             Result result = new Result();
+            var checkUmResult = serviceBase.CheckUM(member.CustId, NonDcsProduct.Sportsbook, context.LangKey);
+            if (!checkUmResult.IsSuccess)
+            {
+                result = new Result(checkUmResult.ErrorCode.ToString(), checkUmResult.ErrorMessage);
+                return result;
+            }
+
             try
             {
                 Hashtable parameters = member.MapToSpParameters(context);
@@ -329,6 +371,13 @@ namespace Fanex.PTEngine.Services
         public Result SuperUpdateMultipleMembers(ICustomer member, IRequestContext context, Hashtable updateParameters)
         {
             Result result = new Result();
+            var checkUmResult = serviceBase.CheckUM(member.CustId, NonDcsProduct.Sportsbook, context.LangKey);
+            if (!checkUmResult.IsSuccess)
+            {
+                result = new Result(checkUmResult.ErrorCode.ToString(), checkUmResult.ErrorMessage);
+                return result;
+            }
+
             try
             {
                 Hashtable parameters = member.MapToSpParameters(context);
@@ -363,6 +412,13 @@ namespace Fanex.PTEngine.Services
         public Result SuperUpdateMinPTMaster(ICustomer master, IRequestContext context)
         {
             Result result = new Result();
+            var checkUmResult = serviceBase.CheckUM(master.CustId, NonDcsProduct.Sportsbook, context.LangKey);
+            if (!checkUmResult.IsSuccess)
+            {
+                result = new Result(checkUmResult.ErrorCode.ToString(), checkUmResult.ErrorMessage);
+                return result;
+            }
+
             try
             {
                 Hashtable parameters = master.MapToSpParameters(context);
@@ -396,6 +452,13 @@ namespace Fanex.PTEngine.Services
         public Result MasterUpdateMember(ICustomer member, IRequestContext context)
         {
             Result result = new Result();
+            var checkUmResult = serviceBase.CheckUM(member.CustId, NonDcsProduct.Sportsbook, context.LangKey);
+            if (!checkUmResult.IsSuccess)
+            {
+                result = new Result(checkUmResult.ErrorCode.ToString(), checkUmResult.ErrorMessage);
+                return result;
+            }
+
             try
             {
                 Hashtable parameters = member.MapToSpParameters(context);
@@ -428,6 +491,13 @@ namespace Fanex.PTEngine.Services
         public Result MasterUpdateMultipleMembers(ICustomer member, IRequestContext context, Hashtable updateParameters)
         {
             Result result = new Result();
+            var checkUmResult = serviceBase.CheckUM(member.CustId, NonDcsProduct.Sportsbook, context.LangKey);
+            if (!checkUmResult.IsSuccess)
+            {
+                result = new Result(checkUmResult.ErrorCode.ToString(), checkUmResult.ErrorMessage);
+                return result;
+            }
+
             try
             {
                 Hashtable parameters = member.MapToSpParameters(context);
@@ -539,6 +609,13 @@ namespace Fanex.PTEngine.Services
         public Result MasterUpdateAgent(ICustomer agent, IRequestContext context, bool isUpdateAllMembers, decimal newPositionTakingValue)
         {
             Result result = new Result();
+            var checkUmResult = serviceBase.CheckUM(agent.CustId, NonDcsProduct.Sportsbook, context.LangKey);
+            if (!checkUmResult.IsSuccess)
+            {
+                result = new Result(checkUmResult.ErrorCode.ToString(), checkUmResult.ErrorMessage);
+                return result;
+            }
+
             try
             {
                 Hashtable parameters = agent.MapToSpParameters(context);
@@ -571,6 +648,13 @@ namespace Fanex.PTEngine.Services
         public Result MasterUpdateMultipleAgents(ICustomer agent, IRequestContext context, bool isUpdateAllMembers, decimal newPositionTakingValue, Hashtable updateParameters)
         {
             Result result = new Result();
+            var checkUmResult = serviceBase.CheckUM(agent.CustId, NonDcsProduct.Sportsbook, context.LangKey);
+            if (!checkUmResult.IsSuccess)
+            {
+                result = new Result(checkUmResult.ErrorCode.ToString(), checkUmResult.ErrorMessage);
+                return result;
+            }
+
             try
             {
                 Hashtable parameters = agent.MapToSpParameters(context);
@@ -610,6 +694,13 @@ namespace Fanex.PTEngine.Services
         public Result MasterUpdateMinPTAgent(ICustomer agent, IRequestContext context)
         {
             Result result = new Result();
+            var checkUmResult = serviceBase.CheckUM(agent.CustId, NonDcsProduct.Sportsbook, context.LangKey);
+            if (!checkUmResult.IsSuccess)
+            {
+                result = new Result(checkUmResult.ErrorCode.ToString(), checkUmResult.ErrorMessage);
+                return result;
+            }
+
             try
             {
                 Hashtable parameters = agent.MapToSpParameters(context);
@@ -697,6 +788,13 @@ namespace Fanex.PTEngine.Services
         public Result AgentUpdateMember(ICustomer member, IRequestContext context)
         {
             Result result = new Result();
+            var checkUmResult = serviceBase.CheckUM(member.CustId, NonDcsProduct.Sportsbook, context.LangKey);
+            if (!checkUmResult.IsSuccess)
+            {
+                result = new Result(checkUmResult.ErrorCode.ToString(), checkUmResult.ErrorMessage);
+                return result;
+            }
+
             try
             {
                 Hashtable parameters = member.MapToSpParameters(context);
@@ -727,6 +825,13 @@ namespace Fanex.PTEngine.Services
         public Result AgentUpdateMultipleMembers(ICustomer member, IRequestContext context, Hashtable updateParameters)
         {
             Result result = new Result();
+            var checkUmResult = serviceBase.CheckUM(member.CustId, NonDcsProduct.Sportsbook, context.LangKey);
+            if (!checkUmResult.IsSuccess)
+            {
+                result = new Result(checkUmResult.ErrorCode.ToString(), checkUmResult.ErrorMessage);
+                return result;
+            }
+
             try
             {
                 Hashtable parameters = member.MapToSpParameters(context);
@@ -773,6 +878,13 @@ namespace Fanex.PTEngine.Services
         public Result CompanyUpdateMinMaxPTMaster(ICustomer master, IRequestContext context)
         {
             Result result = new Result();
+            var checkUmResult = serviceBase.CheckUM(master.CustId, NonDcsProduct.Sportsbook, context.LangKey);
+            if (!checkUmResult.IsSuccess)
+            {
+                result = new Result(checkUmResult.ErrorCode.ToString(), checkUmResult.ErrorMessage);
+                return result;
+            }
+
             try
             {
                 Hashtable parameters = master.MapToSpParameters(context);
@@ -806,6 +918,13 @@ namespace Fanex.PTEngine.Services
         public Result CompanyUpdateMinMaxPTAgent(ICustomer agent, IRequestContext context)
         {
             Result result = new Result();
+            var checkUmResult = serviceBase.CheckUM(agent.CustId, NonDcsProduct.Sportsbook, context.LangKey);
+            if (!checkUmResult.IsSuccess)
+            {
+                result = new Result(checkUmResult.ErrorCode.ToString(), checkUmResult.ErrorMessage);
+                return result;
+            }
+
             try
             {
                 Hashtable parameters = agent.MapToSpParameters(context);
@@ -850,6 +969,13 @@ namespace Fanex.PTEngine.Services
         public Result CompanyUpdateMinPTSuper(ICustomer super, IRequestContext context)
         {
             Result result = new Result();
+            var checkUmResult = serviceBase.CheckUM(super.CustId, NonDcsProduct.Sportsbook, context.LangKey);
+            if (!checkUmResult.IsSuccess)
+            {
+                result = new Result(checkUmResult.ErrorCode.ToString(), checkUmResult.ErrorMessage);
+                return result;
+            }
+
             try
             {
                 Hashtable parameters = super.MapToSpParameters(context);

@@ -1132,7 +1132,7 @@ if (typeof (Fanex.PTEngine) == 'undefined') { // Define Fanex.PTEngine namespace
             this.Render = function (owner) {
                 var box = null;
                 var elements = []; // Child sport type elements
-                var ignoreCopySports = [161];
+                var ignoreCopySports = ["161"];
                 if (typeof (this.sportTypes) != 'object' || typeof (this.sportTypes.length) == 'undefined') {
                     console.log("Input data source sportTypes is empty.");
                 } else {
@@ -1229,7 +1229,7 @@ if (typeof (Fanex.PTEngine) == 'undefined') { // Define Fanex.PTEngine namespace
                             cloneFromSoccer.title = Language.COPY_ALL_OTHER_POSITION_TAKING_FROM.Format(items[0].name, items[0].betTypeGroupSets[0].betTypeGroups[0].betTypes[0].name);
                         }
                         for (var i = 0; i < count; i++) {
-                            if (!ignoreCopySports.includes(items[i].id))
+                            if (ignoreCopySports.indexOf(items[i].id) < 0)
                             {
                                 if (cloneFromSoccer.firstChild.checked) {
                                     items[i].Inactive(Fanex.copy(copiedItemSoccer));
@@ -1272,7 +1272,7 @@ if (typeof (Fanex.PTEngine) == 'undefined') { // Define Fanex.PTEngine namespace
                             cloneFromBasketball.title = Language.COPY_ALL_OTHER_POSITION_TAKING_FROM.Format(items[1].name, items[0].betTypeGroupSets[0].betTypeGroups[0].betTypes[0].name);
                         }
                         for (var i = 1; i < count; i++) {
-                            if (!ignoreCopySports.includes(items[i].id)) {
+                            if (ignoreCopySports.indexOf(items[i].id) < 0) {
                                 if (cloneFromBasketball.firstChild.checked) {
                                     items[i].Inactive(Fanex.copy(copiedItemBasketball));
                                     if (i > 1) {

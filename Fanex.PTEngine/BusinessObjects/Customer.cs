@@ -279,6 +279,7 @@
                 ICommissionSetting commissionMaster = new CommissionSetting();
                 commissionMaster.PlayerDiscount = reader.ToDecimal("adiscount");
                 commissionMaster.PlayerDiscount1x2 = reader.ToDecimal("adiscount1x2");
+                commissionMaster.PlayerDiscountMyanmarOdds = reader.ToDecimal("adiscountmyanmarodds");
                 commissionMaster.PlayerDiscountCs = reader.ToDecimal("adiscountcs"); 
                 commissionSettings.Add(commissionMaster);
             }
@@ -318,6 +319,7 @@
                 GroupC = (decimal)0.0075,
                 GroupD = (decimal)0.01,
                 Discount1x2 = (decimal)0.0025,
+                DiscountMyanmarOdds = (decimal)0.01,
                 DiscountCS = (decimal)0.01
             };
         }

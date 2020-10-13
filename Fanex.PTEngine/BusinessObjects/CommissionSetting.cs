@@ -5,7 +5,8 @@
 
     public class CommissionSetting : ICommissionSetting
     {
-      
+        public bool IsMyanmarOdds { get; set; }
+
         public int RoleId { get; set; }
 
         public decimal GroupA { get; set; }
@@ -20,6 +21,8 @@
 
         public decimal Discount1x2 { get; set; }
 
+        public decimal DiscountMyanmarOdds { get; set; }
+
         public decimal GroupAMax { get; set; }
 
         public decimal GroupBMax { get; set; }
@@ -30,7 +33,9 @@
 
         public decimal DiscountCSMax { get; set; }
 
-        public decimal Discount1x2Max { get; set; }         
+        public decimal Discount1x2Max { get; set; }
+
+        public decimal DiscountMyanmarOddsMax { get; set; }
 
         public decimal Discount { get; set; }
 
@@ -39,6 +44,8 @@
         public decimal PlayerDiscount1x2 { get; set; }
 
         public decimal PlayerDiscountCs { get; set; }
+
+        public decimal PlayerDiscountMyanmarOdds { get; set; }
 
         public void ReadFromDataRecord(IRequestContext context, System.Data.IDataReader reader)
         {
@@ -57,13 +64,19 @@
             Discount1x2Max = reader.HasColumn("discount1x2_max") ? Convert.ToDecimal(reader["discount1x2_max"]) : reader.ToDecimal("discount1x2");
             DiscountCSMax = reader.HasColumn("discountcs_max") ? Convert.ToDecimal(reader["discountcs_max"]) : reader.ToDecimal("discountcs");
 
+            DiscountMyanmarOdds = reader.HasColumn("discountmyanmarodds") ? Convert.ToDecimal(reader["discountmyanmarodds"]) : 0;
+            DiscountMyanmarOddsMax = reader.HasColumn("discountmyanmarodds_max") ? Convert.ToDecimal(reader["discountmyanmarodds_max"]) : reader.ToDecimal("discountmyanmarodds");
+
             Discount1x2 = reader.ToDecimal("discount1x2");
             DiscountCS = reader.ToDecimal("discountcs");           
             Discount = reader.HasColumn("discount") ? Convert.ToDecimal(reader["discount"]) : 0;
 
             PlayerDiscount = reader.ToDecimal("playerdiscount");
             PlayerDiscount1x2 = reader.ToDecimal("playerdiscount1x2");
-            PlayerDiscountCs = reader.ToDecimal("playerdiscountcs");           
+            PlayerDiscountCs = reader.ToDecimal("playerdiscountcs");
+
+            PlayerDiscountMyanmarOdds = reader.HasColumn("playerdiscountmyanmarodds") ? Convert.ToDecimal(reader["playerdiscountmyanmarodds"]) : 0;
+            IsMyanmarOdds = reader.HasColumn("ismyanmarodds") ? Convert.ToBoolean(reader["ismyanmarodds"]) : true;
         }
         
         /// <summary>
@@ -83,16 +96,19 @@
             parameters.Add("groupd_max", GroupDMax);
 
             parameters.Add("discount1x2", Discount1x2);
+            parameters.Add("discountmyanmarodds", DiscountMyanmarOdds);
             parameters.Add("discountcs", DiscountCS);         
 
             parameters.Add("discount1x2_max", Discount1x2Max);
             parameters.Add("discountcs_max", DiscountCSMax);
+            parameters.Add("discountmyanmarodds_max", DiscountMyanmarOddsMax);
 
             // Add this for add new member
             parameters.Add("playerdiscount", PlayerDiscount);
             parameters.Add("playerdiscount1x2", PlayerDiscount1x2);
-            parameters.Add("playerdiscountcs", PlayerDiscountCs);         
-          
+            parameters.Add("playerdiscountcs", PlayerDiscountCs);
+            parameters.Add("playerdiscountmyanmarodds", PlayerDiscountMyanmarOdds);
+
         }
     }
 }

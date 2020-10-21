@@ -180,6 +180,7 @@
             parameters.Add("ugroup", Group);
             parameters.Add("creator", context.AdminId);
             parameters.Add("systemid", context.SystemId);
+            parameters.Add("settingstatus", context.SettingStatus);
         }
 
         #region ReadFromDataRecord

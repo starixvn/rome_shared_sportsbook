@@ -170,7 +170,7 @@ if (typeof (Fanex.PTEngine) == 'undefined') { // Define Fanex.PTEngine namespace
     Fanex.PTEngine = {
         PT_STEP10: 1,
         PT_STEP100: 10,
-        PT_STEP: 0.01,
+        PT_STEP: 0.005,
         COMMISSION_STEP: 0.0005,
 
         DisableChildren: function (element, cssApplied) { // Check dublicated disable

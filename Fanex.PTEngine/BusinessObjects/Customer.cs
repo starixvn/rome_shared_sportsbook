@@ -233,7 +233,7 @@
                 Group = reader.ToString("ugroup");
             }
 
-            SiteName = context.SiteName;
+            SiteName = reader.HasColumn("site") ? reader.ToString("site") : context.SiteName;
             Language = context.LangKey;
 
             // CommissionSetting
@@ -280,7 +280,7 @@
                 commissionMaster.PlayerDiscount = reader.ToDecimal("adiscount");
                 commissionMaster.PlayerDiscount1x2 = reader.ToDecimal("adiscount1x2");
                 commissionMaster.PlayerDiscountMyanmarOdds = reader.ToDecimal("adiscountmyanmarodds");
-                commissionMaster.PlayerDiscountCs = reader.ToDecimal("adiscountcs"); 
+                commissionMaster.PlayerDiscountCs = reader.ToDecimal("adiscountcs");
                 commissionSettings.Add(commissionMaster);
             }
 

@@ -33,5 +33,7 @@
         string LangKey { get; set; }
 
         byte SystemId { get; set; }
+
+        byte SettingStatus { get; set; }
     }
 }

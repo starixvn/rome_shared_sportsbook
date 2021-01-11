@@ -79,6 +79,8 @@
 
         public byte SystemId { get; set; }
 
+        public byte SettingStatus { get; set; }
+
         public RequestContext()
         {
         }
@@ -92,7 +94,7 @@
         /// <param name="roleId">Current role id of customer that is performing</param>
         /// <param name="targetRoleId">Role id of edited customer</param>
         /// <param name="formId">Form type of edit: Edit Min/Max PT, Edit MinPT or Edit PT</param>
-        public RequestContext(int custId, int userId, int subAccId, int roleId, int targetRoleId, FormType formId, byte systemId)
+        public RequestContext(int custId, int userId, int subAccId, int roleId, int targetRoleId, FormType formId, byte systemId, byte settingStatus)
         {
             CustId = custId;
             AdminId = userId;
@@ -101,6 +103,7 @@
             TargetRoleId = targetRoleId;
             FormId = formId;
             SystemId = systemId;
+            SettingStatus = settingStatus;
         }
     }
 }

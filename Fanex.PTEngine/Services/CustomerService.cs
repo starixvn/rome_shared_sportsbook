@@ -5,14 +5,14 @@
 // -----------------------------------------------------------------------
 namespace Fanex.PTEngine.Services
 {
-    using System;
-    using System.Collections;
     using Fanex.CustomerSetting.Module.Core.Constants;
     using Fanex.CustomerSetting.Module.Core.Services.Impl;
     using Fanex.CustomerSetting.Module.Core.Services.Interface;
     using Fanex.Logging;
     using Fanex.PTEngine.BusinessObjects;
     using Fanex.PTEngine.DataAccess;
+    using System;
+    using System.Collections;
 
     /// <summary>
     /// Do action on Customer Setting
@@ -259,6 +259,11 @@ namespace Fanex.PTEngine.Services
             try
             {
                 Hashtable parameters = master.MapToSpParameters(context);
+                if (parameters.ContainsKey("closed"))
+                {
+                    parameters.Remove("closed");
+                }
+
                 parameters.Add("updateallmembers", isUpdateAllMembers);
                 parameters.Add("newspositiontaking", newPositionTakingValue);
                 ICustomerDataAccess customerDataAccess = new CustomerDataAccess();
@@ -303,7 +308,6 @@ namespace Fanex.PTEngine.Services
                 parameters.Add("newspositiontaking", newPositionTakingValue);
 
                 parameters.Add("updatemultiple", 1);
-                parameters.Add("updateclosed", Convert.ToInt16(updateParameters[0]));
                 parameters.Add("updatecommission", Convert.ToInt16(updateParameters[1]));
 
                 ICustomerDataAccess customerDataAccess = new CustomerDataAccess();
@@ -556,7 +560,7 @@ namespace Fanex.PTEngine.Services
             ICustomerDataAccess customerDataAccess = new CustomerDataAccess();
             return customerDataAccess.Acc_CustomerSelMEditCustomer(context);
         }
-        
+
         /// <summary>
         /// Get Customer For MasterEditMember
         /// </summary>
@@ -619,6 +623,11 @@ namespace Fanex.PTEngine.Services
             try
             {
                 Hashtable parameters = agent.MapToSpParameters(context);
+                if (parameters.ContainsKey("closed"))
+                {
+                    parameters.Remove("closed");
+                }
+
                 parameters.Add("updateallmembers", isUpdateAllMembers);
                 parameters.Add("newmpositiontaking", newPositionTakingValue);
                 ICustomerDataAccess customerDataAccess = new CustomerDataAccess();
@@ -664,7 +673,6 @@ namespace Fanex.PTEngine.Services
                 parameters.Add("newmpositiontaking", newPositionTakingValue);
 
                 parameters.Add("updatemultiple", 1);
-                parameters.Add("updateclosed", Convert.ToInt16(updateParameters[0]));
                 parameters.Add("updatecommission", Convert.ToInt16(updateParameters[1]));
 
                 ICustomerDataAccess customerDataAccess = new CustomerDataAccess();
@@ -798,6 +806,11 @@ namespace Fanex.PTEngine.Services
             try
             {
                 Hashtable parameters = member.MapToSpParameters(context);
+                if (parameters.ContainsKey("closed"))
+                {
+                    parameters.Remove("closed");
+                }
+
                 ICustomerDataAccess customerDataAccess = new CustomerDataAccess();
                 result = customerDataAccess.Acc_CustomerUpdMember_All(parameters);
             }
@@ -837,7 +850,6 @@ namespace Fanex.PTEngine.Services
                 Hashtable parameters = member.MapToSpParameters(context);
                 member.MapToSpUpdateMultipleParameters(ref parameters, updateParameters, true);
                 parameters.Add("updatemultiple", 1);
-                parameters.Add("updateclosed", Convert.ToInt16(updateParameters[0]));
                 parameters.Add("updatecommission", Convert.ToInt16(updateParameters[1]));
 
                 ICustomerDataAccess customerDataAccess = new CustomerDataAccess();
@@ -999,6 +1011,7 @@ namespace Fanex.PTEngine.Services
 
             return result;
         }
-        #endregion ICustomerService Members   
+
+        #endregion ICustomerService Members
     }
 }

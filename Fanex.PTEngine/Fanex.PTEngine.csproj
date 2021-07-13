@@ -153,6 +153,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BusinessObjects\IBettingLimitItem.cs" />
+    <Compile Include="Extension\HashtableExtension.cs" />
     <Compile Include="Extension\HttpContextExtension.cs" />
     <Compile Include="Services\BettingLimitService.cs" />
     <Compile Include="Services\CustomerService.cs" />

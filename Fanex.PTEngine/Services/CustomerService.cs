@@ -309,6 +309,11 @@ namespace Fanex.PTEngine.Services
             {
                 Hashtable parameters = master.MapToSpParameters(context);
                 master.MapToSpUpdateMultipleParameters(ref parameters, updateParameters, true);
+                if (parameters.ContainsKey("closed"))
+                {
+                    parameters.Remove("closed");
+                }
+
                 parameters.Add("updateallmembers", isUpdateAllMembers);
                 parameters.Add("newspositiontaking", newPositionTakingValue);
 
@@ -702,6 +707,10 @@ namespace Fanex.PTEngine.Services
             {
                 Hashtable parameters = agent.MapToSpParameters(context);
                 agent.MapToSpUpdateMultipleParameters(ref parameters, updateParameters, true);
+                if (parameters.ContainsKey("closed"))
+                {
+                    parameters.Remove("closed");
+                }
 
                 parameters.Add("updateallmembers", isUpdateAllMembers);
                 parameters.Add("newmpositiontaking", newPositionTakingValue);
@@ -883,6 +892,11 @@ namespace Fanex.PTEngine.Services
             {
                 Hashtable parameters = member.MapToSpParameters(context);
                 member.MapToSpUpdateMultipleParameters(ref parameters, updateParameters, true);
+                if (parameters.ContainsKey("closed"))
+                {
+                    parameters.Remove("closed");
+                }
+
                 parameters.Add("updatemultiple", 1);
                 parameters.Add("updatecommission", Convert.ToInt16(updateParameters[1]));
 

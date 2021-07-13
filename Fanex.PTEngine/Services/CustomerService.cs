@@ -135,6 +135,11 @@ namespace Fanex.PTEngine.Services
             try
             {
                 Hashtable parameters = super.MapToSpParameters(context);
+                if (parameters.ContainsKey("closed"))
+                {
+                    parameters.Remove("closed");
+                }
+
                 ICustomerDataAccess customerDataAccess = new CustomerDataAccess();
                 result = customerDataAccess.Acc_CompanyUpdateSuper(parameters);
             }
@@ -347,7 +352,15 @@ namespace Fanex.PTEngine.Services
             try
             {
                 Hashtable parameters = member.MapToSpParameters(context);
-                parameters.Add("updateclosed", 1);
+                if (parameters.ContainsKey("closed"))
+                {
+                    parameters.Remove("closed");
+                }
+                if (parameters.ContainsKey("disCasino"))
+                {
+                    parameters.Remove("disCasino");
+                }
+
                 ICustomerDataAccess customerDataAccess = new CustomerDataAccess();
                 result = customerDataAccess.Acc_CustomerUpdMember_Super(parameters);
             }
@@ -387,7 +400,14 @@ namespace Fanex.PTEngine.Services
                 Hashtable parameters = member.MapToSpParameters(context);
                 member.MapToSpUpdateMultipleParameters(ref parameters, updateParameters, false);
                 parameters.Add("updatemultiple", 1);
-                parameters.Add("updateclosed", Convert.ToInt16(updateParameters[0]));
+                if (parameters.ContainsKey("closed"))
+                {
+                    parameters.Remove("closed");
+                }
+                if (parameters.ContainsKey("disCasino"))
+                {
+                    parameters.Remove("disCasino");
+                }
 
                 ICustomerDataAccess customerDataAccess = new CustomerDataAccess();
                 result = customerDataAccess.Acc_CustomerUpdMember_Super(parameters);
@@ -466,7 +486,14 @@ namespace Fanex.PTEngine.Services
             try
             {
                 Hashtable parameters = member.MapToSpParameters(context);
-                parameters.Add("updateclosed", 1);
+                if (parameters.ContainsKey("closed"))
+                {
+                    parameters.Remove("closed");
+                }
+                if (parameters.ContainsKey("disCasino"))
+                {
+                    parameters.Remove("disCasino");
+                }
 
                 ICustomerDataAccess customerDataAccess = new CustomerDataAccess();
                 result = customerDataAccess.Acc_CustomerUpdMember_Master(parameters);
@@ -507,7 +534,14 @@ namespace Fanex.PTEngine.Services
                 Hashtable parameters = member.MapToSpParameters(context);
                 member.MapToSpUpdateMultipleParameters(ref parameters, updateParameters, false);
                 parameters.Add("updatemultiple", 1);
-                parameters.Add("updateclosed", Convert.ToInt16(updateParameters[0]));
+                if (parameters.ContainsKey("closed"))
+                {
+                    parameters.Remove("closed");
+                }
+                if (parameters.ContainsKey("disCasino"))
+                {
+                    parameters.Remove("disCasino");
+                }
 
                 ICustomerDataAccess customerDataAccess = new CustomerDataAccess();
                 result = customerDataAccess.Acc_CustomerUpdMember_Master(parameters);

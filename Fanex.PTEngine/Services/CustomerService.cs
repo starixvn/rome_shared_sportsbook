@@ -66,6 +66,8 @@ namespace Fanex.PTEngine.Services
                     bettingLimitItem.MinBet = 0;
                     bettingLimitItem.MaxBet = 0;
                     bettingLimitItem.MaxPerMatch = 0;
+                    bettingLimitItem.MaxPayoutPerMatch = 0;
+
                     if (bettingLimitItem.Id == Constant.NUMBER_GAME_SPORT_TYPE_ID)
                     {
                         bettingLimitItem.MaxPerBall = 0;

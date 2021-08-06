@@ -26,6 +26,8 @@
 
         public decimal? MaxPerMatch { get; set; }
 
+        public decimal? MaxPayoutPerMatch { get; set; }
+
         public decimal? MaxPerBall { get; set; }
 
         public decimal? MinBetMax { get; set; }
@@ -35,6 +37,8 @@
         public decimal? MaxPerMatchMin { get; set; }
 
         public decimal? MaxPerMatchMax { get; set; }
+
+        public decimal? MaxPayoutPerMatchMax { get; set; }
 
         public decimal? MaxPerBallMax { get; set; }
 
@@ -124,6 +128,7 @@
                 MinBet = MinBetMax;
                 MaxBet = MaxBetMin;
                 MaxPerMatch = MaxPerMatchMax;
+                MaxPayoutPerMatch = MaxPayoutPerMatchMax;
                 MaxPerBall = MaxPerBallMax;
             }
         }

@@ -131,10 +131,26 @@ Fanex.PTEngine.BettingLimit = function (source) {
                     this.ValidateMessage(item.maxPerBallElement, Language.INCORRECT_MAX_PER_BALL);
                     return false;
                 }
+
+                var maxBet = parseFloat(item.maxBetElement.value, true);
+                var maxPerMatch = parseFloat(item.maxPerMatchElement.value, true);
                 var maxPerBall = parseFloat(item.maxPerBallElement.value, true);
                 // Check maxperball_min < maxperball < maxperball_max
                 if (typeof (item.maxPerBallMax) != 'undefined' && item.maxPerBallMax > 0 && maxPerBall > item.maxPerBallMax && maxPerBall != 0) {
                     this.ValidateMessage(item.maxPerBallElement, Language.MAX_PER_BALL_LOWER_THAN_MAX_PER_BALL_MAX_BET.Format(''.FormatNumber(item.maxPerBallMax)), -180, 200);
+                    return false;
+                }
+
+                if (maxBet > maxPerBall && maxPerBall > 0) {
+                    this.ValidateMessage(item.maxBetElement, Language.MAX_BET_LOWER_THAN_MAX_PER_BALL_BET.Format(item.name));
+                    return false;
+                }
+
+                if (maxPerBall > maxPerMatch && maxPerBall > 0) {
+                    this.ValidateMessage(
+                        item.maxPerBallElement,
+                        Language.MAX_PER_BALL_LOWER_THAN_MAX_PER_MATCH_BET.Format(item.name),
+                        -285, 315);
                     return false;
                 }
             }

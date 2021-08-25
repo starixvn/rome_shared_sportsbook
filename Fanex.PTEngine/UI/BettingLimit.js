@@ -107,16 +107,14 @@ Fanex.PTEngine.BettingLimit = function (source) {
                     && maxPayoutPerMatch != 0) {
                     this.ValidateMessage(
                         item.maxPayoutPerMatchElement,
-                        Language.MAX_PAYOUT_PER_MATCH_LOWER_THAN_MAX_PAYOUT_PER_MATCH_MAX_BET.Format(''.FormatNumber(item.maxPayoutPerMatchMax)),
-                        -130, 160);
+                        Language.MAX_PAYOUT_PER_MATCH_LOWER_THAN_MAX_PAYOUT_PER_MATCH_MAX_BET.Format(''.FormatNumber(item.maxPayoutPerMatchMax)));
                     return false;
                 }
 
                 if (hasMaxPayoutPerMatchElement && maxPerMatch > maxPayoutPerMatch) {
                     this.ValidateMessage(
                         item.maxPerMatchElement,
-                        Language.MAX_PER_MATCH_LOWER_THAN_MAX_PAYOUT_PER_MATCH_BET.Format(item.name),
-                        -170, 200);
+                        Language.MAX_PER_MATCH_LOWER_THAN_MAX_PAYOUT_PER_MATCH_BET.Format(item.name));
                     return false;
                 }
 
@@ -149,8 +147,7 @@ Fanex.PTEngine.BettingLimit = function (source) {
                 if (maxPerBall > maxPerMatch && maxPerBall > 0) {
                     this.ValidateMessage(
                         item.maxPerBallElement,
-                        Language.MAX_PER_BALL_LOWER_THAN_MAX_PER_MATCH_BET.Format(item.name),
-                        -285, 315);
+                        Language.MAX_PER_BALL_LOWER_THAN_MAX_PER_MATCH_BET.Format(item.name));
                     return false;
                 }
             }

@@ -42,17 +42,17 @@
     INCORRECT_MAX_PER_MATCH: "Incorrect Max Per Match",
     INCORRECT_MAX_PAYOUT_PER_MATCH: "Incorrect Max Payout Per Match",
     INCORRECT_MAX_PER_BALL: "Incorrect Max Per Ball",
-    MIN_BET_LOWER_THAN_MIN_MAX_BET: "{0} - The Min Bet should be less than or equal to Max Bet",
-    MIN_BET_LOWER_THAN_MIN_MAX_PER_MATCH_BET: "{0} - The Min Bet should be less than or equal to Max Per Match",
-    MAX_BET_LOWER_THAN_MIN_MAX_PER_MATCH_BET: "{0} - The Max Bet should be less than or equal to Max Per Match",
-    MAX_BET_LOWER_THAN_MAX_PER_BALL_BET: "{0} - The Max Bet should be less than or equal to Max Per Ball",
-    MAX_PER_BALL_LOWER_THAN_MAX_PER_MATCH_BET: "{0} - The Max Per Ball should be less than or equal to Max Per Match",
+    MIN_BET_LOWER_THAN_MIN_MAX_BET: "{0} - Min Bet must be less than or equal to Max Bet",
+    MIN_BET_LOWER_THAN_MIN_MAX_PER_MATCH_BET: "{0} - Min Bet must be less than or equal to Max Per Match",
+    MAX_BET_LOWER_THAN_MIN_MAX_PER_MATCH_BET: "{0} - Max Bet must be less than or equal to Max Per Match",
+    MAX_BET_LOWER_THAN_MAX_PER_BALL_BET: "{0} - Max Bet must be less than or equal to Max Per Ball",
+    MAX_PER_BALL_LOWER_THAN_MAX_PER_MATCH_BET: "{0} - Max Per Ball must be less than or equal to Max Per Match",
 
     MIN_BET_GREATER_THAN_MIN_MIN_BET: "Min Bet must be greater than or equal to {0}",
     MAX_BET_LOWER_THAN_MAX_MAX_BET: "Max Bet must be less than or equal to {0}",
     MAX_PER_MATCH_LOWER_THAN_MAX_PER_MATCH_MAX_BET: "Max Per Match must be less than or equal to {0}",
     MAX_PAYOUT_PER_MATCH_LOWER_THAN_MAX_PAYOUT_PER_MATCH_MAX_BET: "Max Payout Per Match must be less than or equal to {0}",
-    MAX_PER_MATCH_LOWER_THAN_MAX_PAYOUT_PER_MATCH_BET: "{0} - Max Per Match should be less than or equal to Max Payout Per Match",
+    MAX_PER_MATCH_LOWER_THAN_MAX_PAYOUT_PER_MATCH_BET: "{0} - Max Per Match must be less than or equal to Max Payout Per Match",
     MAX_PER_BALL_LOWER_THAN_MAX_PER_BALL_MAX_BET: "Max Per Ball must be less than or equal to {0}",
 
     ALERT_CREDIT: "Incorrect Agent Maximum Credit",
@@ -84,5 +84,5 @@
 
     OTHERS_INCLUDE_THESE_BETTYPES: '"Others" include these bettypes:',
 
-    MIN_BET_LOWER_THAN_DEFAULT_MIN_BET_VALUE: '{0} - The Min Bet should be greater than or equal to {1}'
+    MIN_BET_LOWER_THAN_DEFAULT_MIN_BET_VALUE: '{0} - Min Bet must be greater than or equal to {1}'
 }

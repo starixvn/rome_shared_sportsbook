@@ -16,12 +16,8 @@ var VIEW_MAX_PAYOUT_SETTING_INFO_URL = typeof (top.resolveClientUrl) == 'functio
 Fanex.PTEngine.BettingLimit = function (source) {
     var sportTypeIdInNumberGame = [161, 164];
 
-    var parlaySportTypeNames = ['Mix Sports Parlay', 'Soccer Parlay'];
-    var isNumberGameType = function (sportId) {
+    var isNumberGameOrHappy5 = function (sportId) {
         return sportTypeIdInNumberGame.indexOf(sportId) > -1;
-    };
-    var hasMaxPayoutPerMatch = function (sport) {
-        return !isNumberGameType(sport.id) && parlaySportTypeNames.indexOf(sport.key) == -1;
     };
 
     if (typeof (source) == 'object') {
@@ -495,15 +491,15 @@ Fanex.PTEngine.BettingLimit = function (source) {
                 }
             }
 
-            if (hideTextBox && !isNumberGameType(item.id)) {
+            if (hideTextBox && !isNumberGameOrHappy5(item.id)) {
                 var maxPayoutPerMatchBox = document.createElement("DIV");
-                maxPayoutPerMatchBox.innerHTML = !hasMaxPayoutPerMatch(item) ? '' : ''.FormatNumber(item.maxPayoutPerMatch);
+                maxPayoutPerMatchBox.innerHTML = ''.FormatNumber(item.maxPayoutPerMatch);
                 maxPayoutPerMatchBox.className = "BettingLimitLabel1";
                 box2.appendChild(maxPayoutPerMatchBox);
                 maxPayoutPerMatchHeader.className = "BettingLimitHeaderTop9";
             }
 
-            if (!hideTextBox && !isNumberGameType(item.id)) {
+            if (!hideTextBox && !isNumberGameOrHappy5(item.id)) {
                 var maxPayoutPerMatchBox = document.createElement("DIV");
                 var maxPayoutPerMatch = document.createElement("INPUT");
                 maxPayoutPerMatch.type = "text";
@@ -511,18 +507,14 @@ Fanex.PTEngine.BettingLimit = function (source) {
                 maxPayoutPerMatch.onkeyup = function (event) { Fanex.FormatNumber(event, true); };
                 maxPayoutPerMatch.className = "BettingLimitTextBox9";
                 maxPayoutPerMatch.value = ''.FormatNumber(item.maxPayoutPerMatch);
-
-                if (hasMaxPayoutPerMatch(item)) {
-                    maxPayoutPerMatchBox.appendChild(maxPayoutPerMatch);
-                    item.maxPayoutPerMatchElement = maxPayoutPerMatch;
-                }
-
+                maxPayoutPerMatchBox.appendChild(maxPayoutPerMatch);
                 maxPayoutPerMatchBox.className = "BettingLimitItem9";
                 box2.appendChild(maxPayoutPerMatchBox);
+                item.maxPayoutPerMatchElement = maxPayoutPerMatch;
 
                 var maxPayoutPerMatchMax = document.createElement("DIV");
                 if (showLimitBox) {
-                    maxPayoutPerMatchMax.innerHTML = !hasMaxPayoutPerMatch(item) || item.maxPayoutPerMatchMax == 0 ? '' : '<='.FormatNumber(item.maxPayoutPerMatchMax);
+                    maxPayoutPerMatchMax.innerHTML = item.maxPayoutPerMatchMax == 0 ? '' : '<='.FormatNumber(item.maxPayoutPerMatchMax);
                     maxPayoutPerMatchMax.className = "BettingLimitItem92";
                     box2.appendChild(maxPayoutPerMatchMax);
                 } else {

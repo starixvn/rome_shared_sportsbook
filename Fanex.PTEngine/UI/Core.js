@@ -1351,6 +1351,8 @@ var Validators = {
             hint.style.display = 'none';
             Validators.isTooltipShow = false;
         }, timeout); // Auto hide in 10s
+
+        hint.style.display = 'block';
         if (elementInput != null) {
             if (typeof xPos == 'undefined') {
                 xPos = 0;
@@ -1367,18 +1369,29 @@ var Validators = {
             if (typeof (height) == 'undefined') {
                 height = 18;
             }
-            hint.style.height = height + 'px';
-            hintPointer.style.left = (pointerXPos + 'px');
-            hintPointer.style.top = (pointerYPos + 'px');
+
             var pos = Validators.utils.findPosRelativeToViewport(elementInput);
-            hint.style.left = (pos[0] + xPos) + 'px';
-            hint.style.top = (pos[1] + yPos) + 'px';
+            if (pos[0] + hint.offsetWidth > document.body.offsetWidth) {
+                hintPointer.style.left = 'auto';
+                hintPointer.style.right = '10px';
+                hint.style.left = 'auto';
+                hint.style.right = document.body.offsetLeft + document.body.offsetWidth - pos[0] - elementInput.offsetWidth + 'px';
+            } else {
+                hintPointer.style.left = '10px';
+                hintPointer.style.right = 'auto';
+                hint.style.left = pos[0] + 'px';
+                hint.style.right = 'auto';
+            }
+
+            hint.style.height = height + 'px';
+            hintPointer.style.top = pointerYPos + 'px';
+            hint.style.top = pos[1] + yPos + 'px';
+
             elementInput.onchange = function () {
                 hint.style.display = 'none';
             };
             elementInput.focus();
-        };
-        hint.style.display = 'block';
+        }
     },
     showDown: function (elementInput, message, xPos, pointerXPos, yPos, pointerYPos, height, timeout, hideAction) {
         // <span class="fHintDown"><span>This is the message.<span><span class="hint-pointer">&nbsp;</span></span>

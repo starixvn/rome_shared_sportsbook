@@ -69,13 +69,21 @@
 
         public const int SPECIAL_SPORT_TYPE_ID_IS_99 = 99;
 
+        public const int SPECIAL_SPORT_TYPE_ID_IS_2 = 2;
+
         public const int SPECIAL_SPORT_TYPE_ID_IS_1 = 1;
 
         public const string SPECIAL_SPORT_TYPE_STRING = "mp";
 
+        public const string SPECIAL_SPORT_TYPE_SABA_STRING = "saba";
+
         public const string SPECIAL_SPORT_TYPE_NAME_IS_MIX_SPROTS_PARLAY = "Mix Sports Parlay";
 
         public const string SPECIAL_SPORT_TYPE_NAME_IS_SOCCER_PARLAY = "Soccer Parlay";
+
+        public const string SPECIAL_SPORT_TYPE_NAME_IS_SABA_SOCCER = "Saba Soccer";
+
+        public const string SPECIAL_SPORT_TYPE_NAME_IS_SABA_BASKETBALL = "Saba Basketball";
 
         public const int SPECIAL_TARGET_ROLE_ID = 4;
 

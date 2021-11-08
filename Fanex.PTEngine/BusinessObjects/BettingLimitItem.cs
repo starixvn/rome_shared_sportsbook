@@ -176,6 +176,11 @@
             {
                 formattedPattern = formattedPattern.Replace(Constant.SPORT_ID_MAP, string.Format(mappingElement.SportId.Format, sportTypeId.ToString() + Constant.SPECIAL_SPORT_TYPE_STRING));
             }
+            else if ((this.Id == Constant.SPECIAL_SPORT_TYPE_ID_IS_2 && this.Key == Constant.SPECIAL_SPORT_TYPE_NAME_IS_SABA_BASKETBALL)
+                || (this.Id == Constant.SPECIAL_SPORT_TYPE_ID_IS_1 && this.Key == Constant.SPECIAL_SPORT_TYPE_NAME_IS_SABA_SOCCER))
+            {
+                formattedPattern = formattedPattern.Replace(Constant.SPORT_ID_MAP, string.Format(mappingElement.SportId.Format, sportTypeId.ToString() + Constant.SPECIAL_SPORT_TYPE_SABA_STRING));
+            }
             else
             {
                 // Format sport type id

@@ -113,18 +113,27 @@
 
             try
             {
+                int omitWhenDefault = int.Parse(bettingLimitMapping.BetSettingCollection[0].SportId.OmitWhenDefault);
+                string pattern = bettingLimitMapping.BetSettingCollection[0].SportId.Format;
                 foreach (BettingLimitItem bettingLimitItem in BettingLimitItems)
                 {
-                    string formattedPattern = string.Empty;
-                    if (int.Parse(bettingLimitMapping.BetSettingCollection[0].SportId.OmitWhenDefault) != bettingLimitItem.Id)
-                    {
-                        formattedPattern = string.Format(bettingLimitMapping.BetSettingCollection[0].SportId.Format, bettingLimitItem.Id);                        
-                    }
-
-                    if ((bettingLimitItem.Key == Constant.SPECIAL_SPORT_TYPE_NAME_IS_MIX_SPROTS_PARLAY) ||
-                        (bettingLimitItem.Key == Constant.SPECIAL_SPORT_TYPE_NAME_IS_SOCCER_PARLAY))
+                    string formattedPattern = string.Format(pattern, bettingLimitItem.Id);
+                    if ((bettingLimitItem.Key == Constant.SPECIAL_SPORT_TYPE_NAME_IS_MIX_SPROTS_PARLAY)
+                        || (bettingLimitItem.Key == Constant.SPECIAL_SPORT_TYPE_NAME_IS_SOCCER_PARLAY))
                     {
                         formattedPattern += Constant.SPECIAL_SPORT_TYPE_STRING;
+                    }
+                    else if ((bettingLimitItem.Key == Constant.SPECIAL_SPORT_TYPE_NAME_IS_SABA_BASKETBALL)
+                        || (bettingLimitItem.Key == Constant.SPECIAL_SPORT_TYPE_NAME_IS_SABA_SOCCER))
+                    {
+                        formattedPattern += Constant.SPECIAL_SPORT_TYPE_SABA_STRING;
+                    }
+                    else
+                    {
+                        if (bettingLimitItem.Id == omitWhenDefault)
+                        {
+                            formattedPattern = string.Empty;
+                        }
                     }
 
                     parameters.Add(Constant.BET_TYPE_UPDATE + formattedPattern, Convert.ToInt16(updateParameters[i]));

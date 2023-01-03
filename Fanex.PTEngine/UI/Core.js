@@ -1132,7 +1132,7 @@ if (typeof (Fanex.PTEngine) == 'undefined') { // Define Fanex.PTEngine namespace
             this.Render = function (owner) {
                 var box = null;
                 var elements = []; // Child sport type elements
-                var ignoreCopySports = [161];
+                var ignoreCopySports = [];
                 if (typeof (this.sportTypes) != 'object' || typeof (this.sportTypes.length) == 'undefined') {
                     console.log("Input data source sportTypes is empty.");
                 } else {

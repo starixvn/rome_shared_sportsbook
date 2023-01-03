@@ -138,19 +138,7 @@
       <MaxBetMin></MaxBetMin>
       <MaxPerMatchMin></MaxPerMatchMin>
       <MaxPerMatchMax></MaxPerMatchMax>
-    </BettingLimitItem>  
-    
-    <BettingLimitItem id="161" name="Number Game">
-      <MinBet></MinBet>
-      <MaxBet></MaxBet>
-      <MaxPerMatch></MaxPerMatch>
-      <MinBetMax></MinBetMax>
-      <MaxBetMin></MaxBetMin>
-      <MaxPerMatchMin></MaxPerMatchMin>
-      <MaxPerMatchMax></MaxPerMatchMax>
-      <MaxPerBallMax></MaxPerBallMax>
-      <MaxPerBallMin></MaxPerBallMin>
-    </BettingLimitItem>
+    </BettingLimitItem>   
     
   </BettingLimitItems>
 </BettingLimit>

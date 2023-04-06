@@ -55,6 +55,8 @@
 
         public string SiteName { get; set; }
 
+        public string SiteLabel { get; set; }
+
         public int CurrencyId { get; set; }
 
         public string Group { get; set; }
@@ -235,6 +237,7 @@
             }
 
             SiteName = reader.HasColumn("site") ? reader.ToString("site") : context.SiteName;
+            SiteLabel = reader.HasColumn("sitelabel") ? reader.ToString("sitelabel") : string.Empty;
             Language = context.LangKey;
 
             // CommissionSetting

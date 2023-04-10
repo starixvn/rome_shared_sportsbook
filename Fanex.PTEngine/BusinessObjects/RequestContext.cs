@@ -81,6 +81,8 @@
 
         public byte SettingStatus { get; set; }
 
+        public bool IsSiteLabel789y { get; set; }
+
         public RequestContext()
         {
         }

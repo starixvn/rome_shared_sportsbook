@@ -35,5 +35,7 @@
         byte SystemId { get; set; }
 
         byte SettingStatus { get; set; }
+
+        bool IsSiteLabel789y { get; set; }
     }
 }

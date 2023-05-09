@@ -87,8 +87,6 @@
 
         public const int SPECIAL_TARGET_ROLE_ID = 4;
 
-        public const int NUMBER_GAME_SPORT_TYPE_ID = 161;
-
         // Path to xml configuration
         public const string PT_GRID_CONFIG = "~/PTEngine/PTGrid.xml";
 

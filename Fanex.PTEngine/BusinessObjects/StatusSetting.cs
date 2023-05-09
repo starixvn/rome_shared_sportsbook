@@ -28,12 +28,7 @@
 
         public bool DisableBingo { get; set; }
 
-        public bool SyncBingo { get; set; }
-
-        /// <summary>
-        /// Number Game status
-        /// </summary>
-        public bool DisableNumber { get; set; }
+        public bool SyncBingo { get; set; }      
 
         public bool DisableP2P { get; set; }
 

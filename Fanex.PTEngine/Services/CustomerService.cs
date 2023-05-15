@@ -66,7 +66,7 @@ namespace Fanex.PTEngine.Services
                     bettingLimitItem.MinBet = 0;
                     bettingLimitItem.MaxBet = 0;
                     bettingLimitItem.MaxPerMatch = 0;
-                    bettingLimitItem.MaxPayoutPerMatch = 0;                   
+                    bettingLimitItem.MaxPayoutPerMatch = 0;
                 }
             }
             catch (Exception ex)
@@ -780,6 +780,10 @@ namespace Fanex.PTEngine.Services
                 Hashtable parameters = member.MapToSpParameters(context);
                 ICustomerDataAccess customerDataAccess = new CustomerDataAccess();
                 result = customerDataAccess.Acc_CustomerInsMember_Ag(parameters, out memberId);
+                if (result.ErrorCode == "0")
+                {
+                    ProcessingInitBalanceCustomer(memberId, member.DBServerIp, member.SiteDBGroupId);
+                }
             }
             catch (Exception ex)
             {
@@ -818,6 +822,8 @@ namespace Fanex.PTEngine.Services
                 parameters.SafeRemove("closed");
 
                 ICustomerDataAccess customerDataAccess = new CustomerDataAccess();
+                var totalAmt = customerDataAccess.GetTotalAmt(member.CustId, member.DBServerIp, member.SiteDBGroupId);
+                parameters.Add("totalamt", totalAmt);
                 result = customerDataAccess.Acc_CustomerUpdMember_All(parameters);
             }
             catch (Exception ex)
@@ -862,6 +868,8 @@ namespace Fanex.PTEngine.Services
                 parameters.SafeRemove("closed");
 
                 ICustomerDataAccess customerDataAccess = new CustomerDataAccess();
+                var totalAmt = customerDataAccess.GetTotalAmt(member.CustId, member.DBServerIp, member.SiteDBGroupId);
+                parameters.Add("totalamt", totalAmt);
                 result = customerDataAccess.Acc_CustomerUpdMember_All(parameters);
             }
             catch (Exception ex)
@@ -1021,6 +1029,23 @@ namespace Fanex.PTEngine.Services
             return result;
         }
 
+        private void ProcessingInitBalanceCustomer(int memberId, string dbServer, int siteDBGroupId)
+        {
+            if (string.IsNullOrEmpty(dbServer))
+            {
+                throw new Exception($"AGIP is empty for custId({memberId})");
+            }
+
+            var customerDataAccess = new CustomerDataAccess();
+
+            var debitResult = customerDataAccess.InitBalanceCustomerDebit(memberId, dbServer, siteDBGroupId);
+            var creditResult = customerDataAccess.InitBalanceCustomerCredit(memberId, dbServer, siteDBGroupId);
+            if (debitResult.ErrorCode != "0" || creditResult.ErrorCode != "0")
+            {
+                customerDataAccess.RollbackBalanceCustomerDebit(memberId, dbServer, siteDBGroupId);
+                customerDataAccess.RollbackBalanceCustomerCredit(memberId, dbServer, siteDBGroupId);
+            }
+        }
         #endregion ICustomerService Members
     }
 }

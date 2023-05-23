@@ -31,3 +31,4 @@ _ReSharper*/
 [Tt]est[Rr]esult*
 packages/
 *.orig
+/Fanex.PTEngine/.vs/config/applicationhost.config

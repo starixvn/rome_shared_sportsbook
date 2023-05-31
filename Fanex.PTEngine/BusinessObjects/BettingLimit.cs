@@ -109,7 +109,6 @@
 
             int i = Constant.BET_TYPE_INDEX_UPDATE_PARAMETER;
             BettingLimitMappingSection bettingLimitMapping = BettingLimitMappingSection.Instance;
-            this.Populate();
 
             try
             {
@@ -152,7 +151,6 @@
 
             int i = Constant.BET_TYPE_INDEX_UPDATE_PARAMETER;
             BettingLimitMappingSection bettingLimitMapping = BettingLimitMappingSection.Instance;
-            this.Populate();
 
             try
             {

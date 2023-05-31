@@ -145,7 +145,7 @@
             }
         }
 
-        public void MapToSpUpdateMultipleBetSettingParameters(ref Hashtable parameters, Hashtable updateParameters)
+        public void MapToSpUpdateMultipleBetSettingOnlyParameters(ref Hashtable parameters, Hashtable updateParameters)
         {
             this.Populate();
 

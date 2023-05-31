@@ -99,7 +99,7 @@
                 parameters.Add("updatemultiplesuper", 1);
 
                 bettingLimit.MapToSpParameters(context, parameters);
-                bettingLimit.MapToSpUpdateMultipleParameters(ref parameters, updateParameters);
+                bettingLimit.MapToSpUpdateMultipleBetSettingOnlyParameters(ref parameters, updateParameters);
                 ICustomerDataAccess customerDataAccess = new CustomerDataAccess();
                 result = customerDataAccess.Age_CustomerUpdMemBetSetting(parameters);
             }

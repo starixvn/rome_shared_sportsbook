@@ -1,6 +1,7 @@
 ﻿namespace Fanex.PTEngine.Services
 {
     using Fanex.PTEngine.BusinessObjects;
+    using System.Collections;
 
     public interface IBettingLimitService
     {
@@ -18,5 +19,7 @@
         /// <param name="context"></param>
         /// <returns></returns>
         Result UpdateBetting(IBettingLimit<BettingLimitItem> bettingLimit, IRequestContext context);
+
+        Result UpdateMultipleBettingForSuper(IBettingLimit<BettingLimitItem> bettingLimit, IRequestContext context, Hashtable updateParameters);
     }
 }

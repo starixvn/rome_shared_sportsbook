@@ -16,6 +16,8 @@
 
         void MapToSpUpdateMultipleParameters(ref Hashtable parameters, Hashtable updateParameters);
 
+        void MapToSpUpdateMultipleBetSettingOnlyParameters(ref Hashtable parameters, Hashtable updateParameters);
+
         void Populate();
     }
 }

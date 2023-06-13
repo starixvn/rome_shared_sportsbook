@@ -76,5 +76,46 @@
 
             return result;
         }
+
+        public Result UpdateMultipleBettingForSuper(IBettingLimit<BettingLimitItem> bettingLimit, IRequestContext context, Hashtable updateParameters)
+        {
+            Result result = new Result();
+            var checkUmResult = serviceBase.CheckUM(context.CustId, NonDcsProduct.Sportsbook, context.LangKey);
+            if (!checkUmResult.IsSuccess)
+            {
+                result = new Result(checkUmResult.ErrorCode.ToString(), checkUmResult.ErrorMessage);
+                return result;
+            }
+
+            try
+            {
+                var parameters = new Hashtable();
+                parameters.Add("custid", context.TargetCustId);
+                parameters.Add("userid", context.CustId);
+                parameters.Add("subaccid", context.SubAccId);
+                parameters.Add("language", context.Language);
+                parameters.Add("ip", context.IP);
+                parameters.Add("updatemultiple", 1);
+                parameters.Add("updatemultiplesuper", 1);
+
+                bettingLimit.MapToSpParameters(context, parameters);
+                bettingLimit.MapToSpUpdateMultipleBetSettingOnlyParameters(ref parameters, updateParameters);
+                ICustomerDataAccess customerDataAccess = new CustomerDataAccess();
+                result = customerDataAccess.Age_CustomerUpdMemBetSetting(parameters);
+            }
+            catch (Exception ex)
+            {
+                LogService.Error(ex.Message);
+                throw new Exception("Update Bet Setting is failed", ex);
+            }
+
+            if (result.ErrorCode == string.Empty && result.ErrorMessage == string.Empty)
+            {
+                result.ErrorCode = Constant.ERROR_CODE;
+                result.ErrorMessage = Constant.ERROR_MESSAGE;
+            }
+
+            return result;
+        }
     }
 }

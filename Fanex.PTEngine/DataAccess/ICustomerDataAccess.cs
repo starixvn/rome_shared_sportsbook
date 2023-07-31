@@ -172,5 +172,12 @@
         Result Acc_CustOverrideUpd(Hashtable parameters);
 
         ICustomer Acc_CustomerSelComEditOverride_SAg(IRequestContext requestContext);
+
+        Result InitBalanceCustomerDebit(int memberId, string dbServer, int siteDBGroupId);
+        Result InitBalanceCustomerCredit(int memberId, string dbServer, int siteDBGroupId);
+        Result RollbackBalanceCustomerDebit(int memberId, string dbServer, int siteDBGroupId);
+        Result RollbackBalanceCustomerCredit(int memberId, string dbServer, int siteDBGroupId);
+
+        decimal GetTotalAmt(int custId, string dbServer, int siteDBGroupId);
     }
 }

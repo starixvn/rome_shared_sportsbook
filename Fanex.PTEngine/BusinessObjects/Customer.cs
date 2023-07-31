@@ -84,6 +84,11 @@
 
         public IPTGrid<SportType> PtSetting { get; set; }
 
+        public string DBServerIp { get; set; }
+
+        public int SiteDBGroupId { get; set; }
+
+
         public Customer()
         {
             Password = string.Empty;

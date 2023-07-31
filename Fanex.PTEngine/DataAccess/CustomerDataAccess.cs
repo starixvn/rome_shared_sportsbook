@@ -370,6 +370,69 @@
             }
         }
 
+        public Result InitBalanceCustomerDebit(int memberId, string dbServer, int siteDBGroupId)
+        {
+            using (ObjectDb db = new ObjectDb($"{GetPrefixSPName(siteDBGroupId)}Dot_BalanceDebitInitialize", 120))
+            {
+                var hash = new Hashtable
+                {
+                    { "custid", memberId }
+                };
+
+                db.ExecuteNonQueryOnSiteDB(hash, dbServer);
+                memberId = (int)db.GetParameterValue("custid");
+
+                return new Result(db.GetOuputParams()["errcode"].ToString(), string.Empty);
+            }
+        }
+
+        public Result InitBalanceCustomerCredit(int memberId, string dbServer, int siteDBGroupId)
+        {
+            using (ObjectDb db = new ObjectDb($"{GetPrefixSPName(siteDBGroupId)}Dot_BalanceCreditInitialize", 120))
+            {
+                var hash = new Hashtable
+                {
+                    { "custid", memberId }
+                };
+
+                db.ExecuteNonQueryOnSiteDB(hash, dbServer);
+                memberId = (int)db.GetParameterValue("custid");
+
+                return new Result(db.GetOuputParams()["errcode"].ToString(), string.Empty);
+            }
+        }
+
+        public Result RollbackBalanceCustomerDebit(int memberId, string dbServer, int siteDBGroupId)
+        {
+            using (ObjectDb db = new ObjectDb($"{GetPrefixSPName(siteDBGroupId)}Dot_BalanceDebitRemove", 120))
+            {
+                var hash = new Hashtable
+                {
+                    { "custid", memberId }
+                };
+
+                db.ExecuteNonQueryOnSiteDB(hash, dbServer);
+                memberId = (int)db.GetParameterValue("custid");
+
+                return new Result(db.GetOuputParams()["errcode"].ToString(), string.Empty);
+            }
+        }
+
+        public Result RollbackBalanceCustomerCredit(int memberId, string dbServer, int siteDBGroupId)
+        {
+            using (ObjectDb db = new ObjectDb($"{GetPrefixSPName(siteDBGroupId)}Dot_BalanceCreditRemove", 120))
+            {
+                var hash = new Hashtable
+                {
+                    { "custid", memberId }
+                };
+
+                db.ExecuteNonQueryOnSiteDB(hash, dbServer);
+                memberId = (int)db.GetParameterValue("custid");
+
+                return new Result(db.GetOuputParams()["errcode"].ToString(), string.Empty);
+            }
+        }
         #endregion Insert New Customer
 
         #region Update Customer
@@ -555,7 +618,7 @@
             ICustomer customer = new Customer();
             using (ObjectDb db = new ObjectDb("Acc_CustomerSelComEditOverride_SAg", 120))
             {
-                db.AddInParameter("custid", DbType.Int32, requestContext.TargetCustId);                
+                db.AddInParameter("custid", DbType.Int32, requestContext.TargetCustId);
                 reader = db.ExecuteReader();
                 reader.Read();
                 customer.ReadFromDataRecord(requestContext, reader);
@@ -564,5 +627,22 @@
             return customer;
         }
         #endregion Company Get Min PT Super
+
+        public decimal GetTotalAmt(int custId, string dbServer, int siteDBGroupId)
+        {
+            using (ObjectDb db = new ObjectDb($"{GetPrefixSPName(siteDBGroupId)}Acc_CustomerTotalAmountSel", 120))
+            {
+                var hash = new Hashtable
+                {
+                    { "custid", custId }
+                };
+
+                db.ExecuteNonQueryOnSiteDB(hash, dbServer);
+                return (decimal)db.GetParameterValue("totalamt");
+            }
+        }
+
+        private static string GetPrefixSPName(int siteDBGroupId)
+            => siteDBGroupId == 0 ? string.Empty : $"SiteDB{siteDBGroupId}_";
     }
 }

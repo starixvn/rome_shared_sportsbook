@@ -91,5 +91,9 @@
         void ReadFromDataRecord(IRequestContext context, System.Data.IDataReader reader);
 
         void InitDefaultValue();
+
+        string DBServerIp { get; set; }
+
+        int SiteDBGroupId { get; set; }
     }
 }

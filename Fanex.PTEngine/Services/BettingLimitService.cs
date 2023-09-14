@@ -1,8 +1,5 @@
 ﻿namespace Fanex.PTEngine.Services
 {
-    using Fanex.CustomerSetting.Module.Core.Constants;
-    using Fanex.CustomerSetting.Module.Core.Services.Impl;
-    using Fanex.CustomerSetting.Module.Core.Services.Interface;
     using Fanex.Logging;
     using Fanex.PTEngine.BusinessObjects;
     using Fanex.PTEngine.DataAccess;
@@ -11,15 +8,17 @@
 
     public class BettingLimitService : IBettingLimitService
     {
-        private readonly IServiceBase serviceBase;
+        private const int SportsbookProductId = 1;
+
+        private ICustomerDataAccess customerDataAccess;
 
         public BettingLimitService() : this(null)
         {
         }
 
-        public BettingLimitService(IServiceBase serviceBase)
+        public BettingLimitService(ICustomerDataAccess customerDataAccess)
         {
-            this.serviceBase = serviceBase ?? new ServiceBase();
+            this.customerDataAccess = customerDataAccess ?? new CustomerDataAccess();
         }
 
         /// <summary>
@@ -29,7 +28,6 @@
         /// <returns>Return a IBettingLimit contains current</returns>
         public IBettingLimit<BettingLimitItem> GetBettingForEdit(IRequestContext context)
         {
-            ICustomerDataAccess customerDataAccess = new CustomerDataAccess();
             return customerDataAccess.Age_CustomerSelBetSetting(context);
         }
 
@@ -42,8 +40,8 @@
         public Result UpdateBetting(IBettingLimit<BettingLimitItem> bettingLimit, IRequestContext context)
         {
             Result result = new Result();
-            var checkUmResult = serviceBase.CheckUM(context.CustId, NonDcsProduct.Sportsbook, context.LangKey);
-            if (!checkUmResult.IsSuccess)
+            var checkUmResult = customerDataAccess.CheckPartialUM(context.CustId, SportsbookProductId, context.LangKey);
+            if (!checkUmResult.ErrorCode.Equals("0"))
             {
                 result = new Result(checkUmResult.ErrorCode.ToString(), checkUmResult.ErrorMessage);
                 return result;
@@ -59,7 +57,6 @@
                 parameters.Add("ip", context.IP);
 
                 bettingLimit.MapToSpParameters(context, parameters);
-                ICustomerDataAccess customerDataAccess = new CustomerDataAccess();
                 result = customerDataAccess.Age_CustomerUpdMemBetSetting(parameters);
             }
             catch (Exception ex)
@@ -80,8 +77,8 @@
         public Result UpdateMultipleBettingForSuper(IBettingLimit<BettingLimitItem> bettingLimit, IRequestContext context, Hashtable updateParameters)
         {
             Result result = new Result();
-            var checkUmResult = serviceBase.CheckUM(context.CustId, NonDcsProduct.Sportsbook, context.LangKey);
-            if (!checkUmResult.IsSuccess)
+            var checkUmResult = customerDataAccess.CheckPartialUM(context.CustId, SportsbookProductId, context.LangKey);
+            if (!checkUmResult.ErrorCode.Equals("0"))
             {
                 result = new Result(checkUmResult.ErrorCode.ToString(), checkUmResult.ErrorMessage);
                 return result;
@@ -100,7 +97,6 @@
 
                 bettingLimit.MapToSpParameters(context, parameters);
                 bettingLimit.MapToSpUpdateMultipleBetSettingOnlyParameters(ref parameters, updateParameters);
-                ICustomerDataAccess customerDataAccess = new CustomerDataAccess();
                 result = customerDataAccess.Age_CustomerUpdMemBetSetting(parameters);
             }
             catch (Exception ex)

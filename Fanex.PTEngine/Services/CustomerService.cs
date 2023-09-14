@@ -5,9 +5,6 @@
 // -----------------------------------------------------------------------
 namespace Fanex.PTEngine.Services
 {
-    using Fanex.CustomerSetting.Module.Core.Constants;
-    using Fanex.CustomerSetting.Module.Core.Services.Impl;
-    using Fanex.CustomerSetting.Module.Core.Services.Interface;
     using Fanex.Logging;
     using Fanex.PTEngine.BusinessObjects;
     using Fanex.PTEngine.DataAccess;
@@ -19,15 +16,17 @@ namespace Fanex.PTEngine.Services
     /// </summary>
     public class CustomerService : ICustomerService
     {
-        private readonly IServiceBase serviceBase;
+        private const int SportsbookProductId = 1;
 
-        public CustomerService() : this(null)
+        private ICustomerDataAccess customerDataAccess;
+
+        public CustomerService():this(null)
         {
         }
 
-        public CustomerService(IServiceBase serviceBase)
+        public CustomerService(ICustomerDataAccess customerDataAccess)
         {
-            this.serviceBase = serviceBase ?? new ServiceBase();
+            this.customerDataAccess = customerDataAccess ?? new CustomerDataAccess();
         }
 
         #region ICustomerService Members
@@ -94,7 +93,6 @@ namespace Fanex.PTEngine.Services
                 super.Password = Fanex.Common.Cryptography.CfsEnCode(super.Password);
                 Hashtable parameters = super.MapToSpParameters(context);
                 parameters.Add("refcode1", string.Empty);
-                ICustomerDataAccess customerDataAccess = new CustomerDataAccess();
                 result = customerDataAccess.Acc_CompanyInsSuper(context, parameters, out tempSuperId);
             }
             catch (Exception ex)
@@ -122,8 +120,8 @@ namespace Fanex.PTEngine.Services
         public Result CompanyUpdateSuper(ICustomer super, IRequestContext context)
         {
             Result result = new Result();
-            var checkUmResult = serviceBase.CheckUM(super.CustId, NonDcsProduct.Sportsbook, context.LangKey);
-            if (!checkUmResult.IsSuccess)
+            var checkUmResult = customerDataAccess.CheckPartialUM(super.CustId, SportsbookProductId, context.LangKey);
+            if (!checkUmResult.ErrorCode.Equals("0"))
             {
                 result = new Result(checkUmResult.ErrorCode.ToString(), checkUmResult.ErrorMessage);
                 return result;
@@ -134,7 +132,6 @@ namespace Fanex.PTEngine.Services
                 Hashtable parameters = super.MapToSpParameters(context);
                 parameters.SafeRemove("closed");
 
-                ICustomerDataAccess customerDataAccess = new CustomerDataAccess();
                 result = customerDataAccess.Acc_CompanyUpdateSuper(parameters);
             }
             catch (Exception ex)
@@ -159,7 +156,6 @@ namespace Fanex.PTEngine.Services
         /// <returns>Return a ICustomer contains current value of Super</returns>
         public ICustomer GetCustomerForCompanyEditSuper(IRequestContext context)
         {
-            ICustomerDataAccess customerDataAccess = new CustomerDataAccess();
             return customerDataAccess.Acc_CustomerSelCEditCustomer(context);
         }
 
@@ -170,7 +166,6 @@ namespace Fanex.PTEngine.Services
         /// <returns>Return a ICustomer contains value default of Master</returns>
         public ICustomer GetCustomerForAddNewMaster(IRequestContext context)
         {
-            ICustomerDataAccess customerDataAccess = new CustomerDataAccess();
             return customerDataAccess.Acc_CustomerSelSAgentInfo(context);
         }
 
@@ -181,7 +176,6 @@ namespace Fanex.PTEngine.Services
         /// <returns>Return a ICustomer contains current value of Master</returns>
         public ICustomer GetCustomerForSuperEditMaster(IRequestContext context)
         {
-            ICustomerDataAccess customerDataAccess = new CustomerDataAccess();
             return customerDataAccess.Acc_CustomerSelSEditCustomer(context);
         }
 
@@ -192,7 +186,6 @@ namespace Fanex.PTEngine.Services
         /// <returns>Return a ICustomer contains current value of Member</returns>
         public ICustomer GetCustomerForSuperEditMember(IRequestContext context)
         {
-            ICustomerDataAccess customerDataAccess = new CustomerDataAccess();
             return customerDataAccess.Acc_CustomerSelEditCustomer_SAg(context);
         }
 
@@ -203,7 +196,6 @@ namespace Fanex.PTEngine.Services
         /// <returns>Return a ICustomer contains current value of Master</returns>
         public ICustomer GetCustomerForSuperEditMinPTMaster(IRequestContext context)
         {
-            ICustomerDataAccess customerDataAccess = new CustomerDataAccess();
             return customerDataAccess.Acc_CustomerSelComEditOverride_MAg(context);
         }
 
@@ -221,7 +213,6 @@ namespace Fanex.PTEngine.Services
             {
                 master.Password = Fanex.Common.Cryptography.CfsEnCode(master.Password);
                 Hashtable parameters = master.MapToSpParameters(context);
-                ICustomerDataAccess customerDataAccess = new CustomerDataAccess();
                 result = customerDataAccess.Acc_CustomerInsMember_SAg(parameters, out masterId);
             }
             catch (Exception ex)
@@ -248,8 +239,8 @@ namespace Fanex.PTEngine.Services
         public Result SuperUpdateMaster(ICustomer master, IRequestContext context, bool isUpdateAllMembers, decimal newPositionTakingValue)
         {
             Result result = new Result();
-            var checkUmResult = serviceBase.CheckUM(master.CustId, NonDcsProduct.Sportsbook, context.LangKey);
-            if (!checkUmResult.IsSuccess)
+            var checkUmResult = customerDataAccess.CheckPartialUM(master.CustId, SportsbookProductId, context.LangKey);
+            if (!checkUmResult.ErrorCode.Equals("0"))
             {
                 result = new Result(checkUmResult.ErrorCode.ToString(), checkUmResult.ErrorMessage);
                 return result;
@@ -264,7 +255,6 @@ namespace Fanex.PTEngine.Services
 
                 parameters.SafeRemove("closed");
 
-                ICustomerDataAccess customerDataAccess = new CustomerDataAccess();
                 result = customerDataAccess.Acc_CustomerUpdMaster_All(parameters);
             }
             catch (Exception ex)
@@ -291,8 +281,8 @@ namespace Fanex.PTEngine.Services
         public Result SuperUpdateMultipleMasters(ICustomer master, IRequestContext context, bool isUpdateAllMembers, decimal newPositionTakingValue, Hashtable updateParameters)
         {
             Result result = new Result();
-            var checkUmResult = serviceBase.CheckUM(master.CustId, NonDcsProduct.Sportsbook, context.LangKey);
-            if (!checkUmResult.IsSuccess)
+            var checkUmResult = customerDataAccess.CheckPartialUM(master.CustId, SportsbookProductId, context.LangKey);
+            if (!checkUmResult.ErrorCode.Equals("0"))
             {
                 result = new Result(checkUmResult.ErrorCode.ToString(), checkUmResult.ErrorMessage);
                 return result;
@@ -311,7 +301,6 @@ namespace Fanex.PTEngine.Services
 
                 parameters.SafeRemove("closed");
 
-                ICustomerDataAccess customerDataAccess = new CustomerDataAccess();
                 result = customerDataAccess.Acc_CustomerUpdMaster_All(parameters);
             }
             catch (Exception ex)
@@ -338,8 +327,8 @@ namespace Fanex.PTEngine.Services
         public Result SuperUpdateMember(ICustomer member, IRequestContext context)
         {
             Result result = new Result();
-            var checkUmResult = serviceBase.CheckUM(member.CustId, NonDcsProduct.Sportsbook, context.LangKey);
-            if (!checkUmResult.IsSuccess)
+            var checkUmResult = customerDataAccess.CheckPartialUM(member.CustId, SportsbookProductId, context.LangKey);
+            if (!checkUmResult.ErrorCode.Equals("0"))
             {
                 result = new Result(checkUmResult.ErrorCode.ToString(), checkUmResult.ErrorMessage);
                 return result;
@@ -351,7 +340,6 @@ namespace Fanex.PTEngine.Services
                 parameters.SafeRemove("closed");
                 parameters.SafeRemove("disCasino");
 
-                ICustomerDataAccess customerDataAccess = new CustomerDataAccess();
                 result = customerDataAccess.Acc_CustomerUpdMember_Super(parameters);
             }
             catch (Exception ex)
@@ -378,8 +366,8 @@ namespace Fanex.PTEngine.Services
         public Result SuperUpdateMultipleMembers(ICustomer member, IRequestContext context, Hashtable updateParameters)
         {
             Result result = new Result();
-            var checkUmResult = serviceBase.CheckUM(member.CustId, NonDcsProduct.Sportsbook, context.LangKey);
-            if (!checkUmResult.IsSuccess)
+            var checkUmResult = customerDataAccess.CheckPartialUM(member.CustId, SportsbookProductId, context.LangKey);
+            if (!checkUmResult.ErrorCode.Equals("0"))
             {
                 result = new Result(checkUmResult.ErrorCode.ToString(), checkUmResult.ErrorMessage);
                 return result;
@@ -394,7 +382,6 @@ namespace Fanex.PTEngine.Services
                 parameters.SafeRemove("closed");
                 parameters.SafeRemove("disCasino");
 
-                ICustomerDataAccess customerDataAccess = new CustomerDataAccess();
                 result = customerDataAccess.Acc_CustomerUpdMember_Super(parameters);
             }
             catch (Exception ex)
@@ -421,8 +408,8 @@ namespace Fanex.PTEngine.Services
         public Result SuperUpdateMinPTMaster(ICustomer master, IRequestContext context)
         {
             Result result = new Result();
-            var checkUmResult = serviceBase.CheckUM(master.CustId, NonDcsProduct.Sportsbook, context.LangKey);
-            if (!checkUmResult.IsSuccess)
+            var checkUmResult = customerDataAccess.CheckPartialUM(master.CustId, SportsbookProductId, context.LangKey);
+            if (!checkUmResult.ErrorCode.Equals("0"))
             {
                 result = new Result(checkUmResult.ErrorCode.ToString(), checkUmResult.ErrorMessage);
                 return result;
@@ -433,7 +420,6 @@ namespace Fanex.PTEngine.Services
                 Hashtable parameters = master.MapToSpParameters(context);
                 parameters.Add("updateminpos", 1);
                 parameters.Add("updatemaxpos", 0);
-                ICustomerDataAccess customerDataAccess = new CustomerDataAccess();
 
                 result = customerDataAccess.Acc_CustOverrideUpd(parameters);
             }
@@ -461,8 +447,8 @@ namespace Fanex.PTEngine.Services
         public Result MasterUpdateMember(ICustomer member, IRequestContext context)
         {
             Result result = new Result();
-            var checkUmResult = serviceBase.CheckUM(member.CustId, NonDcsProduct.Sportsbook, context.LangKey);
-            if (!checkUmResult.IsSuccess)
+            var checkUmResult = customerDataAccess.CheckPartialUM(member.CustId, SportsbookProductId, context.LangKey);
+            if (!checkUmResult.ErrorCode.Equals("0"))
             {
                 result = new Result(checkUmResult.ErrorCode.ToString(), checkUmResult.ErrorMessage);
                 return result;
@@ -474,7 +460,6 @@ namespace Fanex.PTEngine.Services
                 parameters.SafeRemove("closed");
                 parameters.SafeRemove("disCasino");
 
-                ICustomerDataAccess customerDataAccess = new CustomerDataAccess();
                 result = customerDataAccess.Acc_CustomerUpdMember_Master(parameters);
             }
             catch (Exception ex)
@@ -501,8 +486,8 @@ namespace Fanex.PTEngine.Services
         public Result MasterUpdateMultipleMembers(ICustomer member, IRequestContext context, Hashtable updateParameters)
         {
             Result result = new Result();
-            var checkUmResult = serviceBase.CheckUM(member.CustId, NonDcsProduct.Sportsbook, context.LangKey);
-            if (!checkUmResult.IsSuccess)
+            var checkUmResult = customerDataAccess.CheckPartialUM(member.CustId, SportsbookProductId, context.LangKey);
+            if (!checkUmResult.ErrorCode.Equals("0"))
             {
                 result = new Result(checkUmResult.ErrorCode.ToString(), checkUmResult.ErrorMessage);
                 return result;
@@ -517,7 +502,6 @@ namespace Fanex.PTEngine.Services
                 parameters.SafeRemove("closed");
                 parameters.SafeRemove("disCasino");
 
-                ICustomerDataAccess customerDataAccess = new CustomerDataAccess();
                 result = customerDataAccess.Acc_CustomerUpdMember_Master(parameters);
             }
             catch (Exception ex)
@@ -542,8 +526,6 @@ namespace Fanex.PTEngine.Services
         /// <returns>Return a ICustomer contains current value of Agent</returns>
         public ICustomer GetCustomerForMasterEditMinPTAgent(IRequestContext context)
         {
-            ICustomerDataAccess customerDataAccess = new CustomerDataAccess();
-
             return customerDataAccess.Acc_CustomerSelComEditOverride_Ag(context);
         }
 
@@ -554,7 +536,6 @@ namespace Fanex.PTEngine.Services
         /// <returns>Return a ICustomer contains value default of Agent</returns>
         public ICustomer GetCustomerForAddNewAgent(IRequestContext context)
         {
-            ICustomerDataAccess customerDataAccess = new CustomerDataAccess();
             return customerDataAccess.Acc_CustomerSelMAgentInfo(context);
         }
 
@@ -565,7 +546,6 @@ namespace Fanex.PTEngine.Services
         /// <returns>Return a ICustomer contains current value of Agent</returns>
         public ICustomer GetCustomerForMasterEditAgent(IRequestContext context)
         {
-            ICustomerDataAccess customerDataAccess = new CustomerDataAccess();
             return customerDataAccess.Acc_CustomerSelMEditCustomer(context);
         }
 
@@ -576,7 +556,6 @@ namespace Fanex.PTEngine.Services
         /// <returns>Return a ICustomer contains current value of Member</returns>
         public ICustomer GetCustomerForMasterEditMember(IRequestContext context)
         {
-            ICustomerDataAccess customerDataAccess = new CustomerDataAccess();
             return customerDataAccess.Acc_CustomerSelEditCustomer_MAg(context);
         }
 
@@ -594,7 +573,6 @@ namespace Fanex.PTEngine.Services
             {
                 agent.Password = Fanex.Common.Cryptography.CfsEnCode(agent.Password);
                 Hashtable parameters = agent.MapToSpParameters(context);
-                ICustomerDataAccess customerDataAccess = new CustomerDataAccess();
                 result = customerDataAccess.Acc_CustomerInsMember_MAg(parameters, out agentId);
             }
             catch (Exception ex)
@@ -621,8 +599,8 @@ namespace Fanex.PTEngine.Services
         public Result MasterUpdateAgent(ICustomer agent, IRequestContext context, bool isUpdateAllMembers, decimal newPositionTakingValue)
         {
             Result result = new Result();
-            var checkUmResult = serviceBase.CheckUM(agent.CustId, NonDcsProduct.Sportsbook, context.LangKey);
-            if (!checkUmResult.IsSuccess)
+            var checkUmResult = customerDataAccess.CheckPartialUM(agent.CustId, SportsbookProductId, context.LangKey);
+            if (!checkUmResult.ErrorCode.Equals("0"))
             {
                 result = new Result(checkUmResult.ErrorCode.ToString(), checkUmResult.ErrorMessage);
                 return result;
@@ -637,7 +615,6 @@ namespace Fanex.PTEngine.Services
 
                 parameters.SafeRemove("closed");
 
-                ICustomerDataAccess customerDataAccess = new CustomerDataAccess();
                 result = customerDataAccess.Acc_CustomerUpdAgent_All(parameters);
             }
             catch (Exception ex)
@@ -664,8 +641,8 @@ namespace Fanex.PTEngine.Services
         public Result MasterUpdateMultipleAgents(ICustomer agent, IRequestContext context, bool isUpdateAllMembers, decimal newPositionTakingValue, Hashtable updateParameters)
         {
             Result result = new Result();
-            var checkUmResult = serviceBase.CheckUM(agent.CustId, NonDcsProduct.Sportsbook, context.LangKey);
-            if (!checkUmResult.IsSuccess)
+            var checkUmResult = customerDataAccess.CheckPartialUM(agent.CustId, SportsbookProductId, context.LangKey);
+            if (!checkUmResult.ErrorCode.Equals("0"))
             {
                 result = new Result(checkUmResult.ErrorCode.ToString(), checkUmResult.ErrorMessage);
                 return result;
@@ -684,7 +661,6 @@ namespace Fanex.PTEngine.Services
 
                 parameters.SafeRemove("closed");
 
-                ICustomerDataAccess customerDataAccess = new CustomerDataAccess();
                 result = customerDataAccess.Acc_CustomerUpdAgent_All(parameters);
             }
             catch (Exception ex)
@@ -711,8 +687,8 @@ namespace Fanex.PTEngine.Services
         public Result MasterUpdateMinPTAgent(ICustomer agent, IRequestContext context)
         {
             Result result = new Result();
-            var checkUmResult = serviceBase.CheckUM(agent.CustId, NonDcsProduct.Sportsbook, context.LangKey);
-            if (!checkUmResult.IsSuccess)
+            var checkUmResult = customerDataAccess.CheckPartialUM(agent.CustId, SportsbookProductId, context.LangKey);
+            if (!checkUmResult.ErrorCode.Equals("0"))
             {
                 result = new Result(checkUmResult.ErrorCode.ToString(), checkUmResult.ErrorMessage);
                 return result;
@@ -723,7 +699,6 @@ namespace Fanex.PTEngine.Services
                 Hashtable parameters = agent.MapToSpParameters(context);
                 parameters.Add("updateminpos", 1);
                 parameters.Add("updatemaxpos", 0);
-                ICustomerDataAccess customerDataAccess = new CustomerDataAccess();
 
                 result = customerDataAccess.Acc_CustOverrideUpd(parameters);
             }
@@ -749,7 +724,6 @@ namespace Fanex.PTEngine.Services
         /// <returns>Return a ICustomer contains value default of Member</returns>
         public ICustomer GetCustomerForAddNewMember(IRequestContext context)
         {
-            ICustomerDataAccess customerDataAccess = new CustomerDataAccess();
             return customerDataAccess.Acc_CustomerSelAgentInfo(context);
         }
 
@@ -760,7 +734,6 @@ namespace Fanex.PTEngine.Services
         /// <returns>Return Customer info associate with context</returns>
         public ICustomer GetCustomerForAgentUpdateMember(IRequestContext context)
         {
-            ICustomerDataAccess customerDataAccess = new CustomerDataAccess();
             return customerDataAccess.Acc_CustomerSelEditCustomer(context);
         }
 
@@ -778,7 +751,6 @@ namespace Fanex.PTEngine.Services
             {
                 member.Password = Fanex.Common.Cryptography.CfsEnCode(member.Password);
                 Hashtable parameters = member.MapToSpParameters(context);
-                ICustomerDataAccess customerDataAccess = new CustomerDataAccess();
                 result = customerDataAccess.Acc_CustomerInsMember_Ag(parameters, out memberId);
                 if (result.ErrorCode == "0")
                 {
@@ -809,8 +781,8 @@ namespace Fanex.PTEngine.Services
         public Result AgentUpdateMember(ICustomer member, IRequestContext context)
         {
             Result result = new Result();
-            var checkUmResult = serviceBase.CheckUM(member.CustId, NonDcsProduct.Sportsbook, context.LangKey);
-            if (!checkUmResult.IsSuccess)
+            var checkUmResult = customerDataAccess.CheckPartialUM(member.CustId, SportsbookProductId, context.LangKey);
+            if (!checkUmResult.ErrorCode.Equals("0"))
             {
                 result = new Result(checkUmResult.ErrorCode.ToString(), checkUmResult.ErrorMessage);
                 return result;
@@ -821,7 +793,6 @@ namespace Fanex.PTEngine.Services
                 Hashtable parameters = member.MapToSpParameters(context);
                 parameters.SafeRemove("closed");
 
-                ICustomerDataAccess customerDataAccess = new CustomerDataAccess();
                 var totalAmt = customerDataAccess.GetTotalAmt(member.CustId, member.DBServerIp, member.SiteDBGroupId);
                 parameters.Add("totalamt", totalAmt);
                 result = customerDataAccess.Acc_CustomerUpdMember_All(parameters);
@@ -850,8 +821,8 @@ namespace Fanex.PTEngine.Services
         public Result AgentUpdateMultipleMembers(ICustomer member, IRequestContext context, Hashtable updateParameters)
         {
             Result result = new Result();
-            var checkUmResult = serviceBase.CheckUM(member.CustId, NonDcsProduct.Sportsbook, context.LangKey);
-            if (!checkUmResult.IsSuccess)
+            var checkUmResult = customerDataAccess.CheckPartialUM(member.CustId, SportsbookProductId, context.LangKey);
+            if (!checkUmResult.ErrorCode.Equals("0"))
             {
                 result = new Result(checkUmResult.ErrorCode.ToString(), checkUmResult.ErrorMessage);
                 return result;
@@ -867,7 +838,6 @@ namespace Fanex.PTEngine.Services
 
                 parameters.SafeRemove("closed");
 
-                ICustomerDataAccess customerDataAccess = new CustomerDataAccess();
                 var totalAmt = customerDataAccess.GetTotalAmt(member.CustId, member.DBServerIp, member.SiteDBGroupId);
                 parameters.Add("totalamt", totalAmt);
                 result = customerDataAccess.Acc_CustomerUpdMember_All(parameters);
@@ -894,7 +864,6 @@ namespace Fanex.PTEngine.Services
         /// <returns>Return a tring</returns>
         public string GetTransferCondition(IRequestContext context)
         {
-            ICustomerDataAccess customerDataAccess = new CustomerDataAccess();
             return customerDataAccess.Acc_CustomerSelTransferOption(context);
         }
 
@@ -907,8 +876,8 @@ namespace Fanex.PTEngine.Services
         public Result CompanyUpdateMinMaxPTMaster(ICustomer master, IRequestContext context)
         {
             Result result = new Result();
-            var checkUmResult = serviceBase.CheckUM(master.CustId, NonDcsProduct.Sportsbook, context.LangKey);
-            if (!checkUmResult.IsSuccess)
+            var checkUmResult = customerDataAccess.CheckPartialUM(master.CustId, SportsbookProductId, context.LangKey);
+            if (!checkUmResult.ErrorCode.Equals("0"))
             {
                 result = new Result(checkUmResult.ErrorCode.ToString(), checkUmResult.ErrorMessage);
                 return result;
@@ -919,7 +888,6 @@ namespace Fanex.PTEngine.Services
                 Hashtable parameters = master.MapToSpParameters(context);
                 parameters.Add("updateminpos", 1);
                 parameters.Add("updatemaxpos", 1);
-                ICustomerDataAccess customerDataAccess = new CustomerDataAccess();
 
                 result = customerDataAccess.Acc_CustOverrideUpd(parameters);
             }
@@ -947,8 +915,8 @@ namespace Fanex.PTEngine.Services
         public Result CompanyUpdateMinMaxPTAgent(ICustomer agent, IRequestContext context)
         {
             Result result = new Result();
-            var checkUmResult = serviceBase.CheckUM(agent.CustId, NonDcsProduct.Sportsbook, context.LangKey);
-            if (!checkUmResult.IsSuccess)
+            var checkUmResult = customerDataAccess.CheckPartialUM(agent.CustId, SportsbookProductId, context.LangKey);
+            if (!checkUmResult.ErrorCode.Equals("0"))
             {
                 result = new Result(checkUmResult.ErrorCode.ToString(), checkUmResult.ErrorMessage);
                 return result;
@@ -959,7 +927,6 @@ namespace Fanex.PTEngine.Services
                 Hashtable parameters = agent.MapToSpParameters(context);
                 parameters.Add("updateminpos", 1);
                 parameters.Add("updatemaxpos", 1);
-                ICustomerDataAccess customerDataAccess = new CustomerDataAccess();
 
                 result = customerDataAccess.Acc_CustOverrideUpd(parameters);
             }
@@ -985,7 +952,6 @@ namespace Fanex.PTEngine.Services
         /// <returns>Return a ICustomer contains current value of Super</returns>
         public ICustomer GetCustomerForCompanyEditMinPTSuper(IRequestContext context)
         {
-            ICustomerDataAccess customerDataAccess = new CustomerDataAccess();
             return customerDataAccess.Acc_CustomerSelComEditOverride_SAg(context);
         }
 
@@ -998,8 +964,8 @@ namespace Fanex.PTEngine.Services
         public Result CompanyUpdateMinPTSuper(ICustomer super, IRequestContext context)
         {
             Result result = new Result();
-            var checkUmResult = serviceBase.CheckUM(super.CustId, NonDcsProduct.Sportsbook, context.LangKey);
-            if (!checkUmResult.IsSuccess)
+            var checkUmResult = customerDataAccess.CheckPartialUM(super.CustId, SportsbookProductId, context.LangKey);
+            if (!checkUmResult.ErrorCode.Equals("0"))
             {
                 result = new Result(checkUmResult.ErrorCode.ToString(), checkUmResult.ErrorMessage);
                 return result;
@@ -1010,7 +976,6 @@ namespace Fanex.PTEngine.Services
                 Hashtable parameters = super.MapToSpParameters(context);
                 parameters.Add("updateminpos", 1);
                 parameters.Add("updatemaxpos", 0);
-                ICustomerDataAccess customerDataAccess = new CustomerDataAccess();
 
                 result = customerDataAccess.Acc_CustOverrideUpd(parameters);
             }

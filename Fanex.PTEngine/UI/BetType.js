@@ -624,7 +624,7 @@ Fanex.PTEngine.BetType.prototype.Render_0_2_3 = function (owner) { // n2, l2
 
 	//l2
 	var min = 0;
-	var max = 0.9;
+	var max = 0.93;
 	var selected = this.pt.l2;
 	var l2Select = Fanex.PTEngine.PT_RenderSelect(min, max, Fanex.PTEngine.PT_STEP, selected, this.showButtons);
 	l2Select.select.id = l2Select.select.name = "l2$" + this.suffixId;
@@ -668,7 +668,7 @@ Fanex.PTEngine.BetType.prototype.Render_0_3_3 = function (owner) { // n3, l3
 
 	//l3
 	var min = 0;
-	var max = 0.9;
+	var max = 0.93;
 	var selected = this.pt.l3;
 	var l3Select = Fanex.PTEngine.PT_RenderSelect(min, max, Fanex.PTEngine.PT_STEP, selected, this.showButtons);
 	l3Select.select.id = l3Select.select.name = "l3$" + this.suffixId;
@@ -788,7 +788,7 @@ Fanex.PTEngine.BetType.prototype.Render_0_4_2 = function (owner) { // n4, l4
 	// Get updated data
 	this.Save = function () {
 	    this.pt.n4 = parseFloat(n4Select.select.value);
-	    this.pt.l4 = 0.9;
+	    this.pt.l4 = 0.93;
 		return {
 			id: this.id,
 			pt: this.pt

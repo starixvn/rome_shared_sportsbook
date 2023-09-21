@@ -50,10 +50,10 @@ namespace Fanex.PTEngine.Services
                         {
                             foreach (BetType betType in betTypeGroup.BetTypes)
                             {
-                                betType.Pt.A4 = (decimal?)0.9;
-                                betType.Pt.M4 = (decimal?)0.9;
-                                betType.Pt.S4 = (decimal?)0.9;
-                                betType.Pt.L4 = (decimal?)0.9;
+                                betType.Pt.A4 = (decimal?)0.93;
+                                betType.Pt.M4 = (decimal?)0.93;
+                                betType.Pt.S4 = (decimal?)0.93;
+                                betType.Pt.L4 = (decimal?)0.93;
                                 betType.Pt.N4 = (decimal?)0;
                             }
                         }

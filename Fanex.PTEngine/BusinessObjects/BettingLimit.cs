@@ -49,14 +49,14 @@
             }
         }
 
-        public void Populate()
+        public void Populate(bool is777Group = false)
         {
             XDocument document = _Configuration.Document;
 
             XElement root = document.Root.Element(Constant.ROOT_ELEMENT_BETTING_LIMIT);
             foreach (XElement bettingLimitElement in root.Elements())
             {
-                BettingLimitItem item = new BettingLimitItem(bettingLimitElement);
+                BettingLimitItem item = new BettingLimitItem(bettingLimitElement, is777Group);
 
                 BettingLimitItem currentItem = (from bt in this.BettingLimitItems
                                                 where bt.Id == item.Id && bt.Key == item.Key
@@ -77,7 +77,7 @@
         /// <returns></returns>
         public void ReadFromDataRecord(IRequestContext context, System.Data.IDataReader reader)
         {
-            this.Populate();
+            this.Populate(context.Is777Group);
 
             foreach (BettingLimitItem bettingLimitItem in BettingLimitItems)
             {

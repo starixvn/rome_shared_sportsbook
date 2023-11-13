@@ -83,6 +83,8 @@
 
         public bool IsSiteLabel789y { get; set; }
 
+        public bool Is777Group { get; set; }
+
         public RequestContext()
         {
         }

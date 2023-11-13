@@ -48,13 +48,13 @@
         {
         }
 
-        public BettingLimitItem(XElement element)
+        public BettingLimitItem(XElement element, bool is777Group)
             : this()
         {
-            Map(element);
+            Map(element, is777Group);
         }
 
-        public void Map(XElement element)
+        public void Map(XElement element, bool is777Group)
         {
             foreach (XAttribute attribute in element.Attributes())
             {
@@ -70,7 +70,7 @@
                         Key = attribute.Value;
                         break;
                     case Constant.SPORT_TYPE_RESOURCE_KEY:
-                        ResourceKey = attribute.Value;
+                        ResourceKey = attribute.Value + (is777Group && (attribute.Value.Equals("sabaSoccer") || (attribute.Value.Equals("sabaBasketball"))) ? "_VS" : string.Empty);
                         break;
                     default:
                         break;

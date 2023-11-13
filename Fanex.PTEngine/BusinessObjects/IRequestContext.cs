@@ -37,5 +37,7 @@
         byte SettingStatus { get; set; }
 
         bool IsSiteLabel789y { get; set; }
+
+        bool Is777Group { get; set; }
     }
 }

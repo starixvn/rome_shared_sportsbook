@@ -179,5 +179,7 @@
         Result RollbackBalanceCustomerCredit(int memberId, string dbServer, int siteDBGroupId);
 
         decimal GetTotalAmt(int custId, string dbServer, int siteDBGroupId);
+
+        Result CheckPartialUM(int custId, byte product, string langKey);
     }
 }

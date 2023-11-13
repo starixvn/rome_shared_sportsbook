@@ -477,9 +477,9 @@ if (typeof (Fanex.PTEngine) == 'undefined') { // Define Fanex.PTEngine namespace
                 n4: 0,
                 n3: 0,
                 n2: 0,
-                l4: 0.9,
-                l3: 0.9,
-                l2: 0.9
+                l4: 0.93,
+                l3: 0.93,
+                l2: 0.93
             };
             if (typeof (item.pt) == 'object') {
                 this.pt = item.pt;

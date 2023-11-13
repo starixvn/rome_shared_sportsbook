@@ -9,9 +9,20 @@
     using Fanex.Data;
     using Fanex.Data.DNAide;
     using Fanex.PTEngine.BusinessObjects;
+    using Fanex.RemotingRef;
 
     public class CustomerDataAccess : DataAccessBase, ICustomerDataAccess
     {
+        private IRemotingRefService remotingRefService;
+
+        public CustomerDataAccess() : this(null)
+        { }
+
+        public CustomerDataAccess(IRemotingRefService remotingRefService)
+        {
+            this.remotingRefService = remotingRefService ?? new RemotingRefService();
+        }
+
         #region Get Customer Information
 
         /// <summary>
@@ -639,6 +650,33 @@
 
                 db.ExecuteNonQueryOnSiteDB(hash, dbServer);
                 return (decimal)db.GetParameterValue("totalamt");
+            }
+        }
+
+        public Result CheckPartialUM(int custId, byte product, string langKey)
+        {
+            if (custId <= 0)
+            {
+                return new Result("500", $"Invalid request custId: {custId}");
+            }
+
+            using (var db = new ObjectDb("Acc_CheckUM"))
+            {
+                var hash = new Hashtable
+                {
+                    { "custid", custId },
+                    { "productid", product},
+                    { "functiontype", 1},
+                    { "language", langKey },
+                    { "returnumdata", false}
+                };
+
+                db.ExecuteNonQuery(hash);
+                var errMsg = db.GetParameterValue("errmsg").ToString();
+                var formatedErrMsg = string.Format(errMsg,
+                    remotingRefService.GetResourceDataByRefIdAndResourceId("Product", product.ToString(), langKey, null));
+
+                return new Result(db.GetParameterValue("errcode").ToString(), formatedErrMsg );
             }
         }
 

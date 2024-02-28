@@ -18,6 +18,6 @@
 
         void MapToSpUpdateMultipleBetSettingOnlyParameters(ref Hashtable parameters, Hashtable updateParameters);
 
-        void Populate();
+        void Populate(bool is777Group= false);
     }
 }
